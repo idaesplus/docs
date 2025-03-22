@@ -1,0 +1,27 @@
+# Byte-compiled Python files
+*.pyc
+*.pyo
+
+# Sphinx build output
+_build/
+.doctrees/
+
+# Other Sphinx temporary files
+*.inventory
+*.pickle
+
+# Editor and IDE temporary files
+*.swp
+*.swo
+*.tmp
+*.tmp~
+
+# Operating system temporary files
+.DS_Store
+Thumbs.db
+
+# Sphinx configuration auto-generated files
+conf.py.bak
+
+# Tag files
+tags
