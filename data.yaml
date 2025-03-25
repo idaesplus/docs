@@ -1,0 +1,120 @@
+projects:
+
+  - name: CCSI2
+    description: Carbon Capture Simulation for Industry Impact
+    active: 2016-
+    keywords:
+      - carbon capture
+      - simulation
+      - modeling
+      - optimization
+      - uncertainty quantification
+    website: https://netl.doe.gov/carbon-management/carbon-capture/ccsi2
+
+  - name: IDAES
+    description: Institute for the Design of Advanced Energy Systems
+    keywords:
+      - equation-oriented
+      - optimization
+      - process engineering
+    active: 2018-
+    website: https://idaes.org
+
+  - name: WaterTAP
+    description: Water treatment Techno-economic Analysis Platform
+    keywords:
+      - water treatment
+      - water chemistry
+      - techno-economic analysis
+    active: 2022-
+    website: https://watertap.readthedocs.io
+
+  - name: DISPATCHES
+    description: Design Integration and Synthesis Platform to Advance Tightly Coupled Hybrid Energy Systems
+    keywords:
+      - grid 
+      - hybrid energy systems
+    active: 2022-2024
+    website: https://dispatches.readthedocs.io
+
+  - name: PARETO
+    description: Produced Water Initiative
+    active: 2022-2024
+    keywords:
+      - produced water
+      - optimization
+    website: https://pareto.org
+
+  - name: PrOMMiS
+    description: Process Optimization and Modeling for Minerals Sustainability
+    active: 2023-
+    keywords:
+      - critical minerals
+      - rare earth elements
+    website: https://prommis.readthedocs.io
+
+products:
+
+  - name: Pyomo
+    description: | 
+      Pyomo is an open-source Python package for modeling and solving equation-oriented optimization problems, enabling users to define variables, constraints, and objectives and solve them using various solvers, including LP, NLP, and MILP.
+    code:
+      github: Pyomo/pyomo
+      pypi: pyomo
+      conda-forge: pyomo
+
+  - name: FOQUS
+    description: |
+      Framework for Optimization and Uncertainty Quantification
+    code:
+      github: CCSI-Toolset/FOQUS
+      pypi: ccsi-foqus
+  
+  - name: IDAES-PSE
+    description: IDAES core Python framework and model library
+    code:
+      github: IDAES/idaes-pse
+      pypi: idaes-pse
+      conda-forge: idaes-pse
+
+  - name: WaterTAP
+    description: WaterTAP model library
+    code:
+      github: watertap-org/watertap
+      pypi: watertap
+
+  - name: Parameter Sweep
+    description: |
+      Toolkit to solve Pyomo models multiple times with different values for parameters, optionally in parallel
+    code:
+      github: watertap-org/parameter-sweep
+      pypi: parameter-sweep
+
+  - name: PrOMMiS
+    description: PrOMMiS model library
+    code:
+      github: prommis/prommis
+      pypi: prommis
+
+  - name: WaterTAP-REFLO
+    description: |
+      An extension of WaterTAP that incorporates renewable energy (RE) models for RE-driven desalination systems
+    code:
+      github: watertap-org/watertap-reflo
+
+  - name: IDAES Flowsheet Processor
+    description: Framework to annotate IDAES flowsheet to make them more usable, including through a graphical user interface
+    code:
+      github: watertap-org/idaes-flowsheet-processor
+      pypi: idaes-flowsheet-processor
+
+  - name: PARETO
+    description: PARETO Python library
+    code:
+      github: project-pareto/project-pareto
+      pypi: project-pareto
+
+  - name: PARETO UI
+    description: Graphical User Interface for PARETO
+    code:
+      github: project-pareto/pareto-ui
