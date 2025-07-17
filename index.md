@@ -5,4 +5,6 @@ This is the unified documentation website for the IDAES+ projects.
 ```{toctree}
    :maxdepth: 2
    :caption: Contents:
+
+   User Interfaces <ui/index>
 ```
