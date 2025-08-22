@@ -6,6 +6,7 @@ This is the unified documentation website for the IDAES+ projects.
 :maxdepth: 2
 :caption: Contents
 
-projects
-products
+   projects
+   products
+   User Interfaces <ui/index>
 ```
