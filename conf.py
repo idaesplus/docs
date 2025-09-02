@@ -21,6 +21,7 @@ extensions = [
     "myst_parser",
     "sphinx.ext.intersphinx",
     "sphinx.ext.mathjax",
+    "sphinxcontrib.datatemplates",
     "sphinx_design",
 ]
 
