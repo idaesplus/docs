@@ -39,11 +39,11 @@ projects:
 
   - name: PARETO
     description: Produced Water Initiative
-    active: 2022-2024
+    active: 2022-
     keywords:
       - produced water
       - optimization
-    website: https://pareto.org
+    website: https://project-pareto.org
 
   - name: PrOMMiS
     description: Process Optimization and Modeling for Minerals Sustainability
