@@ -18,6 +18,9 @@ title: IDAES+ Software Products
         <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
         <script>
             $(document).ready(function () {
+                // hack to make width match window
+                $('.wy-nav-content')[0].style['max-width'] = 'none';
+
                 function shieldsIO (text, color, logo) {
                   const normalized = text.replace("-", "--");
                   return `<img alt="${text}" src="https://img.shields.io/badge/${normalized}-${color}?logo=${logo}"></img>`
@@ -41,10 +44,6 @@ title: IDAES+ Software Products
                     columns: [
                         { title: "Name", data: "name"},
                         {
-                            title: "Description",
-                            data: "description",
-                        },
-                        {
                           title: "Code",
                           data: "code",
                           render: function (data, type, row, meta) {
@@ -60,6 +59,10 @@ title: IDAES+ Software Products
                             }
                             return `<span>${items.join("")}</span>`;
                           }
+                        },
+                        {
+                            title: "Description",
+                            data: "description",
                         }
                     ]
                 });

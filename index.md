@@ -8,5 +8,6 @@ This is the unified documentation website for the IDAES+ projects.
 
    Projects <projects>
    Products <products>
+   Models <models>
    User Interfaces <ui/index>
 ```

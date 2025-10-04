@@ -47,10 +47,11 @@ class IdaesplusAirtable:
             y[table_name] = []
             for record in table_contents:
                 r = {"id": record["id"]}
-                lowercase_fields = {
-                    key.lower(): value for key, value in record["fields"].items()
+                norm_fields = {
+                    key.lower().replace(" ", "_"): value
+                    for key, value in record["fields"].items()
                 }
-                r.update(self.postprocess(table_name, lowercase_fields))
+                r.update(self.postprocess(table_name, norm_fields))
                 y[table_name].append(r)
             report[table_name] = {"records": len(y[table_name])}
         with path.open("w") as f:
@@ -67,12 +68,16 @@ class IdaesplusAirtable:
                 if code_field in fields:
                     fields["code"][code_field] = fields[code_field]
                     del fields[code_field]
-                else:
-                    _log.debug(f"Fields={fields}")
-                    _log.warning(
-                        f"Products 'code' field '{code_field}' missing "
-                        f"from airtable data for {fields['name']}"
-                    )
+        elif table_name == "models":
+            # fill in blank values for certain required fields
+            for req_field in (
+                "flowsheet_module",
+                "unit_models",
+                "property_package",
+                "reaction_package",
+            ):
+                if req_field not in fields:
+                    fields[req_field] = ""
         return fields
 
 
