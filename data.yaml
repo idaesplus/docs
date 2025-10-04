@@ -1,120 +1,448 @@
-projects:
+models:
+- description: 'The Evaporation Pond model is a general purpose model for representing
+    evaporation ponds (both solar and enhanced). Currently, the model only supports
+    steady-state operation
 
-  - name: CCSI2
-    description: Carbon Capture Simulation for Industry Impact
-    active: 2016-
-    keywords:
-      - carbon capture
-      - simulation
-      - modeling
-      - optimization
-      - uncertainty quantification
-    website: https://netl.doe.gov/carbon-management/carbon-capture/ccsi2
+    (although it could be easily extended to dynamics). The model also only supports
+    material balances with equilibrium reactions, as energy and momentum balances
+    are less meaningful given the open-air nature of these operations and the long-duration
+    time
 
-  - name: IDAES
-    description: Institute for the Design of Advanced Energy Systems
-    keywords:
-      - equation-oriented
-      - optimization
-      - process engineering
-    active: 2018-
-    website: https://idaes.org
+    constants involved.'
+  id: rec47alJNrbOVj3zI
+  name: Evaporation pond
+  name (from project):
+  - PrOMMiS
+  project:
+  - reciZ8S487CQTeWr0
+  property package: BrineParameters
+  property package repository: prommis/evaporation_pond/tests/example_properties
+  reaction package: BrineReactionParameters
+  reaction package repository: prommis/evaporation_pond/tests.example_reactions
+  specifications for operating conditions: Inlet flowrate and concentrations, surface
+    area, average pond depth, and evaporation rate
+  unit model repository: ' prommis/evaporation_pond/evaporation_pond'
+  unit models: EvaporationPond
+- description: 'This is an example flowsheet for the separation of lithium and magnesium
+    ions using nanofiltration (NF). The unit model is the Donnan Steric Pore Model
+    with Dielectric Exclusion (DSPM-DE) and the property model is the Multi-Component
+    Aqueous Solution (MCAS) property package, both of which can be found in WaterTAP.
+    Currently, the inlet feed is modeling the Salar de Atacama brine.
 
-  - name: WaterTAP
-    description: Water treatment Techno-economic Analysis Platform
-    keywords:
-      - water treatment
-      - water chemistry
-      - techno-economic analysis
-    active: 2022-
-    website: https://watertap.readthedocs.io
 
-  - name: DISPATCHES
-    description: Design Integration and Synthesis Platform to Advance Tightly Coupled Hybrid Energy Systems
-    keywords:
-      - grid 
-      - hybrid energy systems
-    active: 2022-2024
-    website: https://dispatches.readthedocs.io
+    The objective of the Pyomo model is to limit the amount of lithium lost in the
+    retentate stream, with 2 degrees of freedom (pressure, area). Operating at this
+    extreme end of the tradeoff between the selectivity and permeability, combined
+    with the low solvent flux for this example, the magnesium rejection is low (~14%).
+    An additional constraint is enacted on the model to limit the feed pressure to
+    70 bar, per typical experimental capabilities.
 
-  - name: PARETO
-    description: Produced Water Initiative
-    active: 2022-
-    keywords:
-      - produced water
-      - optimization
-    website: https://project-pareto.org
 
-  - name: PrOMMiS
-    description: Process Optimization and Modeling for Minerals Sustainability
-    active: 2023-
-    keywords:
-      - critical minerals
-      - rare earth elements
-    website: https://prommis.readthedocs.io
+    Good references for details on the NF model, i.e., the DSPM-DE model: https://doi.org/10.1021/acs.est.2c08584
+    ; https://doi.org/10.1016/j.memsci.2020.118809'
+  flowsheet module: prommis/nanofiltration/nf_brine.py
+  id: recAYSKRrtqdEOqIS
+  name: Nanofiltration
+  name (from project):
+  - PrOMMiS
+  project:
+  - reciZ8S487CQTeWr0
+  property package: MCASParameterBlock
+  property package repository: watertap/property_models/multicomp_aq_sol_prop_pack
+  specifications for operating conditions: 'Inlet flowrate and concentrations; pump
+    efficiency, inlet temperature and pressure, and outlet pressure; nanofiltration
+    recovery, spacer porosity, channel height, velocity, area, outlet pressure, spacer
+    mixing efficiency, spacer mixing length, pore radius, membrane thickness, membrane
+    charge density, dielectric constant '
+  unit model repository: watertap/unit_models/nanofiltration_DSPMDE_0D watertap/unit_models/pressure_changer
+  unit models: NanofiltrationDSPMDE0D; Pump
+- configurations: has_holdup;    has_heat_transfer; has_pressure_change;       ree_list
+  description: This model represents a roaster/calcination unit for Rare Earth Element
+    (REE) feedstock, which includes rare earth minerals, gangue/impurity minerals,
+    moisture, and combustible organic materials.
+  id: recJ8EdijeddiQhII
+  name: Feed roaster
+  name (from project):
+  - PrOMMiS
+  project:
+  - reciZ8S487CQTeWr0
+  property package: GenericParameterBlock (gas); CoalRefuseParameters (solid).
+  property package repository: 'idaes/models.properties/modular_properties/base/generic_property
+    prommis/leaching/leach_solution_properties '
+  specifications for operating conditions: Pressure drop, gas inlet temperature, pressure,
+    mole flowrate, and mole fractions, gas outlet temperature, solid inlet temperature,
+    mass flowrate, mass fractions, REE concentrations, conversion ratios of insolubale
+    REE to dissovable REE, recovery fraction for REE and impurity
+  unit model repository: prommis/roasting/ree_feed_roaster
+  unit models: REEFeedRoaster
+- configurations: has_holdup;     has_heat_transfer; has_pressure_change;   metal_list
+  description: "REE Oxalate Roaster is a unit operation to convert oxalates of rare\
+    \ earth and gangue metal\nelements to metal oxides through thermal decomposition\
+    \ and oxidation. There are 18 rare earth elements\nincluding `Sc`, `Y`, `La`,\
+    \ `Ce`, `Pr`, `Nd`, `Pm`, `Sm`, `Eu`, `Gd`, `Tb`, `Dy`, `Ho`, `Er`, `Tm`, `Yb`,\
+    \ `Lu`,\nand `Th` in the model. The user can specify a subset of those 18 elements\
+    \ through configuration when creating\nthe unit model. The 3 gangue elements considered\
+    \ in the model are `Fe`, `Al`, and `Ca`.\n\nThe feed oxalate mixture stream is\
+    \ typically from a precipitator in an upstream process. It is assumed\nthat all\
+    \ oxalates are in their hydrate forms. In case the anhydrous oxalate feed flow\
+    \ rates are specified in\nthe property package of the solid feed stream, the molar\
+    \ flow rates are converted to the corresponding hydrate flow rates. \nThe molecular\
+    \ formula of an oxalate hydrate can be expressed in a general form as :ce:`RE2(C2O4)3\
+    \ \\\\cdot xH2O` where RE is\none of the 18 rare earth elements and x is the number\
+    \ of water molecules associated with the hyrate. The three \ngangue oxalate hydrates\
+    \ considered in the model are :ce:`Fe2(C2O4)3 \\\\cdot 2H2O`, :ce:`Al2(C2O4)3\
+    \ \\\\cdot H2O`, and\n:ce:`CaC2O4 \\\\cdot H2O`, for `Fe`, `Al`, and `Ca` elements,\
+    \ respectively.\n\nThe feed stream contains surface moisture. The amount of surface\
+    \ moisture entering the reactor is specified by\na liquid inlet that contains\
+    \ a fraction of the liquid outlet of the precipitator."
+  id: recKb5keY0cxqBu0I
+  name: Oxalate roaster
+  name (from project):
+  - PrOMMiS
+  project:
+  - reciZ8S487CQTeWr0
+  property package: GenericParameterBlock (gas); CoalRefuseParameters (solid); AqueousParameter
+    (liquid).
+  property package repository: idaes/models.properties/modular_properties/base/generic_property
+    prommis/leaching/leach_solution_properties prommis/precipitate/precipitate_liquid_properties
+  specifications for operating conditions: Pressure drop, gas inlet temperature, pressure,
+    mole flowrate, and mole fractions, gas outlet temperature, solid inlet temperature
+    and mole flowrate, liquid inlet flowrate and concentrations, recovery fraction
+  unit model repository: prommis/roasting/ree_oxalate_roaster
+  unit models: REEOxalateRoaster
+- description: The Precipitator Unit Model represents an Equilibrium reactor unit
+    model with fixed partition coefficients.
+  id: recX1cQAYCtwZXQGn
+  name: Precipitate
+  name (from project):
+  - PrOMMiS
+  project:
+  - reciZ8S487CQTeWr0
+  property package: AqueousParameter (aqueous); PrecipitateParameters (precipitate).
+  property package repository: prommis/precipitate/precipitate_liquid_properties prommis.precipitate.precipitate_solids_properties
+  specifications for operating conditions: Aqueous inlet flowrate and concentrations,
+    percipitate temperature
+  unit model repository: prommis/precipitate/precipitator
+  unit models: Precipitator
+- configurations: number_of_finite_elements
+  description: The Solvent Extraction unit model is used to perform the solvent extraction
+    unit operation. It represents a series of tanks, referred to as stages, through
+    which the aqueous and organic phases are passed, and the desired components are
+    extracted subsequently.
+  id: recc2FlIaLQUySCvW
+  name: Solvent extraction
+  name (from project):
+  - PrOMMiS
+  project:
+  - reciZ8S487CQTeWr0
+  property package: LeachSolutionParameters (aqueous); REESolExOgParameters (organic).
+  property package repository: prommis/leaching/leach_solids_properties prommis.solvent_extraction.ree_og_distribution
+  specifications for operating conditions: Aqueous inlet flowrate and concentrations,
+    solid inlet mass flowrate and concentrations
+  unit model repository: prommis/solvent_extraction/solvent_extraction
+  unit models: SolventExtraction
+- configurations: number_of_tanks
+  description: 'The Leach Train unit model represents a series of leaching tanks in
+    which a solid and liquid stream are contacted and
 
+    undergo heterogeneous chemical reactions.'
+  id: rech3LgrJem6CyA0U
+  name: Leaching
+  name (from project):
+  - PrOMMiS
+  project:
+  - reciZ8S487CQTeWr0
+  property package: LeachSolutionParameters (liquid); CoalRefuseParameters (solid).
+  property package repository: prommis/leaching/leach_solids_properties prommis/leaching/leach_solution_properties
+  reaction package: CoalRefuseLeachingReactions
+  reaction package repository: prommis/leaching/leach_reactions
+  specifications for operating conditions: Liquid inlet flowrate and concentrations,
+    solid inlet mass flowrate and fractions
+  unit model repository: prommis/leaching/leach_train
+  unit models: LeachingTrain
+- description: The Crusher module includes power consumption for solid crushing. It
+    is a function of particle size distribution, mass flow rate, and bond work index.
+  id: reckUFk4VN5NVJQ5b
+  name: Crusher
+  name (from project):
+  - PrOMMiS
+  project:
+  - reciZ8S487CQTeWr0
+  property package: CoalRefuseParameters
+  specifications for operating conditions: Inlet mass flowrate and fractions, inlet
+    particle size median and width, outlet particle size median and width
+  unit model repository: prommis/solid_handling/crusher
+  unit models: Crusher
+- id: recpmtdC6dsUdneUy
+- description: 'The University of Kentucky (UKy) rare earth element (REE) processing
+    plant is designed to extract salable rare earth oxides from domestic U.S. coal
+    and coal byproducts. While this implementation of the plant does not take into
+    account
+
+    all of the complexities and unit processes detailed in the 2019 report, it depicts
+    the major phenomena by utilizing a series of conventional REE extraction techniques,
+    including acid tank leaching, solvent extraction, precipitation, and product roasting.'
+  flowsheet module: prommis/uky/uky_flowsheet.py
+  id: rectWqcSeEkIO4vcR
+  name: REE processing plant
+  name (from project):
+  - PrOMMiS
+  project:
+  - reciZ8S487CQTeWr0
+  property package: LeachSolutionParameters (liquid); CoalRefuseParameters (solid);
+    AqueousParameter (aqueous); PrecipitateParameters (precipitate); REESolExOgParameters
+    (organic); GenericParameterBlock (gas)
+  property package repository: prommis/leaching/leach_solids_properties prommis/leaching/leach_solution_properties
+    prommis/precipitate/precipitate_liquid_properties prommis.precipitate.precipitate_solids_properties
+    prommis.solvent_extraction.ree_og_distribution idaes/models.properties/modular_properties/base/generic_property
+  reaction package: CoalRefuseLeachingReactions
+  reaction package repository: prommis/leaching/leach_reactions
+  specifications for operating conditions: Leach liquid inlet flowrate and concentrations,
+    leach solid inlet mass flowrateand fractions, leach volume; rougher makeup stream
+    flowrate and concentrations; acid feeds (3) flowrate and concentrations; cleaner
+    make-up stream flowrate and concentrations; separators split fraction; sl separators
+    liquid recovery; precipitate temperature; roaster pressure drop, roaster gas inlet
+    temperature, pressure, mole flowrate and fraction, roaster gas outlet temperature,
+    roaster recovery fraction
+  unit model repository: prommis/leaching/leach_train prommis/precipitate/precipitator
+    prommis/roasting/ree_oxalate_roaster prommis/solvent_extraction/solvent_extraction
+    ideas/models/unit_models/solid_liquid ideas/models/unit_models/mixer ideas/models/unit_models/separator
+  unit models: LeachingTrain;  Precipitator; REEOxalateRoaster; SolventExtraction;
+    SLSeparator;                  Mixer;                        Separator
+- description: 'Diafiltration cascade flowsheet case study example for separating
+    lithium and cobalt. This flowsheet models a specific system from literature (cascade
+    III in Figure 2 [1]) and serves as an example of implementing a custom cost model.
+
+
+    [1] https://pubs.acs.org/doi/full/10.1021/acssuschemeng.2c02862'
+  flowsheet module: prommis/nanofiltraion/diafiltration.py
+  id: recwSINirbXreKaBa
+  name: Diafiltration
+  name (from project):
+  - PrOMMiS
+  project:
+  - reciZ8S487CQTeWr0
+  property package: LiCoParameters
+  property package repository: prommis/nanofiltration/diafiltration_properties
+  specifications for operating conditions: Diafiltrate feed (Mixer 2) flowrate and
+    concentrations; Stage 3 feed florate and concentrations
+  unit model repository: ideas/models/unit_models
+  unit models: MSContactor (3 units); Mixer (2 units)
 products:
-
-  - name: Pyomo
-    description: | 
-      Pyomo is an open-source Python package for modeling and solving equation-oriented optimization problems, enabling users to define variables, constraints, and objectives and solve them using various solvers, including LP, NLP, and MILP.
-    code:
-      github: Pyomo/pyomo
-      pypi: pyomo
-      conda-forge: pyomo
-
-  - name: FOQUS
-    description: |
-      Framework for Optimization and Uncertainty Quantification
-    code:
-      github: CCSI-Toolset/FOQUS
-      pypi: ccsi-foqus
-  
-  - name: IDAES-PSE
-    description: IDAES core Python framework and model library
-    code:
-      github: IDAES/idaes-pse
-      pypi: idaes-pse
-      conda-forge: idaes-pse
-
-  - name: WaterTAP
-    description: WaterTAP model library
-    code:
-      github: watertap-org/watertap
-      pypi: watertap
-
-  - name: Parameter Sweep
-    description: |
-      Toolkit to solve Pyomo models multiple times with different values for parameters, optionally in parallel
-    code:
-      github: watertap-org/parameter-sweep
-      pypi: parameter-sweep
-
-  - name: PrOMMiS
-    description: PrOMMiS model library
-    code:
-      github: prommis/prommis
-      pypi: prommis
-
-  - name: WaterTAP-REFLO
-    description: |
-      An extension of WaterTAP that incorporates renewable energy (RE) models for RE-driven desalination systems
-    code:
-      github: watertap-org/watertap-reflo
-
-  - name: IDAES Flowsheet Processor
-    description: Framework to annotate IDAES flowsheet to make them more usable, including through a graphical user interface
-    code:
-      github: watertap-org/idaes-flowsheet-processor
-      pypi: idaes-flowsheet-processor
-
-  - name: PARETO
-    description: PARETO Python library
-    code:
-      github: project-pareto/project-pareto
-      pypi: project-pareto
-
-  - name: PARETO UI
-    description: Graphical User Interface for PARETO
-    code:
-      github: project-pareto/pareto-ui
+- code:
+    github: watertap-org/parameter-sweep
+    pypi: parameter-sweep
+  description: Toolkit to solve Pyomo models multiple times with different values
+    for parameters, optionally in parallel
+  id: recSKlnunMYP1HZIh
+  interface: Python API
+  name: Parameter Sweep
+  projects:
+  - recCwLQQYPhrvmypf
+  - reciZ8S487CQTeWr0
+- code: {}
+  description: Self-contained, one-click-installer graphical application for interacting
+    with IDAES flowsheets
+  id: recThdJTFwvbxTVci
+  interface: Graphical (GUI)
+  name: IDAES Flowsheet UI
+  projects:
+  - recKkXobkOB85kvR3
+  - recsrajWweFWzVZkj
+- code:
+    github: prommis/idaes-flowsheet-processor-ui
+  description: Graphical UI for configuring and running any IDAES flowsheet
+  id: recaEF9qZRh2ehE59
+  name: Flowsheet Processor UI
+  projects:
+  - recKkXobkOB85kvR3
+  - recCwLQQYPhrvmypf
+  - reciZ8S487CQTeWr0
+- code: {}
+  description: Self-contained, one-click-installer graphical application for interacting
+    with PrOMMiS flowsheets
+  id: recjgxfwc9terwxSj
+  interface: Graphical (GUI)
+  name: PrOMMiS Flowsheet UI
+  projects:
+  - reciZ8S487CQTeWr0
+  - recsrajWweFWzVZkj
+- code:
+    github: watertap-org/reflo
+  description: An extension of WaterTAP that incorporates renewable energy (RE) models
+    for RE-driven desalination systems
+  id: recnqJXUTERJVjwld
+  interface: Python API
+  name: WaterTAP-REFLO
+  projects:
+  - recCwLQQYPhrvmypf
+- code:
+    github: prommis/prommis
+    pypi: prommis
+  description: PrOMMiS model library
+  id: recohrsW4jQecmeet
+  interface: Python API
+  name: PrOMMiS
+  projects:
+  - reciZ8S487CQTeWr0
+- code:
+    github: watertap-org/watertap
+    pypi: watertap
+  description: WaterTAP core model library
+  id: recrNZ8wwJ1g7yMQU
+  interface: Python API
+  name: WaterTAP
+  projects:
+  - recCwLQQYPhrvmypf
+- code:
+    conda-forge: idaes-pse
+    github: IDAES/idaes-pse
+    pypi: idaes-pse
+  description: IDAES core Python framework and model library
+  id: recrQvKbvIiGNKdnp
+  interface: Python API
+  name: IDAES-PSE
+  projects:
+  - recKkXobkOB85kvR3
+- code:
+    github: prommis/idaes-flowsheet-processor
+    pypi: idaes-flowsheet-processor
+  description: API for exporting flowsheets to the Flowsheet Processor UI
+  id: rectTp0jw8PApuxYt
+  interface: Python API
+  name: Flowsheet Processor
+  projects:
+  - recKkXobkOB85kvR3
+  - reciZ8S487CQTeWr0
+  - recCwLQQYPhrvmypf
+- code:
+    github: CCSI-Toolset/FOQUS
+    pypi: ccsi-foqus
+  description: Framework for Optimization and Uncertainty Quantification
+  id: recvoDYtA4ujC1Wlb
+  interface: Graphical (GUI)
+  name: FOQUS
+  projects:
+  - recvKtsfJWeabhMYe
+- code:
+    conda-forge: pyomo
+    github: Pyomo/pyomo
+    pypi: pyomo
+  description: Pyomo is an open-source Python package for modeling and solving equation-oriented
+    optimization problems, enabling users to define variables, constraints, and objectives
+    and solve them using various solvers, including LP, NLP, and MILP.
+  id: recxJK4smIb60kQ0x
+  interface: Python API
+  name: Pyomo
+- code: {}
+  description: Self-contained, one-click-installer graphical application for interacting
+    with WaterTAP flowsheets
+  id: recxwPyKuhcmbdp0f
+  interface: Graphical (GUI)
+  name: WaterTAP Flowsheet UI
+  projects:
+  - recCwLQQYPhrvmypf
+  - recsrajWweFWzVZkj
+projects:
+- active: true
+  description: Water treatment Techno-economic Analysis Platform
+  development: Active
+  homepage: https://watertap.readthedocs.io
+  id: recCwLQQYPhrvmypf
+  keywords:
+  - water treatment
+  - water chemistry
+  - techno-economic analysis
+  name: WaterTAP
+  products:
+  - recrNZ8wwJ1g7yMQU
+  - recSKlnunMYP1HZIh
+  - recnqJXUTERJVjwld
+  - rectTp0jw8PApuxYt
+  - recaEF9qZRh2ehE59
+  - recxwPyKuhcmbdp0f
+- active: true
+  description: Institute for the Design of Advanced Energy Systems
+  development: Active
+  homepage: https://idaes.org
+  id: recKkXobkOB85kvR3
+  keywords:
+  - equation oriented
+  name: IDAES
+  products:
+  - recrQvKbvIiGNKdnp
+  - rectTp0jw8PApuxYt
+  - recaEF9qZRh2ehE59
+  - recThdJTFwvbxTVci
+- active: true
+  description: 'Python-based, open-source optimization modeling language '
+  development: Active
+  homepage: https://www.pyomo.org/
+  id: recPCScuWwcVicSx4
+  keywords:
+  - equation oriented
+  - optimization
+  name: Pyomo
+- active: false
+  description: Design Integration and Synthesis Platform to Advance Tightly Coupled
+    Hybrid Energy Systems
+  development: Archived
+  homepage: https://dispatches.readthedocs.io
+  id: recQEM5uwn2AtTRip
+  keywords:
+  - grid
+  - hybrid energy systems
+  name: DISPATCHES
+- active: true
+  description: Process Optimization and Modeling for Minerals Sustainability
+  development: Active
+  homepage: https://netl.doe.gov/prommis
+  id: reciZ8S487CQTeWr0
+  keywords:
+  - critical minerals
+  - rare earth elements
+  models:
+  - rec47alJNrbOVj3zI
+  - rech3LgrJem6CyA0U
+  - recJ8EdijeddiQhII
+  - recKb5keY0cxqBu0I
+  - recc2FlIaLQUySCvW
+  - recX1cQAYCtwZXQGn
+  - reckUFk4VN5NVJQ5b
+  - recAYSKRrtqdEOqIS
+  - recwSINirbXreKaBa
+  - rectWqcSeEkIO4vcR
+  name: PrOMMiS
+  products:
+  - recSKlnunMYP1HZIh
+  - rectTp0jw8PApuxYt
+  - recohrsW4jQecmeet
+  - recaEF9qZRh2ehE59
+  - recjgxfwc9terwxSj
+- active: true
+  description: Produced Water Initiative
+  development: Active
+  homepage: https://project-pareto.org
+  id: recsrajWweFWzVZkj
+  keywords:
+  - produced water
+  - optimization
+  name: PARETO
+  products:
+  - recjgxfwc9terwxSj
+  - recxwPyKuhcmbdp0f
+  - recThdJTFwvbxTVci
+- active: true
+  description: Carbon Capture Simulation for Industry Impact
+  development: Active
+  homepage: https://netl.doe.gov/carbon-management/carbon-capture/ccsi2
+  id: recvKtsfJWeabhMYe
+  keywords:
+  - carbon capture
+  - simulation
+  - modeling
+  - optimization
+  - uncertainty quantification
+  name: CCSI2
+  products:
+  - recvoDYtA4ujC1Wlb
