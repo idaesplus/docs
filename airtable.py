@@ -32,10 +32,9 @@ class IdaesplusAirtable:
 
     def __init__(self, tok):
         self._tok = tok
-        self.tables = {}
 
     def get_tables(self):
-        self.tables = {}
+        tables = {}
         for table_name in self.table_names:
             url = f"{self.url}/{self.baseid}/{table_name}"
             _log.debug(f"Begin:Request url={url}")
@@ -46,12 +45,14 @@ class IdaesplusAirtable:
                     raise RuntimeError(f"Unauthorized. Check your API key")
                 else:
                     raise RuntimeError(f"Fetching '{url}': HTTP status {d.status_code}")
-            self.tables[table_name] = d.json()["records"]
+            tables[table_name] = d.json()["records"]
+        return tables
 
-    def dump(self, path):
+    @classmethod
+    def dump_tables(cls, path, tables):
         report = {}
         y = {}
-        for table_name, table_contents in self.tables.items():
+        for table_name, table_contents in tables.items():
             y[table_name] = []
             for record in table_contents:
                 r = {"id": record["id"]}
@@ -59,14 +60,15 @@ class IdaesplusAirtable:
                     key.lower().replace(" ", "_"): value
                     for key, value in record["fields"].items()
                 }
-                r.update(self.postprocess(table_name, norm_fields))
+                r.update(cls.postprocess(table_name, norm_fields))
                 y[table_name].append(r)
             report[table_name] = {"records": len(y[table_name])}
         with path.open("w") as f:
             yaml.dump(y, stream=f)
         return report
 
-    def postprocess(self, table_name: str, fields: dict[str, Any]):
+    @classmethod
+    def postprocess(cls, table_name: str, fields: dict[str, Any]):
         if table_name == "projects":
             fields["active"] = bool(fields["development"].lower() == "active")
         elif table_name == "products":
@@ -136,36 +138,25 @@ def main():
         return 1
 
     if args.cache:
-        at = IdaesplusAirtable(None)
         p = Path(args.cache)
         # if existing file, load it
         if p.exists():
             _log.info(f"Loading data from cache file '{p}'")
             with p.open() as f:
-                at.tables = json.load(f)
+                tables = json.load(f)
         # otherwise query airtable and create for next time
         else:
             _log.info(f"Fetching data from airtable (cache)")
-            try:
-                tok = get_token(args.token)
-            except KeyError:
-                return 1
-            at = IdaesplusAirtable(tok)
-            at.get_tables()
+            tables = IdaesplusAirtable(get_token(args.token)).get_tables()
             _log.info(f"Writing airtable data to cache file '{p}'")
             with p.open("w") as f:
-                json.dump(at.tables, f)
+                json.dump(tables, f)
     else:
-        try:
-            tok = get_token(args.token)
-        except KeyError:
-            return 1
         _log.info("Fetching data from airtable")
-        at = IdaesplusAirtable(tok)
-        at.get_tables()
+        tables = IdaesplusAirtable(get_token(args.token)).get_tables()
 
     _log.info(f"Writing YAML file {output_path}")
-    report = at.dump(output_path)
+    report = IdaesplusAirtable.dump_tables(output_path, tables)
 
     for table_name, data in report.items():
         print(f"Wrote {data['records']} records for table {table_name}")
