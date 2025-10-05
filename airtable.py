@@ -3,6 +3,7 @@ Download tables from Airtable and output YAML
 """
 
 import argparse
+import json
 import logging
 import os
 from pathlib import Path
@@ -10,6 +11,9 @@ import requests
 import sys
 from typing import Any
 import yaml
+
+# third-party packages
+from markdown import markdown
 
 __author__ = "Dan Gunter (LBNL)"
 
@@ -27,11 +31,15 @@ class IdaesplusAirtable:
     table_names = ("projects", "products", "models")
 
     def __init__(self, tok):
+        self._tok = tok
+        self.tables = {}
+
+    def get_tables(self):
         self.tables = {}
         for table_name in self.table_names:
             url = f"{self.url}/{self.baseid}/{table_name}"
             _log.debug(f"Begin:Request url={url}")
-            d = requests.get(url, headers={"Authorization": f"Bearer {tok}"})
+            d = requests.get(url, headers={"Authorization": f"Bearer {self._tok}"})
             _log.debug(f"End:Request url={url} ; status={d.status_code}")
             if d.status_code != 200:
                 if d.status_code == 401:
@@ -78,12 +86,34 @@ class IdaesplusAirtable:
             ):
                 if req_field not in fields:
                     fields[req_field] = ""
+            fields["description"] = markdown(fields["description"])
         return fields
+
+
+def get_token(t):
+    if t:
+        return t
+
+    try:
+        return os.environ[TOKENV]
+    except KeyError:
+        raise KeyError(
+            f"Please provide the token via the -t/--token option "
+            f"or by setting the environment variable {TOKENV}"
+        )
 
 
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("output_file", metavar="PATH", help="YAML output file")
+    p.add_argument(
+        "--cache",
+        metavar="FILE",
+        help="For local testing, use cached JSON data in FILE "
+        "instead of querying Airtable; "
+        "If the file does not exist it will be created from Airtable first",
+        default=None,
+    )
     p.add_argument("-t", "--token", help=f"API token, otherwise look in {TOKENV}")
     p.add_argument(
         "-v", "--verbose", action="count", default=0, help="Increase log verbosity"
@@ -105,20 +135,34 @@ def main():
         )
         return 1
 
-    if args.token:
-        tok = args.token
+    if args.cache:
+        at = IdaesplusAirtable(None)
+        p = Path(args.cache)
+        # if existing file, load it
+        if p.exists():
+            _log.info(f"Loading data from cache file '{p}'")
+            with p.open() as f:
+                at.tables = json.load(f)
+        # otherwise query airtable and create for next time
+        else:
+            _log.info(f"Fetching data from airtable (cache)")
+            try:
+                tok = get_token(args.token)
+            except KeyError:
+                return 1
+            at = IdaesplusAirtable(tok)
+            at.get_tables()
+            _log.info(f"Writing airtable data to cache file '{p}'")
+            with p.open("w") as f:
+                json.dump(at.tables, f)
     else:
         try:
-            tok = os.environ[TOKENV]
+            tok = get_token(args.token)
         except KeyError:
-            print(
-                f"Please provide the token via the -t/--token option "
-                f"or by setting the environment variable {TOKENV}"
-            )
             return 1
-
-    _log.info("Fetching data from airtable")
-    at = IdaesplusAirtable(tok)
+        _log.info("Fetching data from airtable")
+        at = IdaesplusAirtable(tok)
+        at.get_tables()
 
     _log.info(f"Writing YAML file {output_path}")
     report = at.dump(output_path)

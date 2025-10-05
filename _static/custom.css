@@ -1,1 +1,6 @@
 /* Add custom CSS rules here */
+@media (min-width: 768px) { /* For screens wider than 768px */
+  .wy-nav-content {
+    max-width: none;
+  }
+}

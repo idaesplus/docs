@@ -18,7 +18,7 @@ title: IDAES+ Projects
         <script>
             $(document).ready(function () {
                 // hack to make width match window
-                $('.wy-nav-content')[0].style['max-width'] = 'none';
+                // $('.wy-nav-content')[0].style['max-width'] = 'none';
                 var data = {{ data.projects | tojson }};
                 $('#idaesplus-projects').DataTable({
                     data: data,

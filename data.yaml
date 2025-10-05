@@ -1,5 +1,5 @@
 models:
-- description: 'The Evaporation Pond model is a general purpose model for representing
+- description: '<p>The Evaporation Pond model is a general purpose model for representing
     evaporation ponds (both solar and enhanced). Currently, the model only supports
     steady-state operation
 
@@ -8,7 +8,7 @@ models:
     are less meaningful given the open-air nature of these operations and the long-duration
     time
 
-    constants involved.'
+    constants involved.</p>'
   flowsheet_module: ''
   id: rec47alJNrbOVj3zI
   name: Evaporation pond
@@ -24,23 +24,21 @@ models:
     area, average pond depth, and evaporation rate
   unit_model_repository: ' prommis/evaporation_pond/evaporation_pond'
   unit_models: EvaporationPond
-- description: 'This is an example flowsheet for the separation of lithium and magnesium
-    ions using nanofiltration (NF). The unit model is the Donnan Steric Pore Model
-    with Dielectric Exclusion (DSPM-DE) and the property model is the Multi-Component
+- description: '<p>This is an example flowsheet for the separation of lithium and
+    magnesium ions using nanofiltration (NF). The unit model is the Donnan Steric
+    Pore Model with Dielectric Exclusion (DSPM-DE) and the property model is the Multi-Component
     Aqueous Solution (MCAS) property package, both of which can be found in WaterTAP.
-    Currently, the inlet feed is modeling the Salar de Atacama brine.
+    Currently, the inlet feed is modeling the Salar de Atacama brine.</p>
 
-
-    The objective of the Pyomo model is to limit the amount of lithium lost in the
-    retentate stream, with 2 degrees of freedom (pressure, area). Operating at this
-    extreme end of the tradeoff between the selectivity and permeability, combined
+    <p>The objective of the Pyomo model is to limit the amount of lithium lost in
+    the retentate stream, with 2 degrees of freedom (pressure, area). Operating at
+    this extreme end of the tradeoff between the selectivity and permeability, combined
     with the low solvent flux for this example, the magnesium rejection is low (~14%).
     An additional constraint is enacted on the model to limit the feed pressure to
-    70 bar, per typical experimental capabilities.
+    70 bar, per typical experimental capabilities.</p>
 
-
-    Good references for details on the NF model, i.e., the DSPM-DE model: https://doi.org/10.1021/acs.est.2c08584
-    ; https://doi.org/10.1016/j.memsci.2020.118809'
+    <p>Good references for details on the NF model, i.e., the DSPM-DE model: https://doi.org/10.1021/acs.est.2c08584
+    ; https://doi.org/10.1016/j.memsci.2020.118809</p>'
   flowsheet_module: prommis/nanofiltration/nf_brine.py
   id: recAYSKRrtqdEOqIS
   name: Nanofiltration
@@ -59,9 +57,9 @@ models:
   unit_model_repository: watertap/unit_models/nanofiltration_DSPMDE_0D watertap/unit_models/pressure_changer
   unit_models: NanofiltrationDSPMDE0D; Pump
 - configurations: has_holdup;    has_heat_transfer; has_pressure_change;       ree_list
-  description: This model represents a roaster/calcination unit for Rare Earth Element
-    (REE) feedstock, which includes rare earth minerals, gangue/impurity minerals,
-    moisture, and combustible organic materials.
+  description: <p>This model represents a roaster/calcination unit for Rare Earth
+    Element (REE) feedstock, which includes rare earth minerals, gangue/impurity minerals,
+    moisture, and combustible organic materials.</p>
   flowsheet_module: ''
   id: recJ8EdijeddiQhII
   name: Feed roaster
@@ -80,25 +78,29 @@ models:
   unit_model_repository: prommis/roasting/ree_feed_roaster
   unit_models: REEFeedRoaster
 - configurations: has_holdup;     has_heat_transfer; has_pressure_change;   metal_list
-  description: "REE Oxalate Roaster is a unit operation to convert oxalates of rare\
-    \ earth and gangue metal\nelements to metal oxides through thermal decomposition\
-    \ and oxidation. There are 18 rare earth elements\nincluding `Sc`, `Y`, `La`,\
-    \ `Ce`, `Pr`, `Nd`, `Pm`, `Sm`, `Eu`, `Gd`, `Tb`, `Dy`, `Ho`, `Er`, `Tm`, `Yb`,\
-    \ `Lu`,\nand `Th` in the model. The user can specify a subset of those 18 elements\
-    \ through configuration when creating\nthe unit model. The 3 gangue elements considered\
-    \ in the model are `Fe`, `Al`, and `Ca`.\n\nThe feed oxalate mixture stream is\
-    \ typically from a precipitator in an upstream process. It is assumed\nthat all\
-    \ oxalates are in their hydrate forms. In case the anhydrous oxalate feed flow\
-    \ rates are specified in\nthe property package of the solid feed stream, the molar\
-    \ flow rates are converted to the corresponding hydrate flow rates. \nThe molecular\
-    \ formula of an oxalate hydrate can be expressed in a general form as :ce:`RE2(C2O4)3\
-    \ \\\\cdot xH2O` where RE is\none of the 18 rare earth elements and x is the number\
-    \ of water molecules associated with the hyrate. The three \ngangue oxalate hydrates\
-    \ considered in the model are :ce:`Fe2(C2O4)3 \\\\cdot 2H2O`, :ce:`Al2(C2O4)3\
-    \ \\\\cdot H2O`, and\n:ce:`CaC2O4 \\\\cdot H2O`, for `Fe`, `Al`, and `Ca` elements,\
-    \ respectively.\n\nThe feed stream contains surface moisture. The amount of surface\
-    \ moisture entering the reactor is specified by\na liquid inlet that contains\
-    \ a fraction of the liquid outlet of the precipitator."
+  description: "<p>REE Oxalate Roaster is a unit operation to convert oxalates of\
+    \ rare earth and gangue metal\nelements to metal oxides through thermal decomposition\
+    \ and oxidation. There are 18 rare earth elements\nincluding <code>Sc</code>,\
+    \ <code>Y</code>, <code>La</code>, <code>Ce</code>, <code>Pr</code>, <code>Nd</code>,\
+    \ <code>Pm</code>, <code>Sm</code>, <code>Eu</code>, <code>Gd</code>, <code>Tb</code>,\
+    \ <code>Dy</code>, <code>Ho</code>, <code>Er</code>, <code>Tm</code>, <code>Yb</code>,\
+    \ <code>Lu</code>,\nand <code>Th</code> in the model. The user can specify a subset\
+    \ of those 18 elements through configuration when creating\nthe unit model. The\
+    \ 3 gangue elements considered in the model are <code>Fe</code>, <code>Al</code>,\
+    \ and <code>Ca</code>.</p>\n<p>The feed oxalate mixture stream is typically from\
+    \ a precipitator in an upstream process. It is assumed\nthat all oxalates are\
+    \ in their hydrate forms. In case the anhydrous oxalate feed flow rates are specified\
+    \ in\nthe property package of the solid feed stream, the molar flow rates are\
+    \ converted to the corresponding hydrate flow rates. \nThe molecular formula of\
+    \ an oxalate hydrate can be expressed in a general form as :ce:<code>RE2(C2O4)3\
+    \ \\\\cdot xH2O</code> where RE is\none of the 18 rare earth elements and x is\
+    \ the number of water molecules associated with the hyrate. The three \ngangue\
+    \ oxalate hydrates considered in the model are :ce:<code>Fe2(C2O4)3 \\\\cdot 2H2O</code>,\
+    \ :ce:<code>Al2(C2O4)3 \\\\cdot H2O</code>, and\n:ce:<code>CaC2O4 \\\\cdot H2O</code>,\
+    \ for <code>Fe</code>, <code>Al</code>, and <code>Ca</code> elements, respectively.</p>\n\
+    <p>The feed stream contains surface moisture. The amount of surface moisture entering\
+    \ the reactor is specified by\na liquid inlet that contains a fraction of the\
+    \ liquid outlet of the precipitator.</p>"
   flowsheet_module: ''
   id: recKb5keY0cxqBu0I
   name: Oxalate roaster
@@ -116,8 +118,8 @@ models:
     and mole flowrate, liquid inlet flowrate and concentrations, recovery fraction
   unit_model_repository: prommis/roasting/ree_oxalate_roaster
   unit_models: REEOxalateRoaster
-- description: The Precipitator Unit Model represents an Equilibrium reactor unit
-    model with fixed partition coefficients.
+- description: <p>The Precipitator Unit Model represents an Equilibrium reactor unit
+    model with fixed partition coefficients.</p>
   flowsheet_module: ''
   id: recX1cQAYCtwZXQGn
   name: Precipitate
@@ -133,10 +135,10 @@ models:
   unit_model_repository: prommis/precipitate/precipitator
   unit_models: Precipitator
 - configurations: number_of_finite_elements
-  description: The Solvent Extraction unit model is used to perform the solvent extraction
-    unit operation. It represents a series of tanks, referred to as stages, through
-    which the aqueous and organic phases are passed, and the desired components are
-    extracted subsequently.
+  description: <p>The Solvent Extraction unit model is used to perform the solvent
+    extraction unit operation. It represents a series of tanks, referred to as stages,
+    through which the aqueous and organic phases are passed, and the desired components
+    are extracted subsequently.</p>
   flowsheet_module: ''
   id: recc2FlIaLQUySCvW
   name: Solvent extraction
@@ -152,10 +154,10 @@ models:
   unit_model_repository: prommis/solvent_extraction/solvent_extraction
   unit_models: SolventExtraction
 - configurations: number_of_tanks
-  description: 'The Leach Train unit model represents a series of leaching tanks in
-    which a solid and liquid stream are contacted and
+  description: '<p>The Leach Train unit model represents a series of leaching tanks
+    in which a solid and liquid stream are contacted and
 
-    undergo heterogeneous chemical reactions.'
+    undergo heterogeneous chemical reactions.</p>'
   flowsheet_module: ''
   id: rech3LgrJem6CyA0U
   name: Leaching
@@ -171,8 +173,9 @@ models:
     solid inlet mass flowrate and fractions
   unit_model_repository: prommis/leaching/leach_train
   unit_models: LeachingTrain
-- description: The Crusher module includes power consumption for solid crushing. It
-    is a function of particle size distribution, mass flow rate, and bond work index.
+- description: <p>The Crusher module includes power consumption for solid crushing.
+    It is a function of particle size distribution, mass flow rate, and bond work
+    index.</p>
   flowsheet_module: ''
   id: reckUFk4VN5NVJQ5b
   name: Crusher
@@ -186,14 +189,14 @@ models:
     particle size median and width, outlet particle size median and width
   unit_model_repository: prommis/solid_handling/crusher
   unit_models: Crusher
-- description: 'The University of Kentucky (UKy) rare earth element (REE) processing
+- description: '<p>The University of Kentucky (UKy) rare earth element (REE) processing
     plant is designed to extract salable rare earth oxides from domestic U.S. coal
     and coal byproducts. While this implementation of the plant does not take into
     account
 
     all of the complexities and unit processes detailed in the 2019 report, it depicts
     the major phenomena by utilizing a series of conventional REE extraction techniques,
-    including acid tank leaching, solvent extraction, precipitation, and product roasting.'
+    including acid tank leaching, solvent extraction, precipitation, and product roasting.</p>'
   flowsheet_module: prommis/uky/uky_flowsheet.py
   id: rectWqcSeEkIO4vcR
   name: REE processing plant
@@ -221,12 +224,11 @@ models:
     ideas/models/unit_models/solid_liquid ideas/models/unit_models/mixer ideas/models/unit_models/separator
   unit_models: LeachingTrain;  Precipitator; REEOxalateRoaster; SolventExtraction;
     SLSeparator;                  Mixer;                        Separator
-- description: 'Diafiltration cascade flowsheet case study example for separating
+- description: '<p>Diafiltration cascade flowsheet case study example for separating
     lithium and cobalt. This flowsheet models a specific system from literature (cascade
-    III in Figure 2 [1]) and serves as an example of implementing a custom cost model.
+    III in Figure 2 [1]) and serves as an example of implementing a custom cost model.</p>
 
-
-    [1] https://pubs.acs.org/doi/full/10.1021/acssuschemeng.2c02862'
+    <p>[1] https://pubs.acs.org/doi/full/10.1021/acssuschemeng.2c02862</p>'
   flowsheet_module: prommis/nanofiltraion/diafiltration.py
   id: recwSINirbXreKaBa
   name: Diafiltration

@@ -17,8 +17,6 @@ title: IDAES+ Models
         <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
         <script>
             $(document).ready(function () {
-              // hack to make width match window
-              $('.wy-nav-content')[0].style['max-width'] = 'none';
                 var data = {{ data.models | tojson }};
                 console.debug("data = ", data);
                 $('#idaesplus-models').DataTable({
