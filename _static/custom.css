@@ -4,3 +4,66 @@
     max-width: none;
   }
 }
+/* For the tables */
+table.dataTable.display tbody tr.odd > .sorting_1 {
+    background-color: aliceblue;
+}
+
+table.dataTable.display tbody tr.odd {
+    background-color: aliceblue;
+}
+
+table.dataTable.display tbody tr.even > .sorting_1 {
+    background-color: white;
+}
+
+table.dataTable.display tbody tr.even {
+    background-color: white;
+}
+
+/* Table item details dialog */
+#idaesplus-details {
+  border: 1px solid #ccf;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#idaesplus-details h1 {
+  color: rgba(20, 64, 92, 0.7);
+  font-weight : 700;
+}
+
+#idaesplus-details::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#idaesplus-details ul {
+  margin: 1em 1em 1em 0;
+  padding: 5px;
+}
+#idaesplus-details li {
+  list-style-type: none;
+  margin-left: 0;
+}
+#idaesplus-details li:nth-child(odd) {
+  background-color: aliceblue;
+}
+#idaesplus-details li:nth-child(even) {
+  background-color: transparent;
+}
+
+#idaesplus-details ul li span {
+  margin-bottom: 6px;
+  margin-top: 6px;
+}
+
+#idaesplus-details li .field-term {
+  font-weight: 900;
+  width: 22em;
+  display: inline-block;
+}
+#idaesplus-details li .field-val {
+  color: var(sd-color-light-text);
+  display: inline-block;
+}

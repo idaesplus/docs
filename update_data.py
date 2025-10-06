@@ -1,5 +1,5 @@
 """
-Download tables from Airtable and output YAML
+Download tables from Airtable (or cache) and output YAML file.
 """
 
 import argparse
@@ -9,6 +9,7 @@ import os
 from pathlib import Path
 import requests
 import sys
+import traceback
 from typing import Any
 import yaml
 
@@ -81,6 +82,7 @@ class IdaesplusAirtable:
         elif table_name == "models":
             # fill in blank values for certain required fields
             for req_field in (
+                "description",
                 "flowsheet_module",
                 "unit_models",
                 "property_package",
@@ -88,7 +90,15 @@ class IdaesplusAirtable:
             ):
                 if req_field not in fields:
                     fields[req_field] = ""
-            fields["description"] = markdown(fields["description"])
+            # break long descriptions into 2 fields
+            desc = fields["description"]
+            if len(desc) > 85:
+                fields["description"] = desc[:80] + "..."
+                fields["full_description"] = desc
+            if "configurations" in fields:
+                fields["configurations"] = ", ".join(
+                    fields["configurations"].split("\n")
+                )
         return fields
 
 
@@ -111,9 +121,8 @@ def main():
     p.add_argument(
         "--cache",
         metavar="FILE",
-        help="For local testing, use cached JSON data in FILE "
-        "instead of querying Airtable; "
-        "If the file does not exist it will be created from Airtable first",
+        help="Use cached JSON data in FILE. "
+        "If the file does not exist it will be created.",
         default=None,
     )
     p.add_argument("-t", "--token", help=f"API token, otherwise look in {TOKENV}")
@@ -169,4 +178,6 @@ if __name__ == "__main__":
         sys.exit(main())
     except Exception as err:
         _log.fatal(err)
+        if _log.isEnabledFor(logging.INFO):
+            traceback.print_exc()
         sys.exit(-1)
