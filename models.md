@@ -19,6 +19,10 @@ Select model (click on its row) to see all fields, including full descriptions.
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 const data = {{ data.models | tojson }};
+                const repo_list = (data) => {
+                    const items = Object.entries(data).map((kvp) => `<li><a href='${kvp[1]}' target='_blank'>${kvp[0]}</a></li>`);
+                    return `<ul class='idaesplus-cell'>${items.join("")}</ul>`;
+                }
                 const table = new DataTable("#idaesplus-models", {
                     scrollX: true,
                     data: data,
@@ -35,29 +39,38 @@ Select model (click on its row) to see all fields, including full descriptions.
                         },
                         {
                           title: "Unit model(s)",
-                          data: "unit_models"
+                          data: "unit_model_data",
+                          render: (data) => (data ? repo_list(data) : "")
                         },
                         {
-                          title: "Property package",
-                          data: "property_package"
+                          title: "Property package(s)",
+                          data: "property_package_data",
+                          render: (data) => (data ? repo_list(data) : "")
                         },
                         {
-                          title: "Reaction package",
-                          data: "reaction_package"
+                          title: "Reaction package(s)",
+                          data: "reaction_package_data",
+                          render: (data) => (data ? repo_list(data) : "")
+                        },
+                        {
+                          title: "Control volume(s)",
+                          data: "control_volume_data",
+                          render: (data) => (data ? repo_list(data) : "")
                         },
                     ]
                 });
-                // Show details on click
-                table.on('click', 'tbody tr', function () {
+                // Show details on name click
+                table.on('click', 'tbody tr', function (e) {
+                  if (e.target.nodeName == "A") return; // hyperlink
                   const data = table.row(this).data();
                   const dialogId = "idaesplus-details";
                   let fields = [
                     ["description", "Description"],
                     ["flowsheet_module", "Flowsheet Module"],
-                    ["unit_models", "Unit Models"], ["unit_model_repository", "Unit Model Repositories"], 
-                    ["property_package", "Property Packages"], ["property_package_repository", "Property Package Repositories"], 
-                    ["reaction_package", "Reaction Packages"], ["reaction_package_repository", "Reaction Package Repositories"],
-                    ["control_volume", "Control Volume Packages"], ["control_volume_repository","Control Volume Package Repositories"],
+                    ["unit_models", "Unit Models"], ["unit_model_repositories", "Unit Model Repositories"], 
+                    ["property_packages", "Property Packages"], ["property_package_repositories", "Property Package Repositories"], 
+                    ["reaction_packages", "Reaction Packages"], ["reaction_package_repositories", "Reaction Package Repositories"],
+                    ["control_volumes", "Control Volume Packages"], ["control_volume_repositories","Control Volume Package Repositories"],
                     ["configurations", "Configurations"], 
                     ["specifications_for_operating_conditions", "Operating Conditions"]
                   ];

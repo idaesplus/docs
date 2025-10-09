@@ -67,3 +67,15 @@ table.dataTable.display tbody tr.even {
   color: var(sd-color-light-text);
   display: inline-block;
 }
+
+/* Lists of links in cells */
+#idaesplus-models ul.idaesplus-cell li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+#idaesplus-models ul.idaesplus-cell {
+  margin: 6px 0 6px 0;
+  padding: 0;
+}

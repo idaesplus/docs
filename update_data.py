@@ -99,7 +99,50 @@ class IdaesplusAirtable:
                 fields["configurations"] = ", ".join(
                     fields["configurations"].split("\n")
                 )
+            # put sub-packages and links for unit models, etc.
+            # into '<type>_data' dict for easy processing later
+            gh = "https://github.com/"
+            repo_roots = {
+                "watertap": f"{gh}watertap-org/watertap/tree/main",
+                "prommis": f"{gh}prommis/prommis/tree/main/src",
+                "idaes": f"{gh}idaes/idaes-pse/tree/main",
+            }
+            for k in (
+                "unit_model",
+                "reaction_package",
+                "control_volume",
+                "property_package",
+            ):
+                names, repos = f"{k}s", f"{k}_repositories"
+                if names not in fields:
+                    continue
+                if repos not in fields:
+                    raise KeyError(
+                        f"Found {names} but missing {repos} in {fields['name']}"
+                    )
+                name_list = [s.strip() for s in fields[names].split(";")]
+                repo_list = [s.strip() for s in fields[repos].split(";")]
+                url_list = []
+                for r in repo_list:
+                    proj = r.split("/")[0]
+                    try:
+                        url_list.append(repo_roots[proj] + "/" + r)
+                    except KeyError:
+                        raise KeyError(
+                            f"Bad project name '{proj}' for '{fields['name']}' in {k}"
+                        )
+                if len(url_list) != len(name_list):
+                    raise ValueError(
+                        f"Name/repo list mismatch for {k} in {fields['name']}: {len(name_list)} names != {len(url_list)} urls"
+                    )
+                # create dict combining the information
+                fields[f"{k}_data"] = {
+                    name: url_list[i] for i, name in enumerate(name_list)
+                }
         return fields
+
+    def _split_fields(f, key):
+        return
 
 
 def get_token(t):
