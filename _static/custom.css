@@ -9,15 +9,13 @@ table.dataTable.display tbody tr.odd > .sorting_1 {
     background-color: aliceblue;
 }
 
-table.dataTable.display tbody tr.odd {
+table.dataTable.display tbody tr.odd, table.dataTable.display tbody tr:nth-child(odd) {
     background-color: aliceblue;
 }
-
 table.dataTable.display tbody tr.even > .sorting_1 {
-    background-color: white;
+    background-color: tranparent;
 }
-
-table.dataTable.display tbody tr.even {
+table.dataTable.display tbody tr.even, table.dataTable.display tbody tr:nth-child(even) {
     background-color: white;
 }
 
