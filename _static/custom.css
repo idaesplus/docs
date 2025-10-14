@@ -96,7 +96,9 @@ table.dataTable.display tbody tr.even, table.dataTable.display tbody tr:nth-chil
 /* screenshot details */
 .idaesplus-screenshot-details {
   div {
-    margin-top: 2em;
+    margin: 2em 0 0 0;
+    padding: 10px;
+    box-shadow: 2px 2px 4px 2px lightgray;
   }
   h1 {
     font-size: 120%;

@@ -42,7 +42,7 @@ User interfaces for IDAES+ models.
                             data: "description",
                         },
                         {
-                          title: "Major Features",
+                          title: "Features",
                           data: "features",
                           render: (data) => (data ? feature_list(data) : "")
                         },
@@ -53,7 +53,7 @@ User interfaces for IDAES+ models.
                         }
                     ]
                 });
-                // Pop-up dialog for screenshots
+                // Pop-up dialog to show screenshots
                 document.querySelectorAll(".idaesplus-screenshot").forEach((item) => {
                   item.addEventListener("click", (e) => {
                     const product = data.find((rec) => rec.name == item.name);
