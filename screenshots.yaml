@@ -1,0 +1,15 @@
+Flowsheet Processor:
+  - Input:
+    - image: idaesfp-input.png
+    - description:
+      - 'Set and fix/unfix variables'
+      - 'Set variable ranges for sensitivity analyses'
+      - 'Choose single run or sensitivity analysis'
+      - 'Save/load input values'
+      - 'Run the optimization'
+  - Output:
+    - image: idaesfp-output.png
+    - description:
+      - 'View single result'
+      - 'View and compare outputs from different runs'
+      - 'Download values in CSV format'
