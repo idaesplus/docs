@@ -2762,6 +2762,7 @@ products:
   name: PrOMMiS
   projects:
   - reciZ8S487CQTeWr0
+  ui_products: Flowsheet Processor
 - code:
     github: watertap-org/watertap
     pypi: watertap
@@ -2923,3 +2924,155 @@ projects:
   name: CCSI2
   products:
   - recvoDYtA4ujC1Wlb
+ui_products:
+- description: "Run and modify optimization analyses of produced water networks created\
+    \ under the Produced Water Optimization Initiative (PARETO). PARETO provides advanced\
+    \  _decision support_ \_solutions for the disposition of produced water from onshore\
+    \ oil & gas operations which are intuitive and accessible to field and system\
+    \ engineers."
+  features:
+  - Adaptable to a wide variety of technologies and geographies
+  - Future integrations with subsurface modeling, orphan wells plugging
+  - optimization, and other related solutions
+  - Cross-platform graphical UI for Windows, MacOS, and Linux, with one-click install
+  - Table-based inputs, editable in Excel or in the tool, specifying water source/sink/etc.
+    details
+  - Optimization step with "override" to take advantage of field operator knowledge
+  id: recPTtwbDsHtFP58m
+  links:
+    docs: ''
+    gh: https://www.project-pareto.org
+    screenshots: PARETO UI
+  modelcompatibility:
+  - Custom
+  name: PARETO UI
+  repository: https://www.project-pareto.org
+  screenshots:
+  - description:
+    - Input screen for PARETO optimization
+    image: pareto-input.png
+    title: Input screen
+  - description:
+    - Output screen showing the results of a PARETO optimization
+    image: pareto-output.png
+    title: Output screen
+- description: Create specific classes of superstructures, for decision support, with
+    a drag-and-drop UI.
+  features:
+  - Create superstructures composed of feedstock, processing stages, and target products
+    with a drag-and-drop UI
+  - Add units to processing stages, configuring performance and cost of each
+  - Connect processing units between adjacent stages
+  - Run optimization and determine optimal connections for cost objective
+  id: recRnL9FjR4hsa1as
+  links:
+    docs: ''
+    gh: https://github.com/prommis/prommis-ui
+    screenshots: Superstructure UI
+  modelcompatibility:
+  - Custom
+  name: Superstructure UI
+  repository: https://github.com/prommis/prommis-ui
+  screenshots:
+  - description:
+    - Superstructure (for HDD extraction) with input dialog shown for one unit
+    image: superstructure-1.png
+    title: Build superstructure
+  - description:
+    - Superstructure (for HDD extraction) results, with optimal processing selected
+      and costs (OPEX, CAPEX, net present value) shown
+    image: superstructure-2.png
+    title: Solve superstructure
+- description: Run IDAES flowsheets with no coding and view graphical results.
+  documentation: https://prommis.github.io/idaes-flowsheet-processor-ui/
+  features:
+  - Cross-platform GUI can run on Windows, MacOS, or Linux
+  - Easily configure and run an IDAES model with graphical UI
+  - Run in IDAES, WaterTAP or PrOMMiS mode, which loads default flowsheets for chosen
+    project
+  - Runs the model once or in a parameter sweep
+  - Compare run results
+  - Tabular and graphical results. Export to CSV (for Excel, etc.)
+  id: recgkyR4MS4J5ow5b
+  links:
+    docs: https://prommis.github.io/idaes-flowsheet-processor-ui/
+    gh: https://github.com/prommis/idaes-flowsheet-processor-ui
+    screenshots: Flowsheet Processor
+  modelcompatibility:
+  - IDAES
+  name: Flowsheet Processor
+  repository: https://github.com/prommis/idaes-flowsheet-processor-ui
+  screenshots:
+  - description:
+    - Set and fix/unfix variables
+    - Set variable ranges for sensitivity analyses
+    - Choose single run or sensitivity analysis
+    - Save/load input values
+    - Run the optimization
+    image: idaesfp-input.png
+    title: Input
+  - description:
+    - View single result
+    - View and compare outputs from different runs
+    - Download values in CSV format
+    image: idaesfp-output.png
+    title: Output
+- description: Visualize IDAES flowsheets and run diagnostics interactively.
+  documentation: https://idaes-ui.readthedocs.io/en/latest/user/fv/
+  features:
+  - Cross-platform GUI can run on Windows, MacOS, or Linux
+  - Visualize arbitrary flowsheets from a script or Jupyter Notebook
+  - Flowsheet diagram can be rearranged and saved
+  - Stream table is shown automatically, and linked to streams in the diagram
+  - Diagnostics toolkit is accessible through the UI
+  id: recpsQLvvzokxNXCM
+  links:
+    docs: https://idaes-ui.readthedocs.io/en/latest/user/fv/
+    gh: https://github.com/IDAES/idaes-ui
+    screenshots: Flowsheet Visualizer
+  modelcompatibility:
+  - IDAES
+  name: Flowsheet Visualizer
+  repository: https://github.com/IDAES/idaes-ui
+  screenshots:
+  - description:
+    - Automatic diagram layout
+    - Interactively change layout and save for future viewing
+    - View stream table
+    - 'Brushing between stream table and diagram: mouse over stream in diagram highlights
+      column on stream table, and vice-versa'
+    image: idaesfv-base.png
+    title: Diagram and stream table
+  - description:
+    - Display diagnostic information
+    - Provide point and click access to complete list of diagnostic functions
+    - Show detailed diagnostics output
+    image: idaesfv-diag.png
+    title: Diagnostics
+- description: 'Quickly create visual diagrams showing the connectivity of flowsheet
+    units and streams. '
+  documentation: https://prommis.github.io/idaes-connectivity/
+  features:
+  - Python library to generate connectivity data in useful formats
+  - Run from command-line, script, or Jupyter Notebook
+  - View connectivity in text-based diagrams Mermaid or D2
+  - Add unit names, stream names, and user-defined annotations
+  - Export connectivity as a table (CSV) for re-use in other tools
+  id: recrhJBL0I95RtMKW
+  links:
+    docs: https://prommis.github.io/idaes-connectivity/
+    gh: https://github.com/prommis/idaes-connectivity
+    screenshots: Flowsheet Connectivity
+  modelcompatibility:
+  - Pyomo
+  - IDAES
+  name: Flowsheet Connectivity
+  repository: https://github.com/prommis/idaes-connectivity
+  screenshots:
+  - description:
+    - Run the `idaes-conn` command line tool with a Python module
+    - 'For example: `idaes-conn example.py --to mermaid --labels`'
+    - Invoke the `build()` function to build the model
+    - Output will be translated to a Mermaid diagram
+    image: example_mermaid.png
+    title: Run the tool

@@ -19,6 +19,22 @@ table.dataTable.display tbody tr.even, table.dataTable.display tbody tr:nth-chil
     background-color: white;
 }
 
+/* UI features list */
+.rst-content section ul.idaesplus-ui-features {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.rst-content section ul.idaesplus-ui-features li {
+ list-style: none;
+ padding: 0;
+ margin: 0;
+ border-bottom: 1px solid lightgray;
+}
+.rst-content section ul.idaesplus-ui-features li:nth-last-child(1) {
+  border-bottom: none;
+}
+
 /* Table item details dialog */
 #idaesplus-details {
   border: 1px solid #ccf;
@@ -75,4 +91,23 @@ table.dataTable.display tbody tr.even, table.dataTable.display tbody tr:nth-chil
 #idaesplus-models ul.idaesplus-cell {
   margin: 6px 0 6px 0;
   padding: 0;
+}
+
+/* screenshot details */
+.idaesplus-screenshot-details {
+  div {
+    margin-top: 2em;
+  }
+  h1 {
+    font-size: 120%;
+    color: var(--sd-color-secondary);
+  }
+  h2 {
+    font-size: 100%;
+    font-weight: 900;
+  }
+  img {
+    max-width: 800px;
+    max-height: 800px;
+  }
 }

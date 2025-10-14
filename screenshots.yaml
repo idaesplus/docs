@@ -1,15 +1,59 @@
 Flowsheet Processor:
-  - Input:
-    - image: idaesfp-input.png
-    - description:
-      - 'Set and fix/unfix variables'
-      - 'Set variable ranges for sensitivity analyses'
-      - 'Choose single run or sensitivity analysis'
-      - 'Save/load input values'
-      - 'Run the optimization'
-  - Output:
-    - image: idaesfp-output.png
-    - description:
-      - 'View single result'
-      - 'View and compare outputs from different runs'
-      - 'Download values in CSV format'
+  - title: Input
+    image: idaesfp-input.png
+    description:
+      - Set and fix/unfix variables
+      - Set variable ranges for sensitivity analyses
+      - Choose single run or sensitivity analysis
+      - Save/load input values
+      - Run the optimization
+  - title: Output
+    image: idaesfp-output.png
+    description:
+      - View single result
+      - View and compare outputs from different runs
+      - Download values in CSV format
+      
+Flowsheet Visualizer:
+  - title: Diagram and stream table
+    image: idaesfv-base.png
+    description:
+      - Automatic diagram layout
+      - Interactively change layout and save for future viewing
+      - View stream table
+      - 'Brushing between stream table and diagram: mouse over stream in diagram highlights column on stream table, and vice-versa'
+  - title: Diagnostics
+    image: idaesfv-diag.png
+    description:
+      - Display diagnostic information
+      - Provide point and click access to complete list of diagnostic functions
+      - Show detailed diagnostics output
+
+Superstructure UI:
+  - title: Build superstructure
+    image: superstructure-1.png
+    description:
+      - Superstructure (for HDD extraction) with input dialog shown for one unit
+  - title: Solve superstructure
+    image: superstructure-2.png
+    description:
+      - Superstructure (for HDD extraction) results, with optimal processing selected and costs (OPEX, CAPEX, net present value) shown
+
+Pareto UI:
+  - title: Input screen
+    image: pareto-input.png
+    description:
+      - Input screen for PARETO optimization
+  - title: Output screen
+    image: pareto-output.png
+    description:
+      - Output screen showing the results of a PARETO optimization
+
+Flowsheet Connectivity:
+  - title: Run the tool
+    image: example_mermaid.png
+    description:
+      - 'Run the `idaes-conn` command line tool with a Python module'
+      - 'For example: `idaes-conn example.py --to mermaid --labels`'
+      - 'Invoke the `build()` function to build the model'
+      - Output will be translated to a Mermaid diagram

@@ -29,7 +29,9 @@ _log.addHandler(_h)
 class IdaesplusAirtable:
     url = "https://api.airtable.com/v0"
     baseid = "appcXhVXfV2YOYrrM"
-    table_names = ("projects", "products", "models")
+    table_names = ("projects", "products", "models", "ui_products")
+    screenshots = None
+    sshot_path = Path(__file__).parent / "screenshots.yaml"
 
     def __init__(self, tok):
         self._tok = tok
@@ -61,8 +63,12 @@ class IdaesplusAirtable:
                     key.lower().replace(" ", "_"): value
                     for key, value in record["fields"].items()
                 }
-                r.update(cls.postprocess(table_name, norm_fields))
-                y[table_name].append(r)
+                pp_data = cls.postprocess(table_name, norm_fields)
+                if pp_data is None:
+                    _log.warning("Skip empty record")
+                else:
+                    r.update(pp_data)
+                    y[table_name].append(r)
             report[table_name] = {"records": len(y[table_name])}
         with path.open("w") as f:
             yaml.dump(y, stream=f)
@@ -139,7 +145,50 @@ class IdaesplusAirtable:
                 fields[f"{k}_data"] = {
                     name: url_list[i] for i, name in enumerate(name_list)
                 }
+        elif table_name == "ui_products":
+            # check if empty
+            if "name" not in fields:
+                return None
+            # fill in blank values for certain required fields
+            for req_field in (
+                "description",
+                "features",
+            ):
+                if req_field not in fields:
+                    fields[req_field] = ""
+            # delete dumb fields
+            del fields["attachment_summary"]
+            # make list out of features
+            fields["features"] = [s.strip() for s in fields["features"].split(";")]
+            # add screenshot info
+            fields["screenshots"] = cls.ui_screenshots(fields["name"])
+            # build combined 'links' dict
+            fields["links"] = {
+                "gh": fields.get("repository", ""),
+                "docs": fields.get("documentation", ""),
+                # add name of this product if there are screenshots
+                "screenshots": fields["name"] if fields["screenshots"] else "",
+            }
         return fields
+
+    @classmethod
+    def ui_screenshots(cls, name: str) -> dict:
+        """Get screenshot info from local file."""
+        # load once
+        if cls.screenshots is None:
+            with open(cls.sshot_path) as f:
+                data = yaml.safe_load(f)
+            # make UI names lowercase for easier matching
+            cls.screenshots = {k.lower(): v for k, v in data.items()}
+        # look for data matching UI product name
+        try:
+            sshot = cls.screenshots[name.lower()]
+        except KeyError:
+            _log.warning(
+                f"No screenshots found for UI product '{name}' in file '{cls.sshot_path}'"
+            )
+            sshot = {}
+        return sshot
 
     def _split_fields(f, key):
         return
