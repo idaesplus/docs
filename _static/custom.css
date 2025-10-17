@@ -1,1 +1,119 @@
 /* Add custom CSS rules here */
+@media (min-width: 768px) { /* For screens wider than 768px */
+  .wy-nav-content {
+    max-width: none;
+  }
+}
+/* For the tables */
+table.dataTable.display tbody tr.odd > .sorting_1 {
+    background-color: aliceblue;
+}
+
+table.dataTable.display tbody tr.odd, table.dataTable.display tbody tr:nth-child(odd) {
+    background-color: aliceblue;
+}
+table.dataTable.display tbody tr.even > .sorting_1 {
+    background-color: tranparent;
+}
+table.dataTable.display tbody tr.even, table.dataTable.display tbody tr:nth-child(even) {
+    background-color: white;
+}
+
+/* UI features list */
+.rst-content section ul.idaesplus-ui-features {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.rst-content section ul.idaesplus-ui-features li {
+ list-style: none;
+ padding: 0;
+ margin: 0;
+ border-bottom: 1px solid lightgray;
+}
+.rst-content section ul.idaesplus-ui-features li:nth-last-child(1) {
+  border-bottom: none;
+}
+
+/* Table item details dialog */
+#idaesplus-details {
+  border: 1px solid #ccf;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#idaesplus-details h1 {
+  color: rgba(20, 64, 92, 0.7);
+  font-weight : 700;
+}
+
+#idaesplus-details::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#idaesplus-details ul {
+  margin: 1em 1em 1em 0;
+  padding: 5px;
+}
+#idaesplus-details li {
+  list-style-type: none;
+  margin-left: 0;
+}
+#idaesplus-details li:nth-child(odd) {
+  background-color: aliceblue;
+}
+#idaesplus-details li:nth-child(even) {
+  background-color: transparent;
+}
+
+#idaesplus-details ul li span {
+  margin-bottom: 6px;
+  margin-top: 6px;
+}
+
+#idaesplus-details li .field-term {
+  font-weight: 900;
+  width: 22em;
+  display: inline-block;
+}
+#idaesplus-details li .field-val {
+  color: var(sd-color-light-text);
+  display: inline-block;
+}
+
+/* Lists of links in cells */
+#idaesplus-models ul.idaesplus-cell li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#idaesplus-models ul.idaesplus-cell {
+  margin: 6px 0 6px 0;
+  padding: 0;
+}
+
+/* screenshot */
+img.idaesplus-screenshot {
+  width: 40px;
+}
+/* screenshot details */
+.idaesplus-screenshot-details {
+  div {
+    margin: 2em 0 0 0;
+    padding: 10px;
+    box-shadow: 2px 2px 4px 2px lightgray;
+  }
+  h1 {
+    font-size: 120%;
+    color: var(--sd-color-secondary);
+  }
+  h2 {
+    font-size: 100%;
+    font-weight: 900;
+  }
+  img {
+    max-width: 800px;
+    max-height: 800px;
+  }
+}

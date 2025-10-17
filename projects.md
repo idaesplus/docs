@@ -17,11 +17,20 @@ title: IDAES+ Projects
         <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
         <script>
             $(document).ready(function () {
+                // hack to make width match window
+                // $('.wy-nav-content')[0].style['max-width'] = 'none';
                 var data = {{ data.projects | tojson }};
                 $('#idaesplus-projects').DataTable({
                     data: data,
                     columns: [
                         { title: "Name", data: "name"},
+                        {
+                          title: "Website",
+                          data: "website",
+                          render: function (data, type, row, meta) {
+                            return `<a href="${data}" target="_blank">🔗</a>`
+                          }
+                        },
                         {
                             title: "Description",
                             data: "description",
@@ -35,13 +44,6 @@ title: IDAES+ Projects
                           data: "keywords",
                           render: function (data, type, row, meta) {
                             return data.join(", ")
-                          }
-                        },
-                        {
-                          title: "Website",
-                          data: "website",
-                          render: function (data, type, row, meta) {
-                            return `<a href="${data}" target="_blank">🔗</a>`
                           }
                         }
                     ]

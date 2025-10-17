@@ -1,120 +1,3078 @@
-projects:
+models:
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: rec0XgcZ9a3HBMrLy
+  name: Ozone (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
 
-  - name: CCSI2
-    description: Carbon Capture Simulation for Industry Impact
-    active: 2016-
-    keywords:
-      - carbon capture
-      - simulation
-      - modeling
-      - optimization
-      - uncertainty quantification
-    website: https://netl.doe.gov/carbon-management/carbon-capture/ccsi2
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
 
-  - name: IDAES
-    description: Institute for the Design of Advanced Energy Systems
-    keywords:
-      - equation-oriented
-      - optimization
-      - process engineering
-    active: 2018-
-    website: https://idaes.org
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    OzoneZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/ozone_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/ozone_zo.py
+  unit_models: OzoneZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: rec0c02MSvMGgGKGo
+  name: SMP (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
 
-  - name: WaterTAP
-    description: Water treatment Techno-economic Analysis Platform
-    keywords:
-      - water treatment
-      - water chemistry
-      - techno-economic analysis
-    active: 2022-
-    website: https://watertap.readthedocs.io
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
 
-  - name: DISPATCHES
-    description: Design Integration and Synthesis Platform to Advance Tightly Coupled Hybrid Energy Systems
-    keywords:
-      - grid 
-      - hybrid energy systems
-    active: 2022-2024
-    website: https://dispatches.readthedocs.io
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    SMPZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/smp_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/smp_zo.py
+  unit_models: SMPZO
+- configurations: outlet_list, num_outlets (not used if outlet_list arg is provided),
+    split_basis, material_balance_type, momentum_balance_type, has_phase_equilibrium,
+    energy_split_basis, ideal_separation, ideal_split_map, mixed_state_block, construct_ports
+  description: ''
+  flowsheet_module: ''
+  id: rec1xYGL28tlx52Cp
+  inherited_model_(name,_unit_model): Separator, Separator
+  inherited_model_repository: idaes/models/unit_models/separator.py
+  name: Clarifier
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ASM1ParameterBlock (Liq phase): https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/activated_sludge/asm1_properties.py
+  property_package_repositories: watertap/property_models/unit_specific/activated_sludge/asm1_properties.py
+  property_packages: ASM1ParameterBlock (Liq phase)
+  reaction_package: ''
+  specifications_for_operating_conditions: "Inlet feed state variables (temperature,\
+    \ pressure, component flowrates), alkalinity, split fraction, surface area.\n\
+    Degrees of freedom based on the separation type chosen:\nsplit_basis = \u2018\
+    componentFlow\u2019, DOF = (#outlets - 1) * #components\nsplit_basis = \u2018\
+    phaseFlow\u2019, DOF = (#outlets - 1) * #phases\nsplit_basis = \u2018phaseComponentFlow\u2019\
+    \ or split_basis = \u2018totalFlow\u2019, DOF = (#outlets - 1) * #components *\
+    \ #phases"
+  unit_model_data:
+    Clarifier: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/clarifier.py
+  unit_model_repositories: watertap/unit_models/clarifier.py
+  unit_models: Clarifier
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: rec2Akmi39SNicMzP
+  name: Granular Activated Carbon (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
 
-  - name: PARETO
-    description: Produced Water Initiative
-    active: 2022-
-    keywords:
-      - produced water
-      - optimization
-    website: https://project-pareto.org
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
 
-  - name: PrOMMiS
-    description: Process Optimization and Modeling for Minerals Sustainability
-    active: 2023-
-    keywords:
-      - critical minerals
-      - rare earth elements
-    website: https://prommis.readthedocs.io
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    GACZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/gac_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/gac_zo.py
+  unit_models: GACZO
+- description: This is an example flowsheet for the separation of lithium and magnesium
+    ions us...
+  flowsheet_module: prommis/nanofiltration/nf_brine.py
+  full_description: 'This is an example flowsheet for the separation of lithium and
+    magnesium ions using nanofiltration (NF). The unit model is the Donnan Steric
+    Pore Model with Dielectric Exclusion (DSPM-DE) and the property model is the Multi-Component
+    Aqueous Solution (MCAS) property package, both of which can be found in WaterTAP.
+    Currently, the inlet feed is modeling the Salar de Atacama brine.
 
+
+    The objective of the Pyomo model is to limit the amount of lithium lost in the
+    retentate stream, with 2 degrees of freedom (pressure, area). Operating at this
+    extreme end of the tradeoff between the selectivity and permeability, combined
+    with the low solvent flux for this example, the magnesium rejection is low (~14%).
+    An additional constraint is enacted on the model to limit the feed pressure to
+    70 bar, per typical experimental capabilities.
+
+
+    Good references for details on the NF model, i.e., the DSPM-DE model: https://doi.org/10.1021/acs.est.2c08584
+    ; https://doi.org/10.1016/j.memsci.2020.118809'
+  id: rec2YfPResgVqP9iy
+  name: Nanofiltration
+  project: PrOMMiS
+  property_package: ''
+  property_package_data:
+    MCASParameterBlock: https://github.com/watertap-org/watertap/tree/main/watertap/property_models/multicomp_aq_sol_prop_pack
+  property_package_repositories: watertap/property_models/multicomp_aq_sol_prop_pack
+  property_packages: MCASParameterBlock
+  reaction_package: ''
+  specifications_for_operating_conditions: 'Inlet flowrate and concentrations; pump
+    efficiency, inlet temperature and pressure, and outlet pressure; nanofiltration
+    recovery, spacer porosity, channel height, velocity, area, outlet pressure, spacer
+    mixing efficiency, spacer mixing length, pore radius, membrane thickness, membrane
+    charge density, dielectric constant '
+  unit_model_data:
+    NanofiltrationDSPMDE0D: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/nanofiltration_DSPMDE_0D
+    Pump: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/pressure_changer
+  unit_model_repositories: 'watertap/unit_models/nanofiltration_DSPMDE_0D;
+
+    watertap/unit_models/pressure_changer'
+  unit_models: NanofiltrationDSPMDE0D; Pump
+- configurations: material_balance_type, energy_balance_type, momentum_balance_type,
+    has_heat_transfer, has_pressure_change, has_equilibrium_reactions, has_phase_equilibrium,
+    has_heat_of_reaction, liquid_property_package, liquid_property_package_args, vapor_property_package,
+    vapor_property_package_args, reaction_package, reaction_package_args
+  description: ''
+  flowsheet_module: ''
+  id: rec2lSee6DrQEkAOF
+  mandatory_config_options: 'dynamic
+
+    has_holdup
+
+    property_package
+
+    property_package_args'
+  name: Anaerobic Digester
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ADM1ParameterBlock (Liq phase): https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/anaerobic_digestion/adm1_properties.py
+    ADM1_vaporParameterBlock (Vap phase): https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/anaerobic_digestion/adm1_properties_vapor.py
+  property_package_repositories: 'watertap/property_models/unit_specific/anaerobic_digestion/adm1_properties.py;
+
+    watertap/property_models/unit_specific/anaerobic_digestion/adm1_properties_vapor.py'
+  property_packages: 'ADM1ParameterBlock (Liq phase);
+
+    ADM1_vaporParameterBlock (Vap phase)'
+  reaction_package: ''
+  reaction_package_data:
+    ADM1ReactionParameterBlock: https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/anaerobic_digestion/adm1_reactions.py
+  reaction_package_repositories: watertap/property_models/unit_specific/anaerobic_digestion/adm1_reactions.py
+  reaction_packages: ADM1ReactionParameterBlock
+  specifications_for_operating_conditions: Inlet feed state variables (temperature,
+    pressure, component flowrates), cation concentration, anion concentration, liquid
+    volume, vapor volume, liquid outlet temperature.
+  unit_model_data:
+    AD: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/anaerobic_digester.py
+  unit_model_repositories: watertap/unit_models/anaerobic_digester.py
+  unit_models: AD
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: rec2r1HdJl3I0rCu5
+  name: Static Mixer (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    StaticMixerZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/static_mixer_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/static_mixer_zo.py
+  unit_models: StaticMixerZO
+- configurations: number_of_tanks
+  description: The Leach Train unit model represents a series of leaching tanks in
+    which a soli...
+  flowsheet_module: ''
+  full_description: 'The Leach Train unit model represents a series of leaching tanks
+    in which a solid and liquid stream are contacted and
+
+    undergo heterogeneous chemical reactions.'
+  id: rec2s2TISI778iuaT
+  name: Leaching
+  project: PrOMMiS
+  property_package: ''
+  property_package_data:
+    CoalRefuseParameters (solid): https://github.com/prommis/prommis/tree/main/src/prommis/src/prommis/solid_handling/crusher_solids_properties.py
+    LeachSolutionParameters (liquid): https://github.com/prommis/prommis/tree/main/src/prommis/leaching/leach_solids_properties
+      prommis/leaching/leach_solution_properties
+  property_package_repositories: 'prommis/leaching/leach_solids_properties prommis/leaching/leach_solution_properties;
+
+    prommis/src/prommis/solid_handling/crusher_solids_properties.py'
+  property_packages: LeachSolutionParameters (liquid); CoalRefuseParameters (solid)
+  reaction_package: ''
+  reaction_package_data:
+    CoalRefuseLeachingReactions: https://github.com/prommis/prommis/tree/main/src/prommis/leaching/leach_reactions.py
+  reaction_package_repositories: prommis/leaching/leach_reactions.py
+  reaction_packages: CoalRefuseLeachingReactions
+  specifications_for_operating_conditions: Liquid inlet flowrate and concentrations,
+    solid inlet mass flowrate and fractions
+  unit_model_data:
+    LeachingTrain: https://github.com/prommis/prommis/tree/main/src/prommis/leaching/leach_train.py
+  unit_model_repositories: prommis/leaching/leach_train.py
+  unit_models: LeachingTrain
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: rec2wxXulQVJpGq1i
+  name: Photothermal Membrane (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    PhotothermalMembrane: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/photothermal_membrane_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/photothermal_membrane_zo.py
+  unit_models: PhotothermalMembrane
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: rec328eymdCggHhw9
+  name: Wind-Aided Intensified Evaporation Unit (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    WAIVZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/waiv_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/waiv_zo.py
+  unit_models: WAIVZO
+- configurations: material_balance_type, energy_balance_type, momentum_balance_type,
+    concentration_polarization_type, mass_transfer_coefficient, transport_model, module_type,
+    has_pressure_change, pressure_change_type, friction_factor, has_full_reporting
+  control_volume_data:
+    MembraneChannel0DBlock: https://github.com/watertap-org/watertap/tree/main/watertap/core/membrane_channel0d.py
+  control_volume_repositories: watertap/core/membrane_channel0d.py
+  control_volumes: MembraneChannel0DBlock
+  description: ''
+  flowsheet_module: ''
+  id: rec37Yf0fs5iPC59w
+  inherited_model_(name,_unit_model): OsmoticallyAssistedReverseOsmosisBaseData
+  inherited_model_repository: watertap/unit_models/osmotically_assisted_reverse_osmosis_base.py
+  name: Osmotically Assisted Reverse Osmosis (0D)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'NaClParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/NaCl_prop_pack.py
+  property_package_repositories: watertap/property_models/NaCl_prop_pack.py
+  property_packages: 'NaClParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  specifications_for_operating_conditions: 'Feed-side and permeate-side inlet state
+    variables (i.e, temperature, pressure, component mass flowrates), membrane area,
+    membrane water permeability A, membrane salt permeability B, structural parameter
+    (i.e., effective thickness).
+
+    If concentration polarization effects, mass transfer coefficient, and pressure
+    drop are calculated: feed-side and permeate-side spacer porosity, channel height,
+    and feed-side Reynolds number or water mass recovery.
+
+    If has_pressure_change is set to True: pressure drop.
+
+    If concentration_polarization_type is set to ConcentrationPolarizationType.fixed:
+    concentration polarization modulus in feed and permeate channels.
+
+    If concentration_polarization_type is set to ConcentrationPolarizationType.calculated:
+    mass transfer coefficient in feed and permeate channels.
+
+    If mass_transfer_coefficient is set to MassTransferCoefficient.calculated or pressure_change_type
+    is not set to PressureChangeType.fixed_per_stage: membrane length.
+
+    If pressure_change_type is set to PressureChangeType.fixed_per_unit_length: Feed-side
+    and permeate-side average pressure drop per unit length.
+
+    If pressure_change_type is set to PressureChangeType.calculated: friction factor,
+    feed-side and permeate-side velocity and pressure drop per unit length.'
+  unit_model_data:
+    OsmoticallyAssistedReverseOsmosis0D: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/osmotically_assisted_reverse_osmosis_0D.py
+  unit_model_repositories: watertap/unit_models/osmotically_assisted_reverse_osmosis_0D.py
+  unit_models: OsmoticallyAssistedReverseOsmosis0D
+- configurations: has_pressure_change, pressure_drop_method, friction_factor_method,
+    hydraulic_diameter_method, operation_mode, limiting_current_density_method_bpm,
+    salt_calculation, limiting_current_density_data_bpm, salt_input_cem, salt_input_aem,
+    limiting_potential_data, material_balance_type, is_isothermal, energy_balance_type,
+    momentum_balance_type, transformation_method, transformation_scheme, finite_elements,
+    terms_fE, collocation_points
+  description: ''
+  flowsheet_module: ''
+  id: rec3K1b5pPHGgRx7m
+  name: Electrodialysis w/ bipolar membranes (1D)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    MCASParameterBlock (Liq phase): https://github.com/watertap-org/watertap/tree/main/watertap/property_models/multicomp_aq_sol_prop_pack.py
+  property_package_repositories: watertap/property_models/multicomp_aq_sol_prop_pack.py
+  property_packages: MCASParameterBlock (Liq phase)
+  reaction_package: ''
+  specifications_for_operating_conditions: Inlet feed state variables (i.e. temperature,
+    pressure, component molar flowrates). Water transport number, water permeability,
+    dissociation rate constant at no electric field, relative permittivity, catalyst
+    - CEL of the bipolar membrane, catalyst - AEL of the bipolar membrane, equilibrium
+    constant of proton disassociation, equilibrium constant of hydroxide disassociation,
+    ion transference number in the membrane phase, diffusivity of solute in the membrane
+    phase, fixed salt concentration on the base and acid channel of the bipolar membrane
+    (if no salt calculation), spacer porosity, shadow factor,  electrode areal resistance,
+    current utilization coefficient, channel height, cell width and length, constant
+    areal resistance of membrane at infinity-approximated electrolyte concentration,
+    membrane areal resistance coefficient to the reciprocal of the ion concentration,
+    thickness of ion exchange membranes, cell triplet number, spacer conductivity
+    coefficient, potential drop across the bipolar membrane, specific area of the
+    channel (if hydraulic diameter method is set for spacer-filled channel requiring
+    the spacer specific area data), membrane fixed charge, voltage or current applied
+    (for constant voltage or constant current electrical operation mode).
+  unit_model_data:
+    Electrodialysis_Bipolar_1D: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/electrodialysis_bipolar_1D.py
+  unit_model_repositories: watertap/unit_models/electrodialysis_bipolar_1D.py
+  unit_models: Electrodialysis_Bipolar_1D
+- configurations: material_balance_type, energy_balance_type, momentum_balance_type,
+    has_pressure_change, reagent, precipitate
+  description: ''
+  flowsheet_module: ''
+  id: rec41u2dsaazuAtz1
+  name: Stoichiometric reactor
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    MCASParameterBlock (Liq phase): https://github.com/watertap-org/watertap/tree/main/watertap/property_models/multicomp_aq_sol_prop_pack.py
+  property_package_repositories: watertap/property_models/multicomp_aq_sol_prop_pack.py
+  property_packages: MCASParameterBlock (Liq phase)
+  reaction_package: ''
+  specifications_for_operating_conditions: 'Inlet state variables (i.e., temperature,
+    pressure, component mass compositions). If reagents are supplied: reagent mass
+    flow rate or reagent dose. If precipitants are supplied: precipitant mass flow
+    rate, mass fraction of solids in precipitant (solid) waste stream.'
+  unit_model_data:
+    StoichiometricReactor: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/stoichiometric_reactor.py
+  unit_model_repositories: watertap/unit_models/stoichiometric_reactor.py
+  unit_models: StoichiometricReactor
+- description: The Crusher module includes power consumption for solid crushing. It
+    is a functi...
+  flowsheet_module: ''
+  full_description: The Crusher module includes power consumption for solid crushing.
+    It is a function of particle size distribution, mass flow rate, and bond work
+    index.
+  id: rec4Bjj8l2HY81m7i
+  name: Crusher
+  project: PrOMMiS
+  property_package: ''
+  property_package_data:
+    CoalRefuseParameters: https://github.com/prommis/prommis/tree/main/src/prommis/solid_handling/crusher_solids_properties.py
+  property_package_repositories: prommis/solid_handling/crusher_solids_properties.py
+  property_packages: CoalRefuseParameters
+  reaction_package: ''
+  specifications_for_operating_conditions: Inlet mass flowrate and fractions, inlet
+    particle size median and width, outlet particle size median and width
+  unit_model_data:
+    Crusher: https://github.com/prommis/prommis/tree/main/src/prommis/solid_handling/crusher
+  unit_model_repositories: prommis/solid_handling/crusher
+  unit_models: Crusher
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: rec4TmlMMsLojYSUL
+  name: Settling Pond (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    SettlingPondZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/settling_pond_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/settling_pond_zo.py
+  unit_models: SettlingPondZO
+- _2: ' has_pressure_change'
+  _3: '   metal_list'
+  _4: Pressure drop, gas inlet temperature, pressure, mole flowrate, and mole fractions,
+    gas outlet temperature, solid inlet temperature and mole flowrate, liquid inlet
+    flowrate and concentrations, recovery fraction
+  configurations: has_holdup;     has_heat_transfer; has_pressure_change;   metal_list
+  description: REE Oxalate Roaster is a unit operation to convert oxalates of rare
+    earth and ga...
+  flowsheet_module: ''
+  full_description: 'REE Oxalate Roaster is a unit operation to convert oxalates of
+    rare earth and gangue metal
+
+    elements to metal oxides through thermal decomposition and oxidation. There are
+    18 rare earth elements
+
+    including `Sc`, `Y`, `La`, `Ce`, `Pr`, `Nd`, `Pm`, `Sm`, `Eu`, `Gd`, `Tb`, `Dy`,
+    `Ho`, `Er`, `Tm`, `Yb`, `Lu`,
+
+    and `Th` in the model. The user can specify a subset of those 18 elements through
+    configuration when creating
+
+    the unit model. The 3 gangue elements considered in the model are `Fe`, `Al`,
+    and `Ca`.
+
+
+    The feed oxalate mixture stream is typically from a precipitator in an upstream
+    process. It is assumed
+
+    that all oxalates are in their hydrate forms. In case the anhydrous oxalate feed
+    flow rates are specified in
+
+    the property package of the solid feed stream, the molar flow rates are converted
+    to the corresponding hydrate flow rates.
+
+    The molecular formula of an oxalate hydrate can be expressed in a general form
+    as :ce:`RE2(C2O4)3 \\cdot xH2O` where RE is
+
+    one of the 18 rare earth elements and x is the number of water molecules associated
+    with the hyrate. The three
+
+    gangue oxalate hydrates considered in the model are :ce:`Fe2(C2O4)3 \\cdot 2H2O`,
+    :ce:`Al2(C2O4)3 \\cdot H2O`, and
+
+    :ce:`CaC2O4 \\cdot H2O`, for `Fe`, `Al`, and `Ca` elements, respectively.
+
+
+    The feed stream contains surface moisture. The amount of surface moisture entering
+    the reactor is specified by
+
+    a liquid inlet that contains a fraction of the liquid outlet of the precipitator.'
+  id: rec4gRQzVvTheQBgq
+  mandatory_config_options: '     has_heat_transfer'
+  name: Oxalate roaster
+  project: PrOMMiS
+  property_package: ''
+  property_package_data:
+    AqueousParameter (liquid): https://github.com/prommis/prommis/tree/main/src/prommis/precipitate/precipitate_liquid_properties
+    CoalRefuseParameters (solid): https://github.com/prommis/prommis/tree/main/src/prommis/leaching/leach_solution_properties
+    GenericParameterBlock (gas): https://github.com/idaes/idaes-pse/tree/main/idaes/models/properties/modular_properties/base/generic_property
+  property_package_repositories: 'idaes/models/properties/modular_properties/base/generic_property;
+
+    prommis/leaching/leach_solution_properties;
+
+    prommis/precipitate/precipitate_liquid_properties'
+  property_packages: "GenericParameterBlock (gas); \nCoalRefuseParameters (solid);\n\
+    AqueousParameter (liquid)"
+  reaction_package: ''
+  specifications_for_operating_conditions: Pressure drop, gas inlet temperature, pressure,
+    mole flowrate, and mole fractions, gas outlet temperature, solid inlet temperature
+    and mole flowrate, liquid inlet flowrate and concentrations, recovery fraction
+  unit_model_data:
+    REEOxalateRoaster: https://github.com/prommis/prommis/tree/main/src/prommis/roasting/ree_oxalate_roaster
+  unit_model_repositories: prommis/roasting/ree_oxalate_roaster
+  unit_models: REEOxalateRoaster
+- _2: ' AqueousParameter (aqueous)'
+  _3: ' PrecipitateParameters (precipitate)'
+  _4: ' REESolExOgParameters (organic)'
+  _5: ' GenericParameterBlock (gas)'
+  _6: prommis/leaching/leach_solids_properties prommis/leaching/leach_solution_properties
+    prommis/precipitate/precipitate_liquid_properties prommis.precipitate.precipitate_solids_properties
+    prommis.solvent_extraction.ree_og_distribution idaes/models.properties/modular_properties/base/generic_property
+  description: The University of Kentucky (UKy) rare earth element (REE) processing
+    plant is de...
+  flowsheet_module: prommis/uky/uky_flowsheet.py
+  full_description: 'The University of Kentucky (UKy) rare earth element (REE) processing
+    plant is designed to extract salable rare earth oxides from domestic U.S. coal
+    and coal byproducts. While this implementation of the plant does not take into
+    account
+
+    all of the complexities and unit processes detailed in the 2019 report, it depicts
+    the major phenomena by utilizing a series of conventional REE extraction techniques,
+    including acid tank leaching, solvent extraction, precipitation, and product roasting.'
+  id: rec6RqTlLfSimqmDj
+  mandatory_config_options: ' CoalRefuseParameters (solid)'
+  name: REE processing plant
+  project: PrOMMiS
+  property_package: ''
+  property_package_data:
+    AqueousParameter (aqueous): https://github.com/prommis/prommis/tree/main/src/prommis/precipitate/precipitate_liquid_properties
+    CoalRefuseParameters (solid): https://github.com/prommis/prommis/tree/main/src/prommis/leaching/leach_solution_properties
+    GenericParameterBlock (gas): https://github.com/idaes/idaes-pse/tree/main/idaes/models/properties/modular_properties/base/generic_property
+    LeachSolutionParameters (liquid): https://github.com/prommis/prommis/tree/main/src/prommis/leaching/leach_solids_properties
+    PrecipitateParameters (precipitate): https://github.com/prommis/prommis/tree/main/src/prommis/precipitate/precipitate_solids_properties
+    REESolExOgParameters (organic): https://github.com/prommis/prommis/tree/main/src/prommis/solvent_extraction/ree_og_distribution
+  property_package_repositories: 'prommis/leaching/leach_solids_properties;
+
+    prommis/leaching/leach_solution_properties;
+
+    prommis/precipitate/precipitate_liquid_properties;
+
+    prommis/precipitate/precipitate_solids_properties;
+
+    prommis/solvent_extraction/ree_og_distribution;
+
+    idaes/models/properties/modular_properties/base/generic_property'
+  property_packages: LeachSolutionParameters (liquid); CoalRefuseParameters (solid);
+    AqueousParameter (aqueous); PrecipitateParameters (precipitate); REESolExOgParameters
+    (organic); GenericParameterBlock (gas)
+  reaction_package: ''
+  reaction_package_data:
+    CoalRefuseLeachingReactions: https://github.com/prommis/prommis/tree/main/src/prommis/leaching/leach_reactions
+  reaction_package_repositories: prommis/leaching/leach_reactions
+  reaction_packages: CoalRefuseLeachingReactions
+  specifications_for_operating_conditions: Leach liquid inlet flowrate and concentrations,
+    leach solid inlet mass flowrateand fractions, leach volume; rougher makeup stream
+    flowrate and concentrations; acid feeds (3) flowrate and concentrations; cleaner
+    make-up stream flowrate and concentrations; separators split fraction; sl separators
+    liquid recovery; precipitate temperature; roaster pressure drop, roaster gas inlet
+    temperature, pressure, mole flowrate and fraction, roaster gas outlet temperature,
+    roaster recovery fraction
+  unit_model_data:
+    LeachingTrain: https://github.com/prommis/prommis/tree/main/src/prommis/leaching/leach_train
+    Mixer: https://github.com/idaes/idaes-pse/tree/main/idaes/models/unit_models/mixer
+    Precipitator: https://github.com/prommis/prommis/tree/main/src/prommis/precipitate/precipitator
+    REEOxalateRoaster: https://github.com/prommis/prommis/tree/main/src/prommis/roasting/ree_oxalate_roaster
+    SLSeparator: https://github.com/idaes/idaes-pse/tree/main/idaes/models/unit_models/solid_liquid
+    Separator: https://github.com/idaes/idaes-pse/tree/main/idaes/models/unit_models/separator
+    SolventExtraction: https://github.com/prommis/prommis/tree/main/src/prommis/solvent_extraction/solvent_extraction
+  unit_model_repositories: 'prommis/leaching/leach_train;
+
+    prommis/precipitate/precipitator;
+
+    prommis/roasting/ree_oxalate_roaster;
+
+    prommis/solvent_extraction/solvent_extraction;
+
+    idaes/models/unit_models/solid_liquid;
+
+    idaes/models/unit_models/mixer;
+
+    idaes/models/unit_models/separator'
+  unit_models: LeachingTrain;  Precipitator; REEOxalateRoaster; SolventExtraction;
+    SLSeparator; Mixer;Separator
+- configurations: has_pressure_change, pressure_drop_method, friction_factor_method,
+    hydraulic_diameter_method, operation_mode, limiting_current_density_method, limiting_current_density_datahas_nonohmic_potential_membrane,
+    has_Nernst_diffusion_layer, material_balance_type, is_isothermal, energy_balance_type,
+    momentum_balance_type, transformation_method, transformation_scheme, finite_elements,
+    collocation_points
+  description: ''
+  flowsheet_module: ''
+  id: rec6UnXsEEEifqnOV
+  name: Electrodialysis (1D)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    MCASParameterBlock (Liq phase): https://github.com/watertap-org/watertap/tree/main/watertap/property_models/multicomp_aq_sol_prop_pack.py
+  property_package_repositories: watertap/property_models/multicomp_aq_sol_prop_pack.py
+  property_packages: MCASParameterBlock (Liq phase)
+  reaction_package: ''
+  specifications_for_operating_conditions: Inlet feed state variables (i.e. temperature,
+    pressure, component molar flowrates). Water transport number, water permeability,
+    voltage or current, electrode areal resistance, cell pair number, current utilization
+    coefficient, channel height (spacer thickness), membrane areal resistance at infinitive
+    ion concentration, membrane areal resistance coefficient to the reciprocal of
+    the ion concentration, spacer conductivity coefficient, cell width, cell length,
+    thickness of ion exchange membranes, diffusivity of solute in the membrane phase,
+    transport number of ions in the membrane phase.
+  unit_model_data:
+    Electrodialysis1D: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/electrodialysis_1D.py
+  unit_model_repositories: watertap/unit_models/electrodialysis_1D.py
+  unit_models: Electrodialysis1D
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: rec7T6JS2YARGRlor
+  name: Ultra Filtration (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    UltraFiltrationZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/ultra_filtration_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/ultra_filtration_zo.py
+  unit_models: UltraFiltrationZO
+- configurations: database, process_subtype, isothermal, isobaric, fix_pump_power
+  description: ''
+  flowsheet_module: ''
+  id: rec7ukbo8jgbCtzOj
+  name: Water Pumping Station (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    WaterPumpingStationZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/water_pumping_station_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/water_pumping_station_zo.py
+  unit_models: WaterPumpingStationZO
+- configurations: outlet_list, num_outlets (not used if outlet_list arg is provided),
+    split_basis, material_balance_type, momentum_balance_type, has_phase_equilibrium,
+    energy_split_basis, ideal_separation, ideal_split_map, mixed_state_block, construct_ports,
+    activated_sludge_model
+  description: ''
+  flowsheet_module: ''
+  id: rec7vHLndRR37erWe
+  inherited_model_(name,_unit_model): Separator, Separator
+  inherited_model_repository: idaes/models/unit_models/separator.py
+  name: Thickener
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'ASM1ParameterBlock
+
+      ASM2dParameterBlock
+
+      ModifiedASM2dParameterBlock
+
+      (Single Liq phase)'
+    : 'https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/activated_sludge/asm1_properties.py
+
+      watertap/property_models/unit_specific/activated_sludge/asm2d_properties.py
+
+      watertap/property_models/unit_specific/activated_sludge/modified_asm2d_properties.py'
+  property_package_repositories: 'watertap/property_models/unit_specific/activated_sludge/asm1_properties.py
+
+    watertap/property_models/unit_specific/activated_sludge/asm2d_properties.py
+
+    watertap/property_models/unit_specific/activated_sludge/modified_asm2d_properties.py'
+  property_packages: 'ASM1ParameterBlock
+
+    ASM2dParameterBlock
+
+    ModifiedASM2dParameterBlock
+
+    (Single Liq phase)'
+  reaction_package: ''
+  specifications_for_operating_conditions: Inlet feed state variables (i.e., temperature,
+    pressure, component mass compositions, alkalinity, volumetric flowrate).
+  unit_model_data:
+    Thickener: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/thickener.py
+  unit_model_repositories: watertap/unit_models/thickener.py
+  unit_models: Thickener
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: rec8k0dLMFPW16QI3
+  name: CO2 Addition (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    CO2AdditionZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/co2_addition_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/co2_addition_zo.py
+  unit_models: CO2AdditionZO
+- configurations: material_balance_type, energy_balance_type, momentum_balance_type,
+    concentration_polarization_type, mass_transfer_coefficient, transport_model, module_type,
+    has_pressure_change, pressure_change_type, friction_factor, has_full_reporting
+  control_volume_data:
+    MembraneChannel0DBlock: https://github.com/watertap-org/watertap/tree/main/watertap/core/membrane_channel0d.py
+  control_volume_repositories: watertap/core/membrane_channel0d.py
+  control_volumes: MembraneChannel0DBlock
+  description: ''
+  flowsheet_module: ''
+  id: rec9QOxkP2rQZOEts
+  inherited_model_(name,_unit_model): ReverseOsmosisBaseData
+  inherited_model_repository: watertap/unit_models/reverse_osmosis_base.py
+  name: Reverse Osmosis (0D)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'NaClParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/NaCl_prop_pack.py
+  property_package_repositories: watertap/property_models/NaCl_prop_pack.py
+  property_packages: 'NaClParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  specifications_for_operating_conditions: 'Inlet feed state variables (i.e., temperature,
+    pressure, component flowrates), membrane area, membrane water permeability A,
+    membrane salt permeability B, and permeate pressure.
+
+    If concentration polarization effects, mass transfer coefficient, and pressure
+    drop are calculated: feed spacer porosity, feed channel height, and membrane length
+    or membrane width or inlet Reynolds number.
+
+    If has_pressure_change is set to True: pressure drop.
+
+    If concentration_polarization_type is set to ConcentrationPolarizationType.fixed:
+    concentration polarization modulus in feed channel.
+
+    If concentration_polarization_type is set to ConcentrationPolarizationType.calculated:
+    mass transfer coefficient in feed channel.
+
+    If mass_transfer_coefficient is set to MassTransferCoefficient.calculated or pressure_change_type
+    is set to PressureChangeType.calculated: feed channel height, hydraulic diameter,
+    spacer porosity, Reynolds number.
+
+    If mass_transfer_coefficient is set to MassTransferCoefficient.calculated or pressure_change_type
+    is not set to PressureChangeType.fixed_per_stage: membrane length and width.
+
+    If pressure_change_type is set to PressureChangeType.fixed_per_unit_length: Feed-side
+    average pressure drop per unit length.
+
+    If pressure_change_type is set to PressureChangeType.calculated: friction factor,
+    feed-side velocity, and pressure drop per unit length.
+
+    If transport_model is set to TransportModel.SKK (Speigler-Kedem-Katchalsky model):
+    reflection coefficient, alpha.'
+  unit_model_data:
+    ReverseOsmosis0D: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/reverse_osmosis_0D.py
+  unit_model_repositories: watertap/unit_models/reverse_osmosis_0D.py
+  unit_models: ReverseOsmosis0D
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: rec9oJAtMFqGwCLTl
+  name: Screen (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    ScreenZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/screen_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/screen_zo.py
+  unit_models: ScreenZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recA7FdsngAA9rCBK
+  name: Peracetic Acid Disinfection (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    PeraceticAcidDisinfection: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/peracetic_acid_disinfection_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/peracetic_acid_disinfection_zo.py
+  unit_models: PeraceticAcidDisinfection
+- configurations: activated_sludge_model, outlet_list, num_outlets (not used if outlet_list
+    arg is provided), split_basis, material_balance_type, momentum_balance_type, has_phase_equilibrium,
+    energy_split_basis, ideal_separation, ideal_split_map, mixed_state_block, construct_ports
+  description: ''
+  flowsheet_module: ''
+  id: recAl9zTRq0OZDBEX
+  inherited_model_(name,_unit_model): Separator, Separator
+  inherited_model_repository: idaes/models/unit_models/separator.py
+  name: Dewatering Unit
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'ASM1ParameterBlock
+
+      ASM2dParameterBlock
+
+      ModifiedASM2dParameterBlock
+
+      ADM1ParameterBlock
+
+      (Single Liq phase)'
+    : 'https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/activated_sludge/asm1_properties.py
+
+      watertap/property_models/unit_specific/activated_sludge/asm2d_properties.py
+
+      watertap/property_models/unit_specific/activated_sludge/modified_asm2d_properties.py
+
+      watertap/property_models/unit_specific/activated_sludge/adm1_properties.py'
+  property_package_repositories: 'watertap/property_models/unit_specific/activated_sludge/asm1_properties.py
+
+    watertap/property_models/unit_specific/activated_sludge/asm2d_properties.py
+
+    watertap/property_models/unit_specific/activated_sludge/modified_asm2d_properties.py
+
+    watertap/property_models/unit_specific/activated_sludge/adm1_properties.py'
+  property_packages: 'ASM1ParameterBlock
+
+    ASM2dParameterBlock
+
+    ModifiedASM2dParameterBlock
+
+    ADM1ParameterBlock
+
+    (Single Liq phase)'
+  reaction_package: ''
+  specifications_for_operating_conditions: Inlet feed state variables (i.e. temperature,
+    pressure, component mass compositions).
+  unit_model_data:
+    DewateringUnit: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/dewatering.py
+  unit_model_repositories: watertap/unit_models/dewatering.py
+  unit_models: DewateringUnit
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recBaFi68NSunMGX1
+  name: Dual Media Filtration (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    DualMediaFiltrationZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/dual_media_filtration_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/dual_media_filtration_zo.py
+  unit_models: DualMediaFiltrationZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recBjTtR72VQ0XbIC
+  name: Anaerobic Digestion (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    AnaerobicDigestionOxidationZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/anaerobic_digestion_oxidation_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/anaerobic_digestion_oxidation_zo.py
+  unit_models: AnaerobicDigestionOxidationZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recCKNexNBPhz2aDW
+  name: Recirculating Dynamic Membrane Bioreactor (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    DMBRZOO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/dmbr_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/dmbr_zo.py
+  unit_models: DMBRZOO
+- configurations: material_balance_type, is_isothermal, energy_balance_type, momentum_balance_type,
+    chemical_additives
+  description: ''
+  flowsheet_module: ''
+  id: recCRJIKGhnQ2qcQa
+  name: Coagulation-Flocculation
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'NaClParameterBlock
+
+      SeawaterParameterBlock
+
+      (Liq phase)'
+    : 'https://github.com/watertap-org/watertap/tree/main/watertap/property_models/NaCl_prop_pack.py
+
+      watertap/property_models/seawater_prop_pack.py'
+  property_package_repositories: 'watertap/property_models/NaCl_prop_pack.py
+
+    watertap/property_models/seawater_prop_pack.py'
+  property_packages: 'NaClParameterBlock
+
+    SeawaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  specifications_for_operating_conditions: Inlet feed state variables (i.e., temperature,
+    pressure, component mass flowrates), slope relationship between measured Turbidity
+    and TSS, intercept relationship between measured Turbidity and TSS, turbidity
+    measured before Jar Test, turbidity measured after Jar Test, chemical doses added
+    during Jar Test, retention time for each rapid mixer, number of rapid mixers in
+    series, rapid mixer velocity gradient, retention time of flocculation basin, flocculation
+    single paddle length (from center of rotation to blade edge), flocculation single
+    paddle width, flocculation paddle rotational speed, flocculation paddle drag coefficient,
+    flocculation paddle velocity fraction, number of rotating paddle wheels, number
+    of paddles per wheel
+  unit_model_data:
+    CoagulationFlocculation: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/coag_floc_model.py
+  unit_model_repositories: watertap/unit_models/coag_floc_model.py
+  unit_models: CoagulationFlocculation
+- description: ''
+  flowsheet_module: ''
+  id: recETN5XhGrnCvSs9
+  name: Crystallizer (0D)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'NaClParameterBlock
+
+      (solid-liquid-vapour mixtures)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/NaCl_prop_pack.py
+  property_package_repositories: watertap/property_models/NaCl_prop_pack.py
+  property_packages: 'NaClParameterBlock
+
+    (solid-liquid-vapour mixtures)'
+  reaction_package: ''
+  specifications_for_operating_conditions: 'Inlet feed state variables (i.e. temperature,
+    pressure, component flowrates), crystal growth rate, desired median length of
+    solid crystals, parameter for Sounders-Brown relation, crystallization temperature.
+    To fully specify the unit: crystallization yield, solids volumetric fraction of
+    product slurry, magma density, solid outlet mass flow, vapour outlet mass flow'
+  unit_model_data:
+    Crystallization: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/crystallizer.py
+  unit_model_repositories: watertap/unit_models/crystallizer.py
+  unit_models: Crystallization
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recElPEsncGD7CIIp
+  name: Sedimentation (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    SedimentationZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/sedimentation_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/sedimentation_zo.py
+  unit_models: SedimentationZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recFPX6YGj9AxfhTE
+  name: Cofermentation (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    CofermentationZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/cofermentation_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/cofermentation_zo.py
+  unit_models: CofermentationZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recFUlj1jobsHwTyW
+  name: Bioreactor (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    BioreactorZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/bioreactor_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/bioreactor_zo.py
+  unit_models: BioreactorZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recFmvDIra38eugkP
+  name: Seawater Onshore Intake (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    SWOnshoreIntakeZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/sw_onshore_intake_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/sw_onshore_intake_zo.py
+  unit_models: SWOnshoreIntakeZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recGBrgt48dwNjARr
+  name: UV with Advanced Oxidation Processes (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    UVAOPZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/uv_aop_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/uv_aop_zo.py
+  unit_models: UVAOPZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recGP0B3UMPBSIerX
+  name: Modular Encapsulated Two-stage Anaerobic Biological Reactor (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    MetabZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/metab_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/metab_zo.py
+  unit_models: MetabZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recGSgRKRZRvQLgV5
+  name: Media Filtration (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    MediaFiltrationZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/media_filtration_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/media_filtration_zo.py
+  unit_models: MediaFiltrationZO
+- configurations: material_balance_type, energy_balance_type, momentum_balance_type,
+    has_pressure_change, tracked_solids_list
+  description: ''
+  flowsheet_module: ''
+  id: recGf7r0Toi23SDX1
+  name: Generic Desalter Unit
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    MCASParameterBlock (Liq phase): https://github.com/watertap-org/watertap/tree/main/watertap/property_models/multicomp_aq_sol_prop_pack.py
+  property_package_repositories: watertap/property_models/multicomp_aq_sol_prop_pack.py
+  property_packages: MCASParameterBlock (Liq phase)
+  reaction_package: ''
+  specifications_for_operating_conditions: 'Inlet state variables (i.e., temperature,
+    pressure, component mass compositions), water recovery or solids concentration
+    in brine* and water content of the brine*.
+
+    *User must provide tracked solids list.'
+  unit_model_data:
+    GenericDesalter: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/generic_desalter.py
+  unit_model_repositories: watertap/unit_models/generic_desalter.py
+  unit_models: GenericDesalter
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recHRZiXoqnkI7J0p
+  name: Anaerobic Digestion Reactive (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    AnaerobicDigestionReactiveZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/anaerobic_digestion_reactive_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/anaerobic_digestion_reactive_zo.py
+  unit_models: AnaerobicDigestionReactiveZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recHupGr4edxUksTi
+  name: Membrane Evaporator (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    MembraneEvaporator: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/membrane_evaporator_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/membrane_evaporator_zo.py
+  unit_models: MembraneEvaporator
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recIArh3u0lpRnWxE
+  name: Conventional Activated Sludge (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    CASZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/conventional_activated_sludge_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/conventional_activated_sludge_zo.py
+  unit_models: CASZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recILi2L1fCriAiUZ
+  name: Electrochemical Nutrient Removal (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    ElectrocoagulationZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/electrocoagulation_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/electrocoagulation_zo.py
+  unit_models: ElectrocoagulationZO
+- configurations: outlet_list, num_outlets (not used if outlet_list arg is provided),
+    split_basis, material_balance_type, momentum_balance_type, has_phase_equilibrium,
+    energy_split_basis, ideal_separation, ideal_split_map, mixed_state_block, construct_ports
+  description: ''
+  flowsheet_module: ''
+  id: recIxQYsmMr1woJrC
+  inherited_model_(name,_unit_model): Separator, Separator
+  inherited_model_repository: idaes/models/unit_models/separator.py
+  name: ElectroNP (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ModifiedASM2dParameterBlock (Liq phase): https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/activated_sludge/modified_asm2d_properties.py
+  property_package_repositories: watertap/property_models/unit_specific/activated_sludge/modified_asm2d_properties.py
+  property_packages: ModifiedASM2dParameterBlock (Liq phase)
+  reaction_package: ''
+  specifications_for_operating_conditions: Inlet state variables (i.e., temperature,
+    pressure, volumetric flowrate), electricity intensity, dosage of magnesium chloride
+    per phosphorus removal, inlet solute concentration.
+  unit_model_data:
+    ElectroNPZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/electroNP_ZO.py
+  unit_model_repositories: watertap/unit_models/electroNP_ZO.py
+  unit_models: ElectroNPZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recJZb1EFpWQqnXvB
+  name: Hydrothermal Gasification (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    HTGZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/hydrothermal_gasification_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/hydrothermal_gasification_zo.py
+  unit_models: HTGZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recJcKDoSEZQCuHSf
+  name: Tramp Oil Tank (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    TrampOilTankZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/tramp_oil_tank_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/tramp_oil_tank_zo.py
+  unit_models: TrampOilTankZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recJqz2GJa130LN5m
+  name: Municipal Wastewater Treatment Plant (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    MunicipalWWTPZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/municipal_wwtp_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/municipal_wwtp_zo.py
+  unit_models: MunicipalWWTPZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recKGoFfChpmrJ3uf
+  name: Buffer Tank (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    BufferTankZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/buffer_tank_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/buffer_tank_zo.py
+  unit_models: BufferTankZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recKW738nHQsppn0W
+  name: Well Field (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    WellFieldZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/well_field_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/well_field_zo.py
+  unit_models: WellFieldZO
+- configurations: material_balance_type, energy_balance_type, momentum_balance_type,
+    is_isothermal, chemical_mapping_data
+  description: ''
+  flowsheet_module: ''
+  id: recKhrhr8qs1kesb5
+  name: Boron Removal
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    MCASParameterBlock (Liq phase): https://github.com/watertap-org/watertap/tree/main/watertap/property_models/multicomp_aq_sol_prop_pack.py
+  property_package_repositories: watertap/property_models/multicomp_aq_sol_prop_pack.py
+  property_packages: MCASParameterBlock (Liq phase)
+  reaction_package: ''
+  specifications_for_operating_conditions: Inlet feed state variables (i.e., temperature,
+    pressure, component molar flowrates), caustic chemical dose rate, reactor volume.
+  unit_model_data:
+    BoronRemoval: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/boron_removal.py
+  unit_model_repositories: watertap/unit_models/boron_removal.py
+  unit_models: BoronRemoval
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recL8Ild8lWLGRZ7H
+  name: Microscreen Filtration (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    MicroscreenFiltrationZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/microscreen_filtration_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/microscreen_filtration_zo.py
+  unit_models: MicroscreenFiltrationZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recLuHqjpT5P5yTqi
+  name: Chlorination (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    ChlorinationZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/chlorination_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/chlorination_zo.py
+  unit_models: ChlorinationZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recMVl6WWDAtdhb7H
+  name: Blending Reservoir (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    BlendingReservoirZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/blending_reservoir_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/blending_reservoir_zo.py
+  unit_models: BlendingReservoirZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recMfO7IAnVv2wqFV
+  name: CANDO-P (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    CANDOP: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/CANDOP_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/CANDOP_zo.py
+  unit_models: CANDOP
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recOJnj7FuhyDBzNk
+  name: Brine Concentrator (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    BrineConcentratorZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/brine_concentrator_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/brine_concentrator_zo.py
+  unit_models: BrineConcentratorZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recObALg1pcLR2V23
+  name: Cooling Tower (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    CoolingTowerZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/cooling_tower_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/cooling_tower_zo.py
+  unit_models: CoolingTowerZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recOlVlqrR4msbDDA
+  name: Backwash Solids Handling (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    BackwashSolidsHandlingZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/backwash_solids_handling_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/backwash_solids_handling_zo.py
+  unit_models: BackwashSolidsHandlingZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recQ1ZXxfBgooOtc8
+  name: Filter Press (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    FilterPressZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/filter_press_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/filter_press_zo.py
+  unit_models: FilterPressZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recQLf2NscKYSOTkW
+  name: Membrane Aerated Biofilm Reactor (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    MABRZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/mabr_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/mabr_zo.py
+  unit_models: MABRZO
+- configurations: material_balance_type, energy_balance_type, momentum_balance_type
+  description: ''
+  flowsheet_module: ''
+  id: recRKtm93aho8S74Q
+  name: Steam Jet Ejector
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    WaterParameterBlock (Liq phase, vap phase): https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: WaterParameterBlock (Liq phase, vap phase)
+  reaction_package: ''
+  specifications_for_operating_conditions: Inlet state variables (i.e., temperature,
+    pressure, and component flowrates for motive steam and entrained vapor). Entrainment
+    ratio, compression ratio.
+  unit_model_data:
+    SteamEjector: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/steam_ejector.py
+  unit_model_repositories: watertap/unit_models/steam_ejector.py
+  unit_models: SteamEjector
+- configurations: material_balance_type, energy_balance_type, momentum_balance_type,
+    has_phase_equilibrium, compressor, thermodynamic_assumption, support_isentropic_performance_curves,
+    isentropic_performance_curves, isentropic_performance_curves (build_callback,
+    build_head_expressions), variable_efficiency, bep_flow*, bep_eta*, flow_ratio*,
+    *When variable_efficiency is not VariableEfficiency.none
+  description: ''
+  flowsheet_module: ''
+  id: recRd3gCdwbeiBxVX
+  inherited_model_(name,_unit_model): Pressure changer, PressureChanger -> Pump, Pump
+  inherited_model_repository: idaes/models/unit_models/pressure_changer.py
+  name: Pump
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'SeawaterParameterBlock
+
+      MCASParameterBlock
+
+      (Liq phase)'
+    : 'https://github.com/watertap-org/watertap/tree/main/watertap/property_models/seawater_prop_pack.py
+
+      watertap/property_models/multicomp_aq_sol_prop_pack.py'
+  property_package_repositories: 'watertap/property_models/seawater_prop_pack.py
+
+    watertap/property_models/multicomp_aq_sol_prop_pack.py'
+  property_packages: 'SeawaterParameterBlock
+
+    MCASParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  specifications_for_operating_conditions: Outlet pressure or pressure change across
+    the inlet and outlet, pump efficiency
+  unit_model_data:
+    Pump: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/pressure_changer.py
+  unit_model_repositories: watertap/unit_models/pressure_changer.py
+  unit_models: Pump
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recSKuoC9OnitU3Pc
+  name: Chemical Addition (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    ChemicalAdditionZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/chemical_addition_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/chemical_addition_zo.py
+  unit_models: ChemicalAdditionZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recSa9o4XEIjJMMpe
+  name: Feed Water Tank (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    FeedWaterTankZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/feed_water_tank_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/feed_water_tank_zo.py
+  unit_models: FeedWaterTankZO
+- configurations: material_balance_type, is_isothermal, energy_balance_type, momentum_balance_type,
+    film_transfer_coefficient_type, surface_diffusion_coefficient_type, target_species,
+    finite_elements_ss_approximation
+  description: ''
+  flowsheet_module: ''
+  id: recSiG4rMuE6weB7R
+  name: Granular Activated Carbon (GAC)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    MCASParameterBlock (Liq phase): https://github.com/watertap-org/watertap/tree/main/watertap/property_models/multicomp_aq_sol_prop_pack.py
+  property_package_repositories: watertap/property_models/multicomp_aq_sol_prop_pack.py
+  property_packages: MCASParameterBlock (Liq phase)
+  reaction_package: ''
+  specifications_for_operating_conditions: 'Inlet state variables (i.e., temperature,
+    pressure, component flowrates), Freundlich adsorption isotherm parameters, Stanton
+    number equation parameters, throughput ratio equation parameters,  particle apparent
+    density, particle diameter, empty bed contact time, bed voidage or particle bulk
+    density, superficial velocity or bed length, effluent to inlet concentration ratio
+    at operational time or steady state approximation of average effluent to inlet
+    concentration ratio in operational time by trapezoid rule or bed volumes treated,
+    surface diffusion coefficient, liquid phase film transfer coefficient.
+
+    When setting the configuration options to calculate the surface diffusion coefficient
+    and liquid phase film transfer coefficient: shape correction factor, particle
+    porosity, tortuosity of the path that the adsorbate must take as compared to the
+    radius, surface-to-pore diffusion flux ratio.'
+  unit_model_data:
+    GAC: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/gac.py
+  unit_model_repositories: watertap/unit_models/gac.py
+  unit_models: GAC
+- configurations: material_balance_type, energy_balance_type, momentum_balance_type,
+    has_heat_transfer, has_pressure_change, has_equilibrium_reactions, has_phase_equilibrium,
+    has_heat_of_reaction, reaction_package, reaction_package_args
+  description: ''
+  flowsheet_module: ''
+  id: recT0OiYHMKT1c2aA
+  inherited_model_(name,_unit_model): CSTR, CSTR
+  inherited_model_repository: idaes/models/unit_models/cstr.py
+  name: Continuously Stirred Tank Reactor
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'SaponificationParameterBlock
+
+      ASM1ParameterBlock (Liq phase)'
+    : 'https://github.com/idaes/idaes-pse/tree/main/idaes/models/properties/examples/saponification_thermo.py
+
+      watertap/property_models/unit_specific/activated_sludge/asm1_properties.py'
+  property_package_repositories: '
+
+    idaes/models/properties/examples/saponification_thermo.py
+
+    watertap/property_models/unit_specific/activated_sludge/asm1_properties.py'
+  property_packages: 'SaponificationParameterBlock
+
+    ASM1ParameterBlock (Liq phase)'
+  reaction_package: ''
+  reaction_package_data:
+    ASM1ReactionParameterBlock: https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/activated_sludge/asm1_reactions.py
+    SaponificationReactionParameterBlock: https://github.com/idaes/idaes-pse/tree/main/idaes/models/properties/examples/saponification_reactions.py
+  reaction_package_repositories: 'idaes/models/properties/examples/saponification_reactions.py;
+
+    watertap/property_models/unit_specific/activated_sludge/asm1_reactions.py'
+  reaction_packages: 'SaponificationReactionParameterBlock;
+
+    ASM1ReactionParameterBlock'
+  specifications_for_operating_conditions: Inlet feed state variables (i.e. temperature,
+    pressure, component flowrates), volume or hydraulic retention time.
+  unit_model_data:
+    CSTR: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/cstr.py
+  unit_model_repositories: watertap/unit_models/cstr.py
+  unit_models: CSTR
+- configurations: material_balance_type, energy_balance_type, momentum_balance_type,
+    has_phase_equilibrium, compressor, thermodynamic_assumption, support_isentropic_performance_curves,
+    isentropic_performance_curves, isentropic_performance_curves (build_callback,
+    build_head_expressions), variable_efficiency
+  description: ''
+  flowsheet_module: ''
+  id: recT0ownJYntD9843
+  inherited_model_(name,_unit_model): Pump, Pump (class PumpIsothermalData)
+  inherited_model_repository: watertap/unit_models/pressure_changer.py
+  name: Energy Recovery Device
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'SeawaterParameterBlock
+
+      MCASParameterBlock
+
+      (Liq phase)'
+    : 'https://github.com/watertap-org/watertap/tree/main/watertap/property_models/seawater_prop_pack.py
+
+      watertap/property_models/multicomp_aq_sol_prop_pack.py'
+  property_package_repositories: 'watertap/property_models/seawater_prop_pack.py
+
+    watertap/property_models/multicomp_aq_sol_prop_pack.py'
+  property_packages: 'SeawaterParameterBlock
+
+    MCASParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  specifications_for_operating_conditions: Outlet pressure or pressure change across
+    the inlet and outlet, energy recovery device efficiency.
+  unit_model_data:
+    EnergyRecoveryDevice: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/pressure_changer.py
+  unit_model_repositories: watertap/unit_models/pressure_changer.py
+  unit_models: EnergyRecoveryDevice
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recTNZNtSAhhpT68i
+  name: Gas Sparged Membrane (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    GasSpargedMembraneZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/gas_sparged_membrane_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/gas_sparged_membrane_zo.py
+  unit_models: GasSpargedMembraneZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recTfjHHy0j8DD8Ws
+  name: Iron And Manganese Removal (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    IronManganeseRemovalZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/iron_and_manganese_removal_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/iron_and_manganese_removal_zo.py
+  unit_models: IronManganeseRemovalZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recU43fywlNwdVQNx
+  name: Pump (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    PumpZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/pump_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/pump_zo.py
+  unit_models: PumpZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recU8GBNd2deKmXGE
+  name: Energy Recovery (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    EnergyRecoveryZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/energy_recovery_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/energy_recovery_zo.py
+  unit_models: EnergyRecoveryZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recUUfsUQ0MSxt9jS
+  name: Dissolved Air Flotation (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    DissolvedAirFlotationZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/dissolved_air_flotation_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/dissolved_air_flotation_zo.py
+  unit_models: DissolvedAirFlotationZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recUxsryXeijZeLby
+  name: Integrated Anaerobic Membrane Bioreactor/Microbial Electrolysis Cell (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    AnaerobicMBRMECZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/anaerobic_mbr_mec_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/anaerobic_mbr_mec_zo.py
+  unit_models: AnaerobicMBRMECZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recVHEMMd8tRLlbb1
+  name: Evaporation Pond (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    EvaporationPondZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/evaporation_pond_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/evaporation_pond_zo.py
+  unit_models: EvaporationPondZO
+- configurations: momentum_balance_type, has_pressure_change, energy_balance_type,
+    electroneutrality_ion, passing_species_list, default_passing_rejection, default_excluded_rejection
+  description: ''
+  flowsheet_module: ''
+  id: recWbhJodNieqNQmI
+  name: Nanofiltration (0D)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    MCASParameterBlock (Liq phase): https://github.com/watertap-org/watertap/tree/main/watertap/property_models/multicomp_aq_sol_prop_pack.py
+  property_package_repositories: watertap/property_models/multicomp_aq_sol_prop_pack.py
+  property_packages: MCASParameterBlock (Liq phase)
+  reaction_package: ''
+  specifications_for_operating_conditions: Inlet feed state variables (i.e, temperature,
+    pressure, component molar flowrates), permeate pressure, solvent recovery fraction,
+    solute rejection fractions for all solutes except the one identified as the electroneutrality
+    species, membrane area, retentate pressure drop
+  unit_model_data:
+    Nanofiltration0D: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/nanofiltration_0D.py
+  unit_model_repositories: watertap/unit_models/nanofiltration_0D.py
+  unit_models: Nanofiltration0D
+- configurations: outlet_state_defined, has_phase_equilibrium, inlet_property_package,
+    inlet_property_package_args, outlet_property_package, outlet_property_package_args,
+    reaction_package, reaction_package_args
+  description: ''
+  flowsheet_module: ''
+  id: recXgFUQduoSd0pHB
+  inherited_model_(name,_unit_model): Translator
+  inherited_model_repository: idaes/models/unit_models/translator.py
+  name: ASM1 to ADM1 Translator
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'ASM1ParameterBlock
+
+      ADM1ParameterBlock
+
+      (Liq phase)'
+    : 'https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/activated_sludge/asm1_properties.py
+
+      watertap/property_models/unit_specific/activated_sludge/adm1_properties.py'
+  property_package_repositories: 'watertap/property_models/unit_specific/activated_sludge/asm1_properties.py
+
+    watertap/property_models/unit_specific/activated_sludge/adm1_properties.py'
+  property_packages: 'ASM1ParameterBlock
+
+    ADM1ParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  reaction_package_data:
+    ADM1ReactionParameterBlock: https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/activated_sludge/adm1_reactions.py
+  reaction_package_repositories: watertap/property_models/unit_specific/activated_sludge/adm1_reactions.py
+  reaction_packages: ADM1ReactionParameterBlock
+  specifications_for_operating_conditions: Inlet feed state variables (i.e., temperature,
+    pressure, volumetric flowrate, solute compositions, cations, anions).
+  unit_model_data:
+    Translator_ASM1_ADM1: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/translators/translator_asm1_adm1.py
+  unit_model_repositories: watertap/unit_models/translators/translator_asm1_adm1.py
+  unit_models: Translator_ASM1_ADM1
+- configurations: material_balance_type, energy_balance_type, momentum_balance_type,
+    concentration_polarization_type, mass_transfer_coefficient, transport_model, module_type,
+    has_pressure_change, pressure_change_type, friction_factor, area_definition, transformation_method,
+    transformation_scheme, finite_elements, collocation_points, has_full_reporting
+  control_volume_data:
+    MembraneChannel1DBlock: https://github.com/watertap-org/watertap/tree/main/watertap/core/membrane_channel1d.py
+  control_volume_repositories: watertap/core/membrane_channel1d.py
+  control_volumes: MembraneChannel1DBlock
+  description: ''
+  flowsheet_module: ''
+  id: recYiwEaN2QT0vegV
+  inherited_model_(name,_unit_model): OsmoticallyAssistedReverseOsmosisBaseData
+  inherited_model_repository: watertap/unit_models/osmotically_assisted_reverse_osmosis_base.py
+  name: Osmotically Assisted Reverse Osmosis (1D)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'NaClParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/NaCl_prop_pack.py
+  property_package_repositories: watertap/property_models/NaCl_prop_pack.py
+  property_packages: 'NaClParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  specifications_for_operating_conditions: 'Feed-side and permeate-side inlet state
+    variables (i.e, temperature, pressure, component mass flowrates), membrane area,
+    membrane water permeability A, membrane salt permeability B, structural parameter
+    (i.e., effective thickness).
+
+    If concentration polarization effects, mass transfer coefficient, and pressure
+    drop are calculated: feed-side and permeate-side spacer porosity, channel height,
+    and feed-side Reynolds number or water mass recovery.
+
+    If has_pressure_change is set to True: pressure drop.
+
+    If concentration_polarization_type is set to ConcentrationPolarizationType.fixed:
+    concentration polarization modulus in feed and permeate channels.
+
+    If concentration_polarization_type is set to ConcentrationPolarizationType.calculated:
+    mass transfer coefficient in feed and permeate channels.
+
+    If mass_transfer_coefficient is set to MassTransferCoefficient.calculated or pressure_change_type
+    is not set to PressureChangeType.fixed_per_stage: membrane length and width.
+
+    If pressure_change_type is set to PressureChangeType.fixed_per_unit_length: Feed-side
+    and permeate-side average pressure drop per unit length.
+
+    If pressure_change_type is set to PressureChangeType.calculated: friction factor,
+    feed-side and permeate-side velocity and pressure drop per unit length.'
+  unit_model_data:
+    OsmoticallyAssistedReverseOsmosis1D: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/osmotically_assisted_reverse_osmosis_1D.py
+  unit_model_repositories: watertap/unit_models/osmotically_assisted_reverse_osmosis_1D.py
+  unit_models: OsmoticallyAssistedReverseOsmosis1D
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recZRaIYPdJRY0KMa
+  name: Sludge Tank (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    SludgeTankZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/sludge_tank_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/sludge_tank_zo.py
+  unit_models: SludgeTankZO
+- configurations: has_pressure_change, pressure_drop_method, friction_factor_method,
+    hydraulic_diameter_method, operation_mode, limiting_current_density_method, limiting_current_density_data,
+    has_nonohmic_potential_membrane, has_Nernst_diffusion_layer, material_balance_type,
+    is_isothermal, energy_balance_type, momentum_balance_type
+  description: ''
+  flowsheet_module: ''
+  id: recbtwAJEIcvfkgbn
+  name: Electrodialysis (0D)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    MCASParameterBlock (Liq phase): https://github.com/watertap-org/watertap/tree/main/watertap/property_models/multicomp_aq_sol_prop_pack.py
+  property_package_repositories: watertap/property_models/multicomp_aq_sol_prop_pack.py
+  property_packages: MCASParameterBlock (Liq phase)
+  reaction_package: ''
+  specifications_for_operating_conditions: Inlet feed state variables (i.e. temperature,
+    pressure, component molar flowrates). Water transport number, water permeability,
+    voltage or current, electrode areal resistance, cell pair number, current utilization
+    coefficient, spacer thickness, membrane areal resistance, cell width, cell length,
+    thickness of ion exchange membranes, diffusivity of solute in the membrane phase,
+    transport number of ions in the membrane phase.
+  unit_model_data:
+    Electrodialysis0D: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/electrodialysis_0D.py
+  unit_model_repositories: watertap/unit_models/electrodialysis_0D.py
+  unit_models: Electrodialysis0D
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: reccIlKDkit6w9Mlc
+  name: Tri Media Filtration (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    TriMediaFiltrationZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/tri_media_filtration_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/tri_media_filtration_zo.py
+  unit_models: TriMediaFiltrationZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: reccag575b0LRabc6
+  name: Autothermal Hydrothermal Liquefaction (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    ATHTLZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/autothermal_hydrothermal_liquefaction_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/autothermal_hydrothermal_liquefaction_zo.py
+  unit_models: ATHTLZO
+- configurations: material_balance_type, is_isothermal, energy_balance_type, momentum_balance_type,
+    has_leakage, has_mixing, pressure_exchange_calculation
+  description: ''
+  flowsheet_module: ''
+  id: recd1rSMfyI2gw9lq
+  name: Pressure Exchanger
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'SeawaterParameterBlock
+
+      MCASParameterBlock
+
+      (Liq phase)'
+    : 'https://github.com/watertap-org/watertap/tree/main/watertap/property_models/seawater_prop_pack.py
+
+      watertap/property_models/multicomp_aq_sol_prop_pack.py'
+  property_package_repositories: 'watertap/property_models/seawater_prop_pack.py
+
+    watertap/property_models/multicomp_aq_sol_prop_pack.py'
+  property_packages: 'SeawaterParameterBlock
+
+    MCASParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  specifications_for_operating_conditions: 'Feed-side and brine-side state variables
+    (i.e., temperature, pressure, volumetric flowrate, mass fraction), pressure exchanger
+    efficiency.
+
+    If has_mixing is set to True: volumetric mixing fraction of the brine side and
+    feed side.
+
+    If has_leakage is set to True: volumetric leakage fraction of the brine side to
+    the feed side.
+
+    If pressure_exchange_calculation configuration option is set to PressureExchangeType.high_pressure_difference:
+    high pressure difference, low pressure difference, and the pressure exchanger
+    efficiency is unfixed.'
+  unit_model_data:
+    PressureExchanger: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/pressure_exchanger.py
+  unit_model_repositories: watertap/unit_models/pressure_exchanger.py
+  unit_models: PressureExchanger
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recdUIIOeMT57QM0v
+  name: Struvite Classifier (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    StruviteClassifierZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/struvite_classifier_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/struvite_classifier_zo.py
+  unit_models: StruviteClassifierZO
+- configurations: material_balance_type, energy_balance_type, momentum_balance_type,
+    concentration_polarization_type, mass_transfer_coefficient, transport_model, module_type,
+    has_pressure_change, pressure_change_type, friction_factor, area_definition, transformation_method,
+    transformation_scheme, finite_elements, collocation_points, has_full_reporting
+  control_volume_data:
+    MembraneChannel0DBlock: https://github.com/watertap-org/watertap/tree/main/watertap/core/membrane_channel0d.py
+  control_volume_repositories: watertap/core/membrane_channel0d.py
+  control_volumes: MembraneChannel0DBlock
+  description: ''
+  flowsheet_module: ''
+  id: recdWg0rYbOtRLDdB
+  inherited_model_(name,_unit_model): ReverseOsmosisBaseData
+  inherited_model_repository: watertap/unit_models/reverse_osmosis_base.py
+  name: Reverse Osmosis (1D)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'NaClParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/NaCl_prop_pack.py
+  property_package_repositories: watertap/property_models/NaCl_prop_pack.py
+  property_packages: 'NaClParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  specifications_for_operating_conditions: 'Inlet feed state variables (i.e., temperature,
+    pressure, component flowrates), membrane area, membrane water permeability A,
+    membrane salt permeability B, permeate pressure, and membrane area or length or
+    width.
+
+    If concentration polarization effects, mass transfer coefficient, and pressure
+    drop are calculated: feed spacer porosity, feed channel height, and membrane length
+    or membrane width or inlet Reynolds number.
+
+    If has_pressure_change is set to True: pressure drop.
+
+    If concentration_polarization_type is set to ConcentrationPolarizationType.fixed:
+    concentration polarization modulus in feed channel.
+
+    If concentration_polarization_type is set to ConcentrationPolarizationType.calculated:
+    mass transfer coefficient in feed channel.
+
+    If mass_transfer_coefficient is set to MassTransferCoefficient.calculated or pressure_change_type
+    is set to PressureChangeType.calculated: feed channel height, hydraulic diameter,
+    spacer porosity, Reynolds number.
+
+    If mass_transfer_coefficient is set to MassTransferCoefficient.calculated or pressure_change_type
+    is not set to PressureChangeType.fixed_per_stage: membrane length and width.
+
+    If pressure_change_type is set to PressureChangeType.fixed_per_unit_length: Feed-side
+    average pressure drop per unit length.
+
+    If pressure_change_type is set to PressureChangeType.calculated: friction factor,
+    feed-side and permeate-side velocity and pressure drop per unit length.
+
+    If transport_model is set to TransportModel.SKK (Speigler-Kedem-Katchalsky model):
+    reflection coefficient, alpha.'
+  unit_model_data:
+    ReverseOsmosis1D: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/reverse_osmosis_1D.py
+  unit_model_repositories: watertap/unit_models/reverse_osmosis_1D.py
+  unit_models: ReverseOsmosis1D
+- configurations: outlet_state_defined, has_phase_equilibrium, inlet_property_package,
+    inlet_property_package_args, outlet_property_package, outlet_property_package_args,
+    bio_P, inlet_reaction_package, inlet_reaction_package_args, outlet_reaction_package,
+    outlet_reaction_package_args
+  description: ''
+  flowsheet_module: ''
+  id: receCYtfkMMSNmk9K
+  inherited_model_(name,_unit_model): Translator
+  inherited_model_repository: idaes/models/unit_models/translator.py
+  name: ASM2d to ADM1 Translator
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'ModifiedADM1ParameterBlock
+
+      ModifiedASM2dParameterBlock'
+    : 'https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/activated_sludge/modified_adm1_properties.py
+
+      watertap/property_models/unit_specific/activated_sludge/modified_asm2d_properties.py'
+  property_package_repositories: 'watertap/property_models/unit_specific/activated_sludge/modified_adm1_properties.py
+
+    watertap/property_models/unit_specific/activated_sludge/modified_asm2d_properties.py'
+  property_packages: 'ModifiedADM1ParameterBlock
+
+    ModifiedASM2dParameterBlock'
+  reaction_package: ''
+  reaction_package_data:
+    ModifiedADM1ReactionParameterBlock: https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/activated_sludge/modified_adm1_reactions.py
+    ModifiedASM2dReactionParameterBlock: https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/activated_sludge/modified_asm2d_reactions.py
+  reaction_package_repositories: 'watertap/property_models/unit_specific/activated_sludge/modified_adm1_reactions.py;
+
+    watertap/property_models/unit_specific/activated_sludge/modified_asm2d_reactions.py'
+  reaction_packages: 'ModifiedADM1ReactionParameterBlock;
+
+    ModifiedASM2dReactionParameterBlock'
+  specifications_for_operating_conditions: Inlet feed state variables (i.e., temperature,
+    pressure, volumetric flowrate, solute compositions).
+  unit_model_data:
+    Translator_ASM2d_ADM1: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/translators/translator_asm2d_adm1.py
+  unit_model_repositories: watertap/unit_models/translators/translator_asm2d_adm1.py
+  unit_models: Translator_ASM2d_ADM1
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: receD8lZuEoF6O7uw
+  name: Ion Exchange (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    IonExchangeZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/ion_exchange_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/ion_exchange_zo.py
+  unit_models: IonExchangeZO
+- configurations: material_balance_type, is_isothermal, energy_balance_type, momentum_balance_type,
+    has_pressure_change
+  description: ''
+  flowsheet_module: ''
+  id: recewsjrFbayzhTup
+  name: Nanofiltration (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    MCASParameterBlock (Liq phase): https://github.com/watertap-org/watertap/tree/main/watertap/property_models/multicomp_aq_sol_prop_pack.py
+  property_package_repositories: watertap/property_models/multicomp_aq_sol_prop_pack.py
+  property_packages: MCASParameterBlock (Liq phase)
+  reaction_package: ''
+  specifications_for_operating_conditions: Inlet feed state variables (i.e, temperature,
+    pressure, solvent and solute mass flowrates). Membrane's solvent volumetric flux
+    rate, permeate pressure, membrane's solute rejection. If solutes are ionic and
+    contain multiple ion pairs, one ion's rejection may be unfixed for electroneutrality.
+    Another variable, such as volumetric recovery rate or membrane area, fixes the
+    last degree of freedom.
+  unit_model_data:
+    NanofiltrationZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/nanofiltration_ZO.py
+  unit_model_repositories: watertap/unit_models/nanofiltration_ZO.py
+  unit_models: NanofiltrationZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recfIwyfG9WIQvhs3
+  name: Clarifier (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    ClarifierZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/clarifier_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/clarifier_zo.py
+  unit_models: ClarifierZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recfo1H40pvG9eGo6
+  name: Walnut Shell Filter (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    WalnutShellFilterZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/walnut_shell_filter_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/walnut_shell_filter_zo.py
+  unit_models: WalnutShellFilterZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: rechBQ9ZVVVCbdwy3
+  name: Secondary Wastewater Treatment Plant (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    SecondaryTreatmentWWTPZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/secondary_treatment_wwtp_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/secondary_treatment_wwtp_zo.py
+  unit_models: SecondaryTreatmentWWTPZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: rechJ3MQVSi5xBLd1
+  name: Deep Well Injection (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    DeepWellInjectionZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/deep_well_injection_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/deep_well_injection_zo.py
+  unit_models: DeepWellInjectionZO
+- configurations: material_balance_type, energy_balance_type, momentum_balance_type,
+    has_heat_transfer, has_pressure_change, has_equilibrium_reactions, has_phase_equilibrium,
+    has_heat_of_reaction, reaction_package, reaction_package_args, electricity_consumption,
+    has_aeration
+  description: ''
+  flowsheet_module: ''
+  id: rechOYrbR9I8SNt6N
+  name: Continuously Stirred Tank Reactor with Injection
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'SaponificationParameterBlock
+
+      ASM1ParameterBlock
+
+      ASM2dParameterBlock
+
+      ModifiedASM2dParameterBlock
+
+      ADM1ParameterBlock'
+    : 'https://github.com/idaes/idaes-pse/tree/main/idaes/models/properties/examples/saponification_thermo.py
+
+      watertap/property_models/unit_specific/activated_sludge/asm1_properties.py
+
+      watertap/property_models/unit_specific/activated_sludge/asm2d_properties.py
+
+      watertap/property_models/unit_specific/activated_sludge/modified_asm2d_properties.py
+
+      watertap/property_models/unit_specific/activated_sludge/adm1_properties.py'
+  property_package_repositories: 'idaes/models/properties/examples/saponification_thermo.py
+
+    watertap/property_models/unit_specific/activated_sludge/asm1_properties.py
+
+    watertap/property_models/unit_specific/activated_sludge/asm2d_properties.py
+
+    watertap/property_models/unit_specific/activated_sludge/modified_asm2d_properties.py
+
+    watertap/property_models/unit_specific/activated_sludge/adm1_properties.py'
+  property_packages: 'SaponificationParameterBlock
+
+    ASM1ParameterBlock
+
+    ASM2dParameterBlock
+
+    ModifiedASM2dParameterBlock
+
+    ADM1ParameterBlock'
+  reaction_package: ''
+  reaction_package_data:
+    ADM1ReactionParameterBlock: https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/activated_sludge/adm1_reactions.py
+    ASM1ReactionParameterBlock: https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/activated_sludge/asm1_reactions.py
+    ASM2dReactionParameterBlock: https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/activated_sludge/asm2d_reactions.py
+    ModifiedASM2dReactionParameterBlock: https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/activated_sludge/modified_asm2d_reactions.py
+    SaponificationReactionParameterBlock: https://github.com/idaes/idaes-pse/tree/main/idaes/models/properties/examples/saponification_reactions.py
+  reaction_package_repositories: 'idaes/models/properties/examples/saponification_reactions.py;
+
+    watertap/property_models/unit_specific/activated_sludge/asm1_reactions.py;
+
+    watertap/property_models/unit_specific/activated_sludge/asm2d_reactions.py;
+
+    watertap/property_models/unit_specific/activated_sludge/modified_asm2d_reactions.py;
+
+    watertap/property_models/unit_specific/activated_sludge/adm1_reactions.py'
+  reaction_packages: 'SaponificationReactionParameterBlock;
+
+    ASM1ReactionParameterBlock;
+
+    ASM2dReactionParameterBlock;
+
+    ModifiedASM2dReactionParameterBlock;
+
+    ADM1ReactionParameterBlock'
+  specifications_for_operating_conditions: 'Inlet feed state variables (i.e. temperature,
+    pressure, component flowrates), volume or hydraulic retention time, injection
+    rates for all components, heat duty if heat transfer is included, change in pressure
+    if pressure change is included. If aeration is included, the following degrees
+    of freedom could replace the oxygen injection rate: lumped mass transfer coefficient
+    for oxygen, dissolved oxygen concentration at equilibrium.'
+  unit_model_data:
+    CSTR_Injection: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/cstr_injection.py
+  unit_model_repositories: watertap/unit_models/cstr_injection.py
+  unit_models: CSTR_Injection
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: rechRK3Zny8Z5Y1Lf
+  name: High-Rate Contact Stabilization (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    HRCSZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/hrcs_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/hrcs_zo.py
+  unit_models: HRCSZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: rechbVnG5xWXmz0dr
+  name: Suboxic Activated Sludge Process (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    SuboxicASMZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/suboxic_activated_sludge_process_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/suboxic_activated_sludge_process_zo.py
+  unit_models: SuboxicASMZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: rechcJjTDdQlyNGWT
+  name: Intrusion Mitigation (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    IntrusionMitigationZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/intrusion_mitigation_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/intrusion_mitigation_zo.py
+  unit_models: IntrusionMitigationZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: reciRQU5Ejsiup157
+  name: Injection Well Disposal (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    InjectionWellDisposalZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/injection_well_disposal_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/injection_well_disposal_zo.py
+  unit_models: InjectionWellDisposalZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: reciolQu5toteJra5
+  name: Decarbonator (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    DecarbonatorZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/decarbonator_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/decarbonator_zo.py
+  unit_models: DecarbonatorZO
+- configurations: material_balance_type, energy_balance_type, momentum_balance_type,
+    target_ion, regenerant, hazardous_waste, isotherm
+  description: ''
+  flowsheet_module: ''
+  id: recj0Bj9UU8XnynsA
+  name: Ion Exchange (0D)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    MCASParameterBlock (Liq phase): https://github.com/watertap-org/watertap/tree/main/watertap/property_models/multicomp_aq_sol_prop_pack.py
+  property_package_repositories: watertap/property_models/multicomp_aq_sol_prop_pack.py
+  property_packages: MCASParameterBlock (Liq phase)
+  reaction_package: ''
+  specifications_for_operating_conditions: 'Inlet feed state variables (temperature,
+    pressure, component molar flowrate), resin bead diameter, resin bulk density,
+    bed porosity, service flow rate or superficial velocity through bed, number of
+    operational columns.
+
+    If isotherm is set to langmuir: Langmuir isotherm coefficient, resin maximum capacity,
+    dimensionless time.
+
+    If isotherm is set to freundlich: Freundlich isotherm exponent, bed volumes of
+    feed at breakthru concentration, dimensionless (relative) concentration of target
+    ion, bed volumes of feed at 50 percent breakthrough or mass transfer coefficient
+    for Clark model (kT).'
+  unit_model_data:
+    IonExchange0D: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/ion_exchange_0D.py
+  unit_model_repositories: watertap/unit_models/ion_exchange_0D.py
+  unit_models: IonExchange0D
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recjAU2fbhrUeFYeU
+  name: Storage Tank (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    StorageTankZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/storage_tank_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/storage_tank_zo.py
+  unit_models: StorageTankZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recjDzt0RwNcMP9Kn
+  name: UV Reactor (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    UVZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/uv_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/uv_zo.py
+  unit_models: UVZO
+- configurations: database, process_subtype, isothermal, isobaric
+  description: ''
+  flowsheet_module: ''
+  id: recjE2AmkvqTp7c1n
+  name: Air Flotation (ZO)
+  project: WaterTAP
+  property_package: ''
+  property_package_data:
+    ? 'WaterParameterBlock
+
+      (Liq phase)'
+    : https://github.com/watertap-org/watertap/tree/main/watertap/property_models/water_prop_pack.py
+  property_package_repositories: watertap/property_models/water_prop_pack.py
+  property_packages: 'WaterParameterBlock
+
+    (Liq phase)'
+  reaction_package: ''
+  unit_model_data:
+    AirFlotationZO: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/zero_order/air_flotation_zo.py
+  unit_model_repositories: watertap/unit_models/zero_order/air_flotation_zo.py
+  unit_models: AirFlotationZO
 products:
-
-  - name: Pyomo
-    description: | 
-      Pyomo is an open-source Python package for modeling and solving equation-oriented optimization problems, enabling users to define variables, constraints, and objectives and solve them using various solvers, including LP, NLP, and MILP.
-    code:
-      github: Pyomo/pyomo
-      pypi: pyomo
-      conda-forge: pyomo
-
-  - name: FOQUS
-    description: |
-      Framework for Optimization and Uncertainty Quantification
-    code:
-      github: CCSI-Toolset/FOQUS
-      pypi: ccsi-foqus
-  
-  - name: IDAES-PSE
-    description: IDAES core Python framework and model library
-    code:
-      github: IDAES/idaes-pse
-      pypi: idaes-pse
-      conda-forge: idaes-pse
-
-  - name: WaterTAP
-    description: WaterTAP model library
-    code:
-      github: watertap-org/watertap
-      pypi: watertap
-
-  - name: Parameter Sweep
-    description: |
-      Toolkit to solve Pyomo models multiple times with different values for parameters, optionally in parallel
-    code:
-      github: watertap-org/parameter-sweep
-      pypi: parameter-sweep
-
-  - name: PrOMMiS
-    description: PrOMMiS model library
-    code:
-      github: prommis/prommis
-      pypi: prommis
-
-  - name: WaterTAP-REFLO
-    description: |
-      An extension of WaterTAP that incorporates renewable energy (RE) models for RE-driven desalination systems
-    code:
-      github: watertap-org/watertap-reflo
-
-  - name: IDAES Flowsheet Processor
-    description: Framework to annotate IDAES flowsheet to make them more usable, including through a graphical user interface
-    code:
-      github: watertap-org/idaes-flowsheet-processor
-      pypi: idaes-flowsheet-processor
-
-  - name: PARETO
-    description: PARETO Python library
-    code:
-      github: project-pareto/project-pareto
-      pypi: project-pareto
-
-  - name: PARETO UI
-    description: Graphical User Interface for PARETO
-    code:
-      github: project-pareto/pareto-ui
+- code:
+    github: watertap-org/parameter-sweep
+    pypi: parameter-sweep
+  description: Toolkit to solve Pyomo models multiple times with different values
+    for parameters, optionally in parallel
+  id: recSKlnunMYP1HZIh
+  interface: Python API
+  name: Parameter Sweep
+  projects:
+  - recCwLQQYPhrvmypf
+  - reciZ8S487CQTeWr0
+- code: {}
+  description: Self-contained, one-click-installer graphical application for interacting
+    with IDAES flowsheets
+  id: recThdJTFwvbxTVci
+  interface: Graphical (GUI)
+  name: IDAES Flowsheet UI
+  projects:
+  - recKkXobkOB85kvR3
+  - recsrajWweFWzVZkj
+- code:
+    github: prommis/idaes-flowsheet-processor-ui
+  description: Graphical UI for configuring and running any IDAES flowsheet
+  id: recaEF9qZRh2ehE59
+  name: Flowsheet Processor UI
+  projects:
+  - recKkXobkOB85kvR3
+  - recCwLQQYPhrvmypf
+  - reciZ8S487CQTeWr0
+- code: {}
+  description: Self-contained, one-click-installer graphical application for interacting
+    with PrOMMiS flowsheets
+  id: recjgxfwc9terwxSj
+  interface: Graphical (GUI)
+  name: PrOMMiS Flowsheet UI
+  projects:
+  - reciZ8S487CQTeWr0
+  - recsrajWweFWzVZkj
+- code:
+    github: watertap-org/reflo
+  description: An extension of WaterTAP that incorporates renewable energy (RE) models
+    for RE-driven desalination systems
+  id: recnqJXUTERJVjwld
+  interface: Python API
+  name: WaterTAP-REFLO
+  projects:
+  - recCwLQQYPhrvmypf
+- code:
+    github: prommis/prommis
+    pypi: prommis
+  description: PrOMMiS model library
+  id: recohrsW4jQecmeet
+  interface: Python API
+  name: PrOMMiS
+  projects:
+  - reciZ8S487CQTeWr0
+  ui_products: Flowsheet Processor
+- code:
+    github: watertap-org/watertap
+    pypi: watertap
+  description: WaterTAP core model library
+  id: recrNZ8wwJ1g7yMQU
+  interface: Python API
+  name: WaterTAP
+  projects:
+  - recCwLQQYPhrvmypf
+- code:
+    conda-forge: idaes-pse
+    github: IDAES/idaes-pse
+    pypi: idaes-pse
+  description: IDAES core Python framework and model library
+  id: recrQvKbvIiGNKdnp
+  interface: Python API
+  name: IDAES-PSE
+  projects:
+  - recKkXobkOB85kvR3
+- code:
+    github: prommis/idaes-flowsheet-processor
+    pypi: idaes-flowsheet-processor
+  description: API for exporting flowsheets to the Flowsheet Processor UI
+  id: rectTp0jw8PApuxYt
+  interface: Python API
+  name: Flowsheet Processor
+  projects:
+  - recKkXobkOB85kvR3
+  - reciZ8S487CQTeWr0
+  - recCwLQQYPhrvmypf
+- code:
+    github: CCSI-Toolset/FOQUS
+    pypi: ccsi-foqus
+  description: Framework for Optimization and Uncertainty Quantification
+  id: recvoDYtA4ujC1Wlb
+  interface: Graphical (GUI)
+  name: FOQUS
+  projects:
+  - recvKtsfJWeabhMYe
+- code:
+    conda-forge: pyomo
+    github: Pyomo/pyomo
+    pypi: pyomo
+  description: Pyomo is an open-source Python package for modeling and solving equation-oriented
+    optimization problems, enabling users to define variables, constraints, and objectives
+    and solve them using various solvers, including LP, NLP, and MILP.
+  id: recxJK4smIb60kQ0x
+  interface: Python API
+  name: Pyomo
+- code: {}
+  description: Self-contained, one-click-installer graphical application for interacting
+    with WaterTAP flowsheets
+  id: recxwPyKuhcmbdp0f
+  interface: Graphical (GUI)
+  name: WaterTAP Flowsheet UI
+  projects:
+  - recCwLQQYPhrvmypf
+  - recsrajWweFWzVZkj
+projects:
+- active: true
+  description: Water treatment Techno-economic Analysis Platform
+  development: Active
+  homepage: https://watertap.readthedocs.io
+  id: recCwLQQYPhrvmypf
+  keywords:
+  - water treatment
+  - water chemistry
+  - techno-economic analysis
+  name: WaterTAP
+  products:
+  - recrNZ8wwJ1g7yMQU
+  - recSKlnunMYP1HZIh
+  - recnqJXUTERJVjwld
+  - rectTp0jw8PApuxYt
+  - recaEF9qZRh2ehE59
+  - recxwPyKuhcmbdp0f
+- active: true
+  description: Institute for the Design of Advanced Energy Systems
+  development: Active
+  homepage: https://idaes.org
+  id: recKkXobkOB85kvR3
+  keywords:
+  - equation oriented
+  name: IDAES
+  products:
+  - recrQvKbvIiGNKdnp
+  - rectTp0jw8PApuxYt
+  - recaEF9qZRh2ehE59
+  - recThdJTFwvbxTVci
+- active: true
+  description: 'Python-based, open-source optimization modeling language '
+  development: Active
+  homepage: https://www.pyomo.org/
+  id: recPCScuWwcVicSx4
+  keywords:
+  - equation oriented
+  - optimization
+  name: Pyomo
+- active: false
+  description: Design Integration and Synthesis Platform to Advance Tightly Coupled
+    Hybrid Energy Systems
+  development: Archived
+  homepage: https://dispatches.readthedocs.io
+  id: recQEM5uwn2AtTRip
+  keywords:
+  - grid
+  - hybrid energy systems
+  name: DISPATCHES
+- active: true
+  description: Process Optimization and Modeling for Minerals Sustainability
+  development: Active
+  homepage: https://netl.doe.gov/prommis
+  id: reciZ8S487CQTeWr0
+  keywords:
+  - critical minerals
+  - rare earth elements
+  models:
+  - rec47alJNrbOVj3zI
+  - rech3LgrJem6CyA0U
+  - recJ8EdijeddiQhII
+  - recKb5keY0cxqBu0I
+  - recc2FlIaLQUySCvW
+  - recX1cQAYCtwZXQGn
+  - reckUFk4VN5NVJQ5b
+  - recAYSKRrtqdEOqIS
+  - recwSINirbXreKaBa
+  - rectWqcSeEkIO4vcR
+  name: PrOMMiS
+  products:
+  - recSKlnunMYP1HZIh
+  - rectTp0jw8PApuxYt
+  - recohrsW4jQecmeet
+  - recaEF9qZRh2ehE59
+  - recjgxfwc9terwxSj
+- active: true
+  description: Produced Water Initiative
+  development: Active
+  homepage: https://project-pareto.org
+  id: recsrajWweFWzVZkj
+  keywords:
+  - produced water
+  - optimization
+  name: PARETO
+  products:
+  - recjgxfwc9terwxSj
+  - recxwPyKuhcmbdp0f
+  - recThdJTFwvbxTVci
+- active: true
+  description: Carbon Capture Simulation for Industry Impact
+  development: Active
+  homepage: https://netl.doe.gov/carbon-management/carbon-capture/ccsi2
+  id: recvKtsfJWeabhMYe
+  keywords:
+  - carbon capture
+  - simulation
+  - modeling
+  - optimization
+  - uncertainty quantification
+  name: CCSI2
+  products:
+  - recvoDYtA4ujC1Wlb
+ui_products:
+- description: "Run and modify optimization analyses of produced water networks created\
+    \ under the Produced Water Optimization Initiative (PARETO). PARETO provides advanced\
+    \  _decision support_ \_solutions for the disposition of produced water from onshore\
+    \ oil & gas operations which are intuitive and accessible to field and system\
+    \ engineers."
+  features:
+  - Adaptable to a wide variety of technologies and geographies
+  - Future integrations with subsurface modeling, orphan wells plugging, optimization,
+    and other related solutions
+  - Cross-platform graphical UI for Windows, MacOS, and Linux, with one-click install
+  - Table-based inputs, editable in Excel or in the tool, specifying water source/sink/etc.
+    details
+  - Optimization step with "override" to take advantage of field operator knowledge
+  id: recPTtwbDsHtFP58m
+  links:
+    docs: ''
+    gh: https://www.project-pareto.org
+    screenshots: PARETO UI
+  modelcompatibility:
+  - Custom
+  name: PARETO UI
+  repository: https://www.project-pareto.org
+  screenshots:
+  - description:
+    - Input screen for PARETO optimization
+    image: pareto-input.png
+    title: Input screen
+  - description:
+    - Output screen showing the results of a PARETO optimization
+    image: pareto-output.png
+    title: Output screen
+- description: Create specific classes of superstructures, for decision support, with
+    a drag-and-drop UI.
+  features:
+  - Create superstructures composed of feedstock, processing stages, and target products
+    with a drag-and-drop UI
+  - Add units to processing stages, configuring performance and cost of each
+  - Connect processing units between adjacent stages
+  - Run optimization and determine optimal connections for cost objective
+  id: recRnL9FjR4hsa1as
+  links:
+    docs: ''
+    gh: https://github.com/prommis/prommis-ui
+    screenshots: Superstructure UI
+  modelcompatibility:
+  - Custom
+  name: Superstructure UI
+  repository: https://github.com/prommis/prommis-ui
+  screenshots:
+  - description:
+    - Superstructure (for HDD extraction) with input dialog shown for one unit
+    image: superstructure-1.png
+    title: Build superstructure
+  - description:
+    - Superstructure (for HDD extraction) results, with optimal processing selected
+      and costs (OPEX, CAPEX, net present value) shown
+    image: superstructure-2.png
+    title: Solve superstructure
+- description: Run IDAES flowsheets with no coding and view graphical results.
+  documentation: https://prommis.github.io/idaes-flowsheet-processor-ui/
+  features:
+  - Cross-platform GUI can run on Windows, MacOS, or Linux
+  - Easily configure and run an IDAES model with graphical UI
+  - Run in IDAES, WaterTAP or PrOMMiS mode, which loads default flowsheets for chosen
+    project
+  - Runs the model once or in a parameter sweep
+  - Compare run results
+  - Tabular and graphical results. Export to CSV (for Excel, etc.)
+  id: recgkyR4MS4J5ow5b
+  links:
+    docs: https://prommis.github.io/idaes-flowsheet-processor-ui/
+    gh: https://github.com/prommis/idaes-flowsheet-processor-ui
+    screenshots: Flowsheet Processor
+  modelcompatibility:
+  - IDAES
+  name: Flowsheet Processor
+  repository: https://github.com/prommis/idaes-flowsheet-processor-ui
+  screenshots:
+  - description:
+    - Set and fix/unfix variables
+    - Set variable ranges for sensitivity analyses
+    - Choose single run or sensitivity analysis
+    - Save/load input values
+    - Run the optimization
+    image: idaesfp-input.png
+    title: Input
+  - description:
+    - View single result
+    - View and compare outputs from different runs
+    - Download values in CSV format
+    image: idaesfp-output.png
+    title: Output
+- description: Visualize IDAES flowsheets and run diagnostics interactively.
+  documentation: https://idaes-ui.readthedocs.io/en/latest/user/fv/
+  features:
+  - Cross-platform GUI can run on Windows, MacOS, or Linux
+  - Visualize arbitrary flowsheets from a script or Jupyter Notebook
+  - Flowsheet diagram can be rearranged and saved
+  - Stream table is shown automatically, and linked to streams in the diagram
+  - Diagnostics toolkit is accessible through the UI
+  id: recpsQLvvzokxNXCM
+  links:
+    docs: https://idaes-ui.readthedocs.io/en/latest/user/fv/
+    gh: https://github.com/IDAES/idaes-ui
+    screenshots: Flowsheet Visualizer
+  modelcompatibility:
+  - IDAES
+  name: Flowsheet Visualizer
+  repository: https://github.com/IDAES/idaes-ui
+  screenshots:
+  - description:
+    - Automatic diagram layout
+    - Interactively change layout and save for future viewing
+    - View stream table
+    - 'Brushing between stream table and diagram: mouse over stream in diagram highlights
+      column on stream table, and vice-versa'
+    image: idaesfv-base.png
+    title: Diagram and stream table
+  - description:
+    - Display diagnostic information
+    - Provide point and click access to complete list of diagnostic functions
+    - Show detailed diagnostics output
+    image: idaesfv-diag.png
+    title: Diagnostics
+- description: 'Quickly create visual diagrams showing the connectivity of flowsheet
+    units and streams. '
+  documentation: https://prommis.github.io/idaes-connectivity/
+  features:
+  - Python library to generate connectivity data in useful formats
+  - Run from command-line, script, or Jupyter Notebook
+  - View connectivity in text-based diagrams Mermaid or D2
+  - Add unit names, stream names, and user-defined annotations
+  - Export connectivity as a table (CSV) for re-use in other tools
+  id: recrhJBL0I95RtMKW
+  links:
+    docs: https://prommis.github.io/idaes-connectivity/
+    gh: https://github.com/prommis/idaes-connectivity
+    screenshots: Flowsheet Connectivity
+  modelcompatibility:
+  - Pyomo
+  - IDAES
+  name: Flowsheet Connectivity
+  repository: https://github.com/prommis/idaes-connectivity
+  screenshots:
+  - description:
+    - Run the `idaes-conn` command line tool with a Python module
+    - 'For example: `idaes-conn example.py --to mermaid --labels`'
+    - Invoke the `build()` function to build the model
+    - Output will be translated to a Mermaid diagram
+    image: example_mermaid.png
+    title: Run the tool

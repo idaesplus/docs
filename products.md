@@ -41,10 +41,6 @@ title: IDAES+ Software Products
                     columns: [
                         { title: "Name", data: "name"},
                         {
-                            title: "Description",
-                            data: "description",
-                        },
-                        {
                           title: "Code",
                           data: "code",
                           render: function (data, type, row, meta) {
@@ -60,6 +56,10 @@ title: IDAES+ Software Products
                             }
                             return `<span>${items.join("")}</span>`;
                           }
+                        },
+                        {
+                            title: "Description",
+                            data: "description",
                         }
                     ]
                 });

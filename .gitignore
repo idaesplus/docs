@@ -25,3 +25,9 @@ conf.py.bak
 
 # Tag files
 tags
+
+# Project-specific files
+cache.json
+env
+*-checkpoint.ipynb
+*-checkpoint.yaml
