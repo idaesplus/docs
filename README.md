@@ -1,3 +1,5 @@
+[![Documentation Status](https://app.readthedocs.org/projects/idaesplus/badge/?version=latest)]([https://idaesplus-docs.readthedocs.io/en/latest/?badge=latest)
+
 # IDAES+ Documentation
 
 This repository has the source code for the IDAES+ documentation,
