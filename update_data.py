@@ -159,7 +159,9 @@ class IdaesplusAirtable:
             # delete dumb fields
             del fields["attachment_summary"]
             # make list out of features
-            fields["features"] = [s.strip() for s in fields["features"].split(";")]
+            fields["features"] = [
+                s.strip().replace("\n", " ") for s in fields["features"].split(";")
+            ]
             # add screenshot info
             fields["screenshots"] = cls.ui_screenshots(fields["name"])
             # build combined 'links' dict

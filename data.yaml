@@ -2932,8 +2932,8 @@ ui_products:
     \ engineers."
   features:
   - Adaptable to a wide variety of technologies and geographies
-  - Future integrations with subsurface modeling, orphan wells plugging
-  - optimization, and other related solutions
+  - Future integrations with subsurface modeling, orphan wells plugging, optimization,
+    and other related solutions
   - Cross-platform graphical UI for Windows, MacOS, and Linux, with one-click install
   - Table-based inputs, editable in Excel or in the tool, specifying water source/sink/etc.
     details

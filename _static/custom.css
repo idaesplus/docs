@@ -93,6 +93,10 @@ table.dataTable.display tbody tr.even, table.dataTable.display tbody tr:nth-chil
   padding: 0;
 }
 
+/* screenshot */
+img.idaesplus-screenshot {
+  width: 40px;
+}
 /* screenshot details */
 .idaesplus-screenshot-details {
   div {

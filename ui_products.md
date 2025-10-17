@@ -35,7 +35,7 @@ User interfaces for IDAES+ models.
                           render: (data) => (data ? 
                             (data.gh ? `<a href="${data.gh}"><img src="_static/img/github.svg" width=20px /></a>` : "") + "&nbsp;" + 
                             (data.docs ? `<a href="${data.docs}"><img src="_static/img/docs.svg" width=20px /></a>` : "") : "") + "&nbsp;" +
-                            (data.screenshots ? `<img name="${data.screenshots}" ` + 'class="idaesplus-screenshot" src="_static/img/screenshot.svg" width=20px />' : "")
+                            (data.screenshots ? `<img name="${data.screenshots}" ` + 'class="idaesplus-screenshot" src="_static/img/screenshot.svg" />' : "")
                         },
                         {
                             title: "Description",
@@ -68,7 +68,7 @@ User interfaces for IDAES+ models.
                       "</div>"
                     );
                     const sectionList = sections.join("\n");
-                    dialog.innerHTML = `<div class="idaesplus-screenshot-details"><h1>${product.name} screenshots</h1><ul>${sectionList}</ul></div>`;
+                    dialog.innerHTML = `<div class="idaesplus-screenshot-details"><h1>${product.name} screenshots</h1>${sectionList}</div>`;
                     dialog.showModal();
                   });
                 });
