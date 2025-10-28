@@ -1,4 +1,4 @@
-[![Documentation Status](https://app.readthedocs.org/projects/idaesplus/badge/?version=latest)](https://idaesplus-docs.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://app.readthedocs.org/projects/idaesplus/badge/?version=latest)](https://idaesplus.readthedocs.io/latest)
 
 # IDAES+ Documentation
 
