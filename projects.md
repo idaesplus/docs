@@ -17,8 +17,6 @@ title: IDAES+ Projects
         <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
         <script>
             $(document).ready(function () {
-                // hack to make width match window
-                // $('.wy-nav-content')[0].style['max-width'] = 'none';
                 var data = {{ data.projects | tojson }};
                 $('#idaesplus-projects').DataTable({
                     data: data,
@@ -26,7 +24,7 @@ title: IDAES+ Projects
                         { title: "Name", data: "name"},
                         {
                           title: "Website",
-                          data: "website",
+                          data: "homepage",
                           render: function (data, type, row, meta) {
                             return `<a href="${data}" target="_blank">🔗</a>`
                           }
