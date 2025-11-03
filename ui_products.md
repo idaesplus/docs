@@ -68,7 +68,16 @@ User interfaces for IDAES+ models.
                       "</div>"
                     );
                     const sectionList = sections.join("\n");
-                    dialog.innerHTML = `<div class="idaesplus-screenshot-details"><h1>${product.name} screenshots</h1>${sectionList}</div>`;
+
+                    // Populate dialog contents
+                    dialog.innerHTML = `
+                    <span id='idaesplus-modal-close'>CLOSE</span>
+                    <div class="idaesplus-screenshot-details"><h1>${product.name} screenshots</h1>${sectionList}</div>`;
+
+                    // Close dialog when close button clicked
+                    document.getElementById("idaesplus-modal-close").
+                      addEventListener("click", (e) => dialog.close());
+
                     dialog.showModal();
                   });
                 });

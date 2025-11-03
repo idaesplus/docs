@@ -117,3 +117,18 @@ img.idaesplus-screenshot {
     max-height: 800px;
   }
 }
+
+/* popup dialog, e.g. for UI screenshots */
+#idaesplus-modal-close {
+  font-family: 'Arial';
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  font-size: 16pt;
+  background-color: rgba(41, 128, 185, 1);
+  padding: 5px;
+  margin: 5px;
+  border: 2px solid white;
+  cursor: pointer;
+  color: white;
+}
