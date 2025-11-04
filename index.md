@@ -1,7 +1,8 @@
 # IDAES+ documentation
 
-This is the unified documentation website for the IDAES+ projects.  
-Click on one of the pages below to browse, or use the search function  
+This is the unified documentation website for the IDAES+ projects.
+
+Click on one of the pages below to browse, or use the **search** function  
 to search the combined documentation for the IDAES+ projects.
 
 ```{toctree}
@@ -17,9 +18,9 @@ to search the combined documentation for the IDAES+ projects.
 ## IDAES+ Project Timeline
 
 The IDAES+ projects (except Pyomo, which was released in 2008) began in 2010 with the  
-Carbon Capture Simulation Institute. The Python platform was begun in 2015,  
-and since then projects have built on this platform to address specific application  
-challenges in areas ranging from water and grid expansion planning to critical minerals.
+Carbon Capture Simulation Institute. The Python platform was begun in 2015, and since then 
+projects have built on this platform to address specific application  challenges in areas 
+ranging from water and grid expansion planning to critical minerals.
 
 ```{image} _static/img/idaesplus_timeline.png
 :alt: IDAES+ Project Timeline
