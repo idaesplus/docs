@@ -2879,17 +2879,8 @@ projects:
   keywords:
   - critical minerals
   - rare earth elements
-  models:
-  - rec47alJNrbOVj3zI
-  - rech3LgrJem6CyA0U
-  - recJ8EdijeddiQhII
-  - recKb5keY0cxqBu0I
-  - recc2FlIaLQUySCvW
-  - recX1cQAYCtwZXQGn
-  - reckUFk4VN5NVJQ5b
-  - recAYSKRrtqdEOqIS
-  - recwSINirbXreKaBa
-  - rectWqcSeEkIO4vcR
+  models: Evaporation pond, Leaching, Feed roaster, Oxalate roaster, Solvent extraction,
+    Precipitate, Crusher, Nanofiltration, Diafiltration, REE processing plant
   name: PrOMMiS
   products:
   - recSKlnunMYP1HZIh
@@ -2983,6 +2974,28 @@ ui_products:
       and costs (OPEX, CAPEX, net present value) shown
     image: superstructure-2.png
     title: Solve superstructure
+- description: Enabling advanced Process Systems Engineering (PSE) capabilities to
+    be integrated with commercial process simulation software.
+  documentation: https://foqus.readthedocs.io/
+  features:
+  - Cross-platform desktop UI (PyQT)
+  - Integration of models from process simulators (SimSinter)
+  - Derivative-free optimization (DFO) with Turbine
+  - Algebraic surrogate models to support large-scale deterministic optimization
+  - Uncertainty Quantification (UQ)
+  - Optimization Under Uncertainty (OUU) for scenario-based optimization
+  - Sequential Design of Experiments (SDoE)
+  id: recUIMiwO6x7JMpYs
+  links:
+    docs: https://foqus.readthedocs.io/
+    gh: https://github.com/CCSI-Toolset/FOQUS
+    screenshots: ''
+  modelcompatibility:
+  - Custom
+  - Pyomo
+  name: FOQUS
+  repository: https://github.com/CCSI-Toolset/FOQUS
+  screenshots: {}
 - description: Run IDAES flowsheets with no coding and view graphical results.
   documentation: https://prommis.github.io/idaes-flowsheet-processor-ui/
   features:
