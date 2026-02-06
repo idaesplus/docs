@@ -122,6 +122,8 @@ class IdaesplusAirtable:
                 names, repos = f"{k}s", f"{k}_repositories"
                 if names not in fields:
                     continue
+                if not fields[names].strip():
+                    continue # empty
                 if repos not in fields:
                     raise KeyError(
                         f"Found {names} but missing {repos} in {fields['name']}"
@@ -138,9 +140,13 @@ class IdaesplusAirtable:
                             f"Bad project name '{proj}' for '{fields['name']}' in {k}"
                         )
                 if len(url_list) != len(name_list):
-                    raise ValueError(
-                        f"Name/repo list mismatch for {k} in {fields['name']}: {len(name_list)} names != {len(url_list)} urls"
-                    )
+                    if len(url_list) == 1 and len(name_list) > 1:
+                        # if one url, use for all
+                        url_list = url_list + [url_list[0]] * (len(name_list) - 1)
+                    else:
+                        raise ValueError(
+                            f"Name/repo list mismatch for {k} in {fields['name']}: {len(name_list)} names != {len(url_list)} urls"
+                        )
                 # create dict combining the information
                 fields[f"{k}_data"] = {
                     name: url_list[i] for i, name in enumerate(name_list)
