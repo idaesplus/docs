@@ -26,7 +26,7 @@ _log.addHandler(_h)
 
 
 class IdaesplusTables:
-    table_names = ("projects", "products", "models", "ui_products")
+    table_names = ("products", "models", "ui_products")
     screenshots = None
     sshot_path = Path(__file__).parent / "screenshots.yaml"
     data_path = Path(__file__).parent / "data"

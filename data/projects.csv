@@ -1,8 +1,0 @@
-﻿Name,Description,Notes,Keywords,products,Homepage,Development
-CCSI2,Carbon Capture Simulation for Industry Impact,,"carbon capture,simulation,modeling,optimization,uncertainty quantification",FOQUS,https://netl.doe.gov/carbon-management/carbon-capture/ccsi2,Active
-IDAES,Institute for the Design of Advanced Energy Systems,,equation oriented,"IDAES-PSE,Flowsheet Processor,Flowsheet Processor UI,IDAES Flowsheet UI",https://idaes.org,Active
-PARETO,Produced Water Initiative,,"produced water,optimization","PrOMMiS Flowsheet UI,WaterTAP Flowsheet UI,IDAES Flowsheet UI",https://project-pareto.org,Active
-PrOMMiS,Process Optimization and Modeling for Minerals Sustainability,,"critical minerals,rare earth elements","Parameter Sweep,Flowsheet Processor,PrOMMiS,Flowsheet Processor UI,PrOMMiS Flowsheet UI",https://netl.doe.gov/prommis,Active
-Pyomo,"Python-based, open-source optimization modeling language ",,"equation oriented,optimization",,https://www.pyomo.org/,Active
-WaterTAP,Water treatment Techno-economic Analysis Platform,,"water treatment,water chemistry,techno-economic analysis","WaterTAP,Parameter Sweep,WaterTAP-REFLO,Flowsheet Processor,Flowsheet Processor UI,WaterTAP Flowsheet UI",https://watertap.readthedocs.io,Active
-DISPATCHES,Design Integration and Synthesis Platform to Advance Tightly Coupled Hybrid Energy Systems,,"grid,hybrid energy systems",,https://dispatches.readthedocs.io,Archived
