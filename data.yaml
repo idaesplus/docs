@@ -6176,7 +6176,8 @@ ui_products:
     docs: https://prommis.github.io/idaes-flowsheet-processor-ui/
     gh: https://github.com/prommis/idaes-flowsheet-processor-ui
     screenshots: Flowsheet Processor
-  modelcompatibility: IDAES
+  modelcompatibility:
+  - IDAES
   name: Flowsheet Processor
   repository: https://github.com/prommis/idaes-flowsheet-processor-ui
   screenshots:
@@ -6206,7 +6207,8 @@ ui_products:
     docs: https://idaes-ui.readthedocs.io/en/latest/user/fv/
     gh: https://github.com/IDAES/idaes-ui
     screenshots: Flowsheet Visualizer
-  modelcompatibility: IDAES
+  modelcompatibility:
+  - IDAES
   name: Flowsheet Visualizer
   repository: https://github.com/IDAES/idaes-ui
   screenshots:
@@ -6237,7 +6239,9 @@ ui_products:
     docs: https://prommis.github.io/idaes-connectivity/
     gh: https://github.com/prommis/idaes-connectivity
     screenshots: Flowsheet Connectivity
-  modelcompatibility: Pyomo,IDAES
+  modelcompatibility:
+  - Pyomo
+  - IDAES
   name: Flowsheet Connectivity
   repository: https://github.com/prommis/idaes-connectivity
   screenshots:
@@ -6261,7 +6265,8 @@ ui_products:
     docs: ''
     gh: https://github.com/prommis/prommis-ui
     screenshots: Superstructure UI
-  modelcompatibility: Custom
+  modelcompatibility:
+  - Custom
   name: Superstructure UI
   repository: https://github.com/prommis/prommis-ui
   screenshots:
@@ -6292,7 +6297,8 @@ ui_products:
     docs: ''
     gh: https://www.project-pareto.org
     screenshots: PARETO UI
-  modelcompatibility: Custom
+  modelcompatibility:
+  - Custom
   name: PARETO UI
   repository: https://www.project-pareto.org
   screenshots:
@@ -6319,7 +6325,9 @@ ui_products:
     docs: https://foqus.readthedocs.io/
     gh: https://github.com/CCSI-Toolset/FOQUS
     screenshots: ''
-  modelcompatibility: Custom,Pyomo
+  modelcompatibility:
+  - Custom
+  - Pyomo
   name: FOQUS
   repository: https://github.com/CCSI-Toolset/FOQUS
   screenshots: {}

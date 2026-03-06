@@ -168,6 +168,10 @@ class IdaesplusTables:
         fields["features"] = [
             s.strip().replace("\n", " ") for s in fields["features"].split(";")
         ]
+        # make list out of model compatibility
+        fields["modelcompatibility"] = [
+            x.strip() for x in fields["modelcompatibility"].split(",")
+        ]
         # add screenshot info
         fields["screenshots"] = self.ui_screenshots(fields["name"])
         # build combined 'links' dict
