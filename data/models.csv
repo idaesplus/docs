@@ -1,0 +1,1191 @@
+﻿Name,Project,Description,Flowsheet module,Unit models,Unit model repositories,"Inherited model (name, unit model)",Inherited model repository,Control volumes,Control volume repositories,Property packages,Property package repositories,Reaction packages,Reaction package repositories,Configurations,Specifications for operating conditions,Mandatory config options
+Activity coefficient model,IDAES,NRTL and Wilson activity coefficient methods,,,,,,,,,idaes/models/properties/activity_coeff_models/activity_coeff_prop_pack.py,,,,,
+Activity coefficient model: benzene-toluene-xylene VLE,IDAES,"Example property package for the VLE calculations for a Benzene-Toluene-o-Xylene
+system. If using the activity coefficient models (NRTL or Wilson), the user is
+expected to provide the parameters necessary for these models. ",,,,,,,,,idaes/models/properties/activity_coeff_models/BTX_activity_coeff_VLE.py,,,,,
+Activity coefficient model: methane combustion,IDAES,"Property package for the VLE calculations for methane combustion.
+system.",,,,,,,,,idaes/models/properties/activity_coeff_models/methane_combustion_ideal.py,,,,,
+ADM1 to ASM1 Translator,WaterTAP,,,Translator_ADM1_ASM1,watertap/unit_models/translators/translator_adm1_asm1.py,Translator,idaes/models/unit_models/translator.py,,,"ADM1ParameterBlock
+ASM1ParameterBlock
+(Liq phase)","watertap/property_models/unit_specific/activated_sludge/adm1_properties.py
+watertap/property_models/unit_specific/activated_sludge/asm1_properties.py",ADM1ReactionParameterBlock,watertap/property_models/unit_specific/activated_sludge/adm1_reactions.py,"outlet_state_defined
+has_phase_equilibrium
+inlet_property_package
+inlet_property_package_args
+outlet_property_package
+outlet_property_package_args
+reaction_package
+reaction_package_args","Inlet feed state variables (i.e., temperature, pressure, volumetric flowrate, solute compositions, cations, anions).",
+ADM1 to ASM2d Translator,WaterTAP,,,Translator_ADM1_ASM2D,watertap/unit_models/translators/translator_adm1_asm2d.py,Translator,idaes/models/unit_models/translator.py,,,"ModifiedADM1ParameterBlock
+ModifiedASM2dParameterBlock","watertap/property_models/unit_specific/activated_sludge/modified_adm1_properties.py
+watertap/property_models/unit_specific/activated_sludge/modified_asm2d_properties.py","ModifiedADM1ReactionParameterBlock
+ModifiedASM2dReactionParameterBlock","watertap/property_models/unit_specific/activated_sludge/modified_adm1_reactions.py
+watertap/property_models/unit_specific/activated_sludge/modified_asm2d_reactions.py","outlet_state_defined
+has_phase_equilibrium
+inlet_property_package
+inlet_property_package_args
+outlet_property_package
+outlet_property_package_args
+inlet_reaction_package
+inlet_reaction_package_args
+outlet_reaction_package
+outlet_reaction_package_args","Inlet feed state variables (i.e., temperature, pressure, volumetric flowrate, solute compositions).",
+Aeration Basin (ZO),WaterTAP,,,AerationBasinZO,watertap/unit_models/zero_order/aeration_basin_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Aeration Tank,WaterTAP,,,AerationTank,watertap/unit_models/aeration_tank.py,"CSTR Injection, CSTR_Injection",watertap/unit_models/cstr_injection.py,,,"ASM1ParameterBlock
+ASM2dParameterBlock
+ModifiedASM2dParameterBlock
+ADM1ParameterBlock
+(Single Liq phase)","watertap/property_models/unit_specific/activated_sludge/asm1_properties.py;
+watertap/property_models/unit_specific/activated_sludge/asm2d_properties.py;
+watertap/property_models/unit_specific/activated_sludge/modified_asm2d_properties.py;
+watertap/property_models/unit_specific/activated_sludge/adm1_properties.py","ASM1ReactionParameterBlock;
+ASM2dReactionParameterBlock;
+ModifiedASM2dReactionParameterBlock;
+ADM1ReactionParameterBlock","watertap/property_models/unit_specific/activated_sludge/asm1_reactions.py
+watertap/property_models/unit_specific/activated_sludge/asm2d_reactions.py
+watertap/property_models/unit_specific/activated_sludge/modified_asm2d_reactions.py;
+watertap/property_models/unit_specific/activated_sludge/adm1_reactions.py","material_balance_type
+energy_balance_type
+momentum_balance_type
+has_heat_transfer
+has_pressure_change
+has_equilibrium_reactions
+has_phase_equilibrium
+has_heat_of_reaction
+electricity_consumption
+has_aeration","Inlet feed state variables (i.e. temperature, pressure, component flowrates), volume or hydraulic retention time, injection rates for all components, lumped mass transfer coefficient for oxygen*, dissolved oxygen concentration at equilibrium*, if heat transfer is included: heat duty, if pressure change is included: change in pressure.
+*These degrees of freedom should only be included if the oxygen injection rate is not specified and needs to be calculated.",
+Air Flotation (ZO),WaterTAP,,,AirFlotationZO,watertap/unit_models/zero_order/air_flotation_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+"Air separation equilibrium, Peng-Robinson",IDAES,Air separation phase equilibrium package using Peng-Robinson EoS.,,,,,,,,,idaes/models/properties/modular_properties/examples/ASU_PR.py,,,,,
+Anaerobic Digester,WaterTAP,,,AD,watertap/unit_models/anaerobic_digester.py,,,,,"ADM1ParameterBlock (Liq phase);
+ADM1_vaporParameterBlock (Vap phase)","watertap/property_models/unit_specific/anaerobic_digestion/adm1_properties.py;
+watertap/property_models/unit_specific/anaerobic_digestion/adm1_properties_vapor.py",ADM1ReactionParameterBlock,watertap/property_models/unit_specific/anaerobic_digestion/adm1_reactions.py,"material_balance_type
+energy_balance_type
+momentum_balance_type
+has_heat_transfer
+has_pressure_change
+has_equilibrium_reactions
+has_phase_equilibrium
+has_heat_of_reaction
+liquid_property_package
+liquid_property_package_args
+vapor_property_package
+vapor_property_package_args
+reaction_package
+reaction_package_args","Inlet feed state variables (temperature, pressure, component flowrates), cation concentration, anion concentration, liquid volume, vapor volume, liquid outlet temperature.","dynamic
+has_holdup
+property_package
+property_package_args"
+Anaerobic Digestion (ZO),WaterTAP,,,AnaerobicDigestionOxidationZO,watertap/unit_models/zero_order/anaerobic_digestion_oxidation_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Anaerobic Digestion Reactive (ZO),WaterTAP,,,AnaerobicDigestionReactiveZO,watertap/unit_models/zero_order/anaerobic_digestion_reactive_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+ASM1 to ADM1 Translator,WaterTAP,,,Translator_ASM1_ADM1,watertap/unit_models/translators/translator_asm1_adm1.py,Translator,idaes/models/unit_models/translator.py,,,"ASM1ParameterBlock
+ADM1ParameterBlock
+(Liq phase)","watertap/property_models/unit_specific/activated_sludge/asm1_properties.py
+watertap/property_models/unit_specific/activated_sludge/adm1_properties.py",ADM1ReactionParameterBlock,watertap/property_models/unit_specific/activated_sludge/adm1_reactions.py,"outlet_state_defined
+has_phase_equilibrium
+inlet_property_package
+inlet_property_package_args
+outlet_property_package
+outlet_property_package_args
+reaction_package
+reaction_package_args","Inlet feed state variables (i.e., temperature, pressure, volumetric flowrate, solute compositions, cations, anions).",
+ASM2d to ADM1 Translator,WaterTAP,,,Translator_ASM2d_ADM1,watertap/unit_models/translators/translator_asm2d_adm1.py,Translator,idaes/models/unit_models/translator.py,,,"ModifiedADM1ParameterBlock
+ModifiedASM2dParameterBlock","watertap/property_models/unit_specific/activated_sludge/modified_adm1_properties.py
+watertap/property_models/unit_specific/activated_sludge/modified_asm2d_properties.py","ModifiedADM1ReactionParameterBlock;
+ModifiedASM2dReactionParameterBlock","watertap/property_models/unit_specific/activated_sludge/modified_adm1_reactions.py;
+watertap/property_models/unit_specific/activated_sludge/modified_asm2d_reactions.py","outlet_state_defined
+has_phase_equilibrium
+inlet_property_package
+inlet_property_package_args
+outlet_property_package
+outlet_property_package_args
+bio_P
+inlet_reaction_package
+inlet_reaction_package_args
+outlet_reaction_package
+outlet_reaction_package_args","Inlet feed state variables (i.e., temperature, pressure, volumetric flowrate, solute compositions).",
+Autothermal Hydrothermal Liquefaction (ZO),WaterTAP,,,ATHTLZO,watertap/unit_models/zero_order/autothermal_hydrothermal_liquefaction_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Backwash Solids Handling (ZO),WaterTAP,,,BackwashSolidsHandlingZO,watertap/unit_models/zero_order/backwash_solids_handling_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+"Benzene-toluene equilibrium, ideal",IDAES,Benzene-Toluene phase equilibrium package using ideal liquid and vapor.,,,,,,,,,idaes/models/properties/modular_properties/examples/BT_ideal.py,,,,,
+"Benzene-toluene equilibrium, Peng-Robinson",IDAES,Benzene-toluene phase equilibrium package for liquid and vapor using the Peng-Robinson equation of state.,,,,,,,,,idaes/models/properties/modular_properties/examples/BT_PR.py,,,,,
+Bio Active Filtration (ZO),WaterTAP,,,BioActiveFiltrationZO,watertap/unit_models/zero_order/bio_active_filtration_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Bioreactor (ZO),WaterTAP,,,BioreactorZO,watertap/unit_models/zero_order/bioreactor_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Blending Reservoir (ZO),WaterTAP,,,BlendingReservoirZO,watertap/unit_models/zero_order/blending_reservoir_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Boron Removal,WaterTAP,,,BoronRemoval,watertap/unit_models/boron_removal.py,,,,,MCASParameterBlock (Liq phase),watertap/property_models/multicomp_aq_sol_prop_pack.py,,,"material_balance_type
+energy_balance_type
+momentum_balance_type
+is_isothermal
+chemical_mapping_data","Inlet feed state variables (i.e., temperature, pressure, component molar flowrates), caustic chemical dose rate, reactor volume.",
+Brine Concentrator (ZO),WaterTAP,,,BrineConcentratorZO,watertap/unit_models/zero_order/brine_concentrator_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Bubble and dew points,IDAES,Modular methods for calculating bubble and dew points.,,,,,,,,,idaes/models/properties/modular_properties/phase_equil/bubble_dew.py,,,,,
+Buffer Tank (ZO),WaterTAP,,,BufferTankZO,watertap/unit_models/zero_order/buffer_tank_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+CANDO-P (ZO),WaterTAP,,,CANDOP,watertap/unit_models/zero_order/CANDOP_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Cartridge Filtration (ZO),WaterTAP,,,CartridgeFiltrationZO,watertap/unit_models/zero_order/cartridge_filtration_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Centrifuge (ZO),WaterTAP,,,CentrifugeZO,watertap/unit_models/zero_order/centrifuge_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Chemical Addition (ZO),WaterTAP,,,ChemicalAdditionZO,watertap/unit_models/zero_order/chemical_addition_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Chlorination (ZO),WaterTAP,,,ChlorinationZO,watertap/unit_models/zero_order/chlorination_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Clarifier,WaterTAP,,,Clarifier,watertap/unit_models/clarifier.py,"Separator, Separator",idaes/models/unit_models/separator.py,,,ASM1ParameterBlock (Liq phase),watertap/property_models/unit_specific/activated_sludge/asm1_properties.py,,,"outlet_list
+num_outlets (not used if outlet_list arg is provided)
+split_basis
+material_balance_type
+momentum_balance_type
+has_phase_equilibrium
+energy_split_basis
+ideal_separation
+ideal_split_map
+mixed_state_block
+construct_ports","Inlet feed state variables (temperature, pressure, component flowrates), alkalinity, split fraction, surface area.
+Degrees of freedom based on the separation type chosen:
+split_basis = ‘componentFlow’, DOF = (#outlets - 1) * #components
+split_basis = ‘phaseFlow’, DOF = (#outlets - 1) * #phases
+split_basis = ‘phaseComponentFlow’ or split_basis = ‘totalFlow’, DOF = (#outlets - 1) * #components * #phases",
+Clarifier (ZO),WaterTAP,,,ClarifierZO,watertap/unit_models/zero_order/clarifier_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Cloth Media Filtration (ZO),WaterTAP,,,ClothMediaFiltration,watertap/unit_models/zero_order/cloth_media_filtration_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+CO2 Addition (ZO),WaterTAP,,,CO2AdditionZO,watertap/unit_models/zero_order/co2_addition_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+"CO2-bmimPF6 phase equilibrium, Peng-Robinson",IDAES,CO2-bmimPF6 phase equilibrium package using ideal liquid and vapor.,,,,,,,,,idaes/models/properties/modular_properties/examples/CO2_bmimPF6_PR.py,,,,,
+"CO2-H2O VLE, ideal",IDAES,"Property package for MEA Carbon Capture System Condenser. CO2-H2O VLE system, ideal VLE with non-condensables.",,,,,,,,,idaes/models/properties/modular_properties/examples/CO2_H2O_Ideal_VLE.py,,,,,
+Coagulation Flocculation (ZO),WaterTAP,,,CoagulationFlocculationZO,watertap/unit_models/zero_order/coag_and_floc_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Coagulation-Flocculation,WaterTAP,,,CoagulationFlocculation,watertap/unit_models/coag_floc_model.py,,,,,"NaClParameterBlock
+SeawaterParameterBlock
+(Liq phase)","watertap/property_models/NaCl_prop_pack.py
+watertap/property_models/seawater_prop_pack.py",,,"material_balance_type
+is_isothermal
+energy_balance_type
+momentum_balance_type
+chemical_additives","Inlet feed state variables (i.e., temperature, pressure, component mass flowrates), slope relationship between measured Turbidity and TSS, intercept relationship between measured Turbidity and TSS, turbidity measured before Jar Test, turbidity measured after Jar Test, chemical doses added during Jar Test, retention time for each rapid mixer, number of rapid mixers in series, rapid mixer velocity gradient, retention time of flocculation basin, flocculation single paddle length (from center of rotation to blade edge), flocculation single paddle width, flocculation paddle rotational speed, flocculation paddle drag coefficient, flocculation paddle velocity fraction, number of rotating paddle wheels, number of paddles per wheel",
+Cofermentation (ZO),WaterTAP,,,CofermentationZO,watertap/unit_models/zero_order/cofermentation_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Complementarity-based vapor-liquid equilibrium formulation,IDAES,"A complementarity-based vapor-liquid equilibrium formulation for equation-oriented simulation
+and optimization.",,,,,,,,,idaes/models/properties/modular_properties/phase_equil/smooth_VLE_2.py,,,,,
+Compressor,IDAES,Isentropic compressor model.,,Compressor,idaes/models/unit_models/pressure_changer.py,,,,,,,,,,,
+Constructed Wetlands (ZO),WaterTAP,,,ConstructedWetlandsZO,watertap/unit_models/zero_order/constructed_wetlands_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Continuous stirred-tank reactor,IDAES,Standard IDAES continuous stirred-tank model.,,CSTR,idaes/models/unit_models/cstr.py,,,,,SaponificationParameterBlock,idaes/models/properties/examples/saponification_thermo.py,SaponificationReactionParameterBlock,idaes/models/properties/examples/saponification_reactions.py,"material_balance_type
+energy_balance_type
+momentum_balance_type
+has_heat_transfer
+has_pressure_change
+has_equilibrium_reactions
+has_phase_equilibrium
+has_heat_of_reaction
+property_package
+property_package_args
+reaction_package
+reaction_package_args","Inlet feed state variables (molar flowrate, component concentrations, temperature, pressure), heat duty, perssure drop",
+Continuously Stirred Tank Reactor,WaterTAP,,,CSTR,watertap/unit_models/cstr.py,"CSTR, CSTR",idaes/models/unit_models/cstr.py,,,"SaponificationParameterBlock
+ASM1ParameterBlock (Liq phase)","
+idaes/models/properties/examples/saponification_thermo.py
+watertap/property_models/unit_specific/activated_sludge/asm1_properties.py","SaponificationReactionParameterBlock;
+ASM1ReactionParameterBlock","idaes/models/properties/examples/saponification_reactions.py;
+watertap/property_models/unit_specific/activated_sludge/asm1_reactions.py","material_balance_type
+energy_balance_type
+momentum_balance_type
+has_heat_transfer
+has_pressure_change
+has_equilibrium_reactions
+has_phase_equilibrium
+has_heat_of_reaction
+reaction_package
+reaction_package_args","Inlet feed state variables (i.e. temperature, pressure, component flowrates), volume or hydraulic retention time.",
+Continuously Stirred Tank Reactor with Injection,WaterTAP,,,CSTR_Injection,watertap/unit_models/cstr_injection.py,,,,,"SaponificationParameterBlock
+ASM1ParameterBlock
+ASM2dParameterBlock
+ModifiedASM2dParameterBlock
+ADM1ParameterBlock","idaes/models/properties/examples/saponification_thermo.py
+watertap/property_models/unit_specific/activated_sludge/asm1_properties.py
+watertap/property_models/unit_specific/activated_sludge/asm2d_properties.py
+watertap/property_models/unit_specific/activated_sludge/modified_asm2d_properties.py
+watertap/property_models/unit_specific/activated_sludge/adm1_properties.py","SaponificationReactionParameterBlock;
+ASM1ReactionParameterBlock;
+ASM2dReactionParameterBlock;
+ModifiedASM2dReactionParameterBlock;
+ADM1ReactionParameterBlock","idaes/models/properties/examples/saponification_reactions.py;
+watertap/property_models/unit_specific/activated_sludge/asm1_reactions.py;
+watertap/property_models/unit_specific/activated_sludge/asm2d_reactions.py;
+watertap/property_models/unit_specific/activated_sludge/modified_asm2d_reactions.py;
+watertap/property_models/unit_specific/activated_sludge/adm1_reactions.py","material_balance_type
+energy_balance_type
+momentum_balance_type
+has_heat_transfer
+has_pressure_change
+has_equilibrium_reactions
+has_phase_equilibrium
+has_heat_of_reaction
+reaction_package
+reaction_package_args
+electricity_consumption
+has_aeration","Inlet feed state variables (i.e. temperature, pressure, component flowrates), volume or hydraulic retention time, injection rates for all components, heat duty if heat transfer is included, change in pressure if pressure change is included. If aeration is included, the following degrees of freedom could replace the oxygen injection rate: lumped mass transfer coefficient for oxygen, dissolved oxygen concentration at equilibrium.",
+Controller,IDAES,PID controller model.,,,"idaes/models/control
+/controller.py",,,,,,,,,,,
+Conventional Activated Sludge (ZO),WaterTAP,,,CASZO,watertap/unit_models/zero_order/conventional_activated_sludge_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Cooling Supply (ZO),WaterTAP,,,CoolingSupplyZO,watertap/unit_models/zero_order/cooling_supply_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Cooling Tower (ZO),WaterTAP,,,CoolingTowerZO,watertap/unit_models/zero_order/cooling_tower_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Coolprop,IDAES,"Module for constructing CoolProp expressions and methods for looking up and using CoolProp parameters
+within the IDAES generic properties framework.",,,,,,,,,idaes/models/properties/modular_properties/coolprop,,,,,
+Costing,IDAES,Costing package that includes methods for capital costing of unit operations. ,,,idaes/models/costing/SSLW.py,,,,,,,,,,,
+Crusher,PrOMMiS,"The Crusher module includes power consumption for solid crushing. It is a function of particle size distribution, mass flow rate, and bond work index.",,Crusher,prommis/solid_handling/crusher,,,,,CoalRefuseParameters,prommis/solid_handling/crusher_solids_properties.py,,,,"Inlet mass flowrate and fractions, inlet particle size median and width, outlet particle size median and width",
+Crystallizer (0D),WaterTAP,,,Crystallization,watertap/unit_models/crystallizer.py,,,,,"NaClParameterBlock
+(solid-liquid-vapour mixtures)",watertap/property_models/NaCl_prop_pack.py,,,,"Inlet feed state variables (i.e. temperature, pressure, component flowrates), crystal growth rate, desired median length of solid crystals, parameter for Sounders-Brown relation, crystallization temperature. To fully specify the unit: crystallization yield, solids volumetric fraction of product slurry, magma density, solid outlet mass flow, vapour outlet mass flow",
+Cubic Equations of State,IDAES,Generic module for PR and SRK cubic equations of state,,,,,,,,,idaes/models/properties/modular_properties/eos,,,,,
+Decarbonator (ZO),WaterTAP,,,DecarbonatorZO,watertap/unit_models/zero_order/decarbonator_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Deep Well Injection (ZO),WaterTAP,,,DeepWellInjectionZO,watertap/unit_models/zero_order/deep_well_injection_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Demonstration flowsheet,IDAES,"Simple example of a flowsheet containing a Mixer, Heater and Flash unit in series.",idaes/models/flowsheets/demo_flowsheet.py,"Mixer
+Heater
+Flash",idaes/models/unit_models,,,,,BTX_activity_coeff_VLE,idaes/models/properties/activity_coeff_models/BTX_activity_coeff_VLE.py,,,,,
+Dewatering Unit,WaterTAP,,,DewateringUnit,watertap/unit_models/dewatering.py,"Separator, Separator",idaes/models/unit_models/separator.py,,,"ASM1ParameterBlock
+ASM2dParameterBlock
+ModifiedASM2dParameterBlock
+ADM1ParameterBlock
+(Single Liq phase)","watertap/property_models/unit_specific/activated_sludge/asm1_properties.py
+watertap/property_models/unit_specific/activated_sludge/asm2d_properties.py
+watertap/property_models/unit_specific/activated_sludge/modified_asm2d_properties.py
+watertap/property_models/unit_specific/activated_sludge/adm1_properties.py",,,"activated_sludge_model
+outlet_list
+num_outlets (not used if outlet_list arg is provided)
+split_basis
+material_balance_type
+momentum_balance_type
+has_phase_equilibrium
+energy_split_basis
+ideal_separation
+ideal_split_map
+mixed_state_block
+construct_ports","Inlet feed state variables (i.e. temperature, pressure, component mass compositions).",
+Diafiltration,PrOMMiS,"Diafiltration cascade flowsheet case study example for separating lithium and cobalt. This flowsheet models a specific system from literature (cascade III in Figure 2 [1]) and serves as an example of implementing a custom cost model.
+
+[1] https://pubs.acs.org/doi/full/10.1021/acssuschemeng.2c02862",prommis/nanofiltraion/diafiltration.py,MSContactor (3 units); Mixer (2 units),idaes/models/unit_models,,,,,LiCoParameters,prommis/nanofiltration/diafiltration_properties,,,,Diafiltrate feed (Mixer 2) flowrate and concentrations; Stage 3 feed florate and concentrations, Stage 3 feed florate and concentrations
+Dissolved Air Flotation (ZO),WaterTAP,,,DissolvedAirFlotationZO,watertap/unit_models/zero_order/dissolved_air_flotation_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Dual Media Filtration (ZO),WaterTAP,,,DualMediaFiltrationZO,watertap/unit_models/zero_order/dual_media_filtration_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Electrochemical Nutrient Removal (ZO),WaterTAP,,,ElectrocoagulationZO,watertap/unit_models/zero_order/electrocoagulation_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Electrocoagulation (ZO),WaterTAP,,,ElectrodialysisReversalZO,watertap/unit_models/zero_order/electrodialysis_reversal_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric
+electrode_material
+reactor_material
+overpotential_calculation",,
+Electrodialysis (0D),WaterTAP,,,Electrodialysis0D,watertap/unit_models/electrodialysis_0D.py,,,,,MCASParameterBlock (Liq phase),watertap/property_models/multicomp_aq_sol_prop_pack.py,,,"has_pressure_change
+pressure_drop_method
+friction_factor_method
+hydraulic_diameter_method
+operation_mode
+limiting_current_density_method
+limiting_current_density_data
+has_nonohmic_potential_membrane
+has_Nernst_diffusion_layer
+material_balance_type
+is_isothermal
+energy_balance_type
+momentum_balance_type","Inlet feed state variables (i.e. temperature, pressure, component molar flowrates). Water transport number, water permeability, voltage or current, electrode areal resistance, cell pair number, current utilization coefficient, spacer thickness, membrane areal resistance, cell width, cell length, thickness of ion exchange membranes, diffusivity of solute in the membrane phase, transport number of ions in the membrane phase.",
+Electrodialysis (1D),WaterTAP,,,Electrodialysis1D,watertap/unit_models/electrodialysis_1D.py,,,,,MCASParameterBlock (Liq phase),watertap/property_models/multicomp_aq_sol_prop_pack.py,,,"has_pressure_change
+pressure_drop_method
+friction_factor_method
+hydraulic_diameter_method
+operation_mode
+limiting_current_density_method
+limiting_current_density_datahas_nonohmic_potential_membrane
+has_Nernst_diffusion_layer
+material_balance_type
+is_isothermal
+energy_balance_type
+momentum_balance_type
+transformation_method
+transformation_scheme
+finite_elements
+collocation_points","Inlet feed state variables (i.e. temperature, pressure, component molar flowrates). Water transport number, water permeability, voltage or current, electrode areal resistance, cell pair number, current utilization coefficient, channel height (spacer thickness), membrane areal resistance at infinitive ion concentration, membrane areal resistance coefficient to the reciprocal of the ion concentration, spacer conductivity coefficient, cell width, cell length, thickness of ion exchange membranes, diffusivity of solute in the membrane phase, transport number of ions in the membrane phase.",
+Electrodialysis Reversal (ZO),WaterTAP,,,ElectroNPZO,watertap/unit_models/zero_order/electrochemical_nutrient_removal_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Electrodialysis w/ bipolar membranes (1D),WaterTAP,,,Electrodialysis_Bipolar_1D,watertap/unit_models/electrodialysis_bipolar_1D.py,,,,,MCASParameterBlock (Liq phase),watertap/property_models/multicomp_aq_sol_prop_pack.py,,,"has_pressure_change
+pressure_drop_method
+friction_factor_method
+hydraulic_diameter_method
+operation_mode
+limiting_current_density_method_bpm
+salt_calculation
+limiting_current_density_data_bpm
+salt_input_cem
+salt_input_aem
+limiting_potential_data
+material_balance_type
+is_isothermal
+energy_balance_type
+momentum_balance_type
+transformation_method
+transformation_scheme
+finite_elements
+terms_fE
+collocation_points","Inlet feed state variables (i.e. temperature, pressure, component molar flowrates). Water transport number, water permeability, dissociation rate constant at no electric field, relative permittivity, catalyst - CEL of the bipolar membrane, catalyst - AEL of the bipolar membrane, equilibrium constant of proton disassociation, equilibrium constant of hydroxide disassociation, ion transference number in the membrane phase, diffusivity of solute in the membrane phase, fixed salt concentration on the base and acid channel of the bipolar membrane (if no salt calculation), spacer porosity, shadow factor,  electrode areal resistance, current utilization coefficient, channel height, cell width and length, constant areal resistance of membrane at infinity-approximated electrolyte concentration, membrane areal resistance coefficient to the reciprocal of the ion concentration, thickness of ion exchange membranes, cell triplet number, spacer conductivity coefficient, potential drop across the bipolar membrane, specific area of the channel (if hydraulic diameter method is set for spacer-filled channel requiring the spacer specific area data), membrane fixed charge, voltage or current applied (for constant voltage or constant current electrical operation mode).",
+Electrolyzer,WaterTAP,,,Electrolyzer,watertap/unit_models/electrolyzer.py,,,,,MCASParameterBlock (Liq phase),watertap/property_models/multicomp_aq_sol_prop_pack.py,,,"material_balance_type
+is_isothermal
+energy_balance_type
+momentum_balance_type","Inlet state variables (i.e., temperature, pressure, component flowrates), membrane current density, anode current density, anode overpotential, cathode current density, cathode overpotential, current, current efficiency, resistance. The electrolysis reactions at the anode and cathode must be specified for their stoichiometry and electrochemical potential.",
+ElectroNP (ZO),WaterTAP,,,ElectroNPZO,watertap/unit_models/electroNP_ZO.py,"Separator, Separator",idaes/models/unit_models/separator.py,,,ModifiedASM2dParameterBlock (Liq phase),watertap/property_models/unit_specific/activated_sludge/modified_asm2d_properties.py,,,"outlet_list
+num_outlets (not used if outlet_list arg is provided)
+split_basis
+material_balance_type
+momentum_balance_type
+has_phase_equilibrium
+energy_split_basis
+ideal_separation
+ideal_split_map
+mixed_state_block
+construct_ports","Inlet state variables (i.e., temperature, pressure, volumetric flowrate), electricity intensity, dosage of magnesium chloride per phosphorus removal, inlet solute concentration.",
+Energy Recovery (ZO),WaterTAP,,,EnergyRecoveryZO,watertap/unit_models/zero_order/energy_recovery_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Energy Recovery Device,WaterTAP,,,EnergyRecoveryDevice,watertap/unit_models/pressure_changer.py,"Pump, Pump (class PumpIsothermalData)",watertap/unit_models/pressure_changer.py,,,"SeawaterParameterBlock
+MCASParameterBlock
+(Liq phase)","watertap/property_models/seawater_prop_pack.py
+watertap/property_models/multicomp_aq_sol_prop_pack.py",,,"material_balance_type
+energy_balance_type
+momentum_balance_type
+has_phase_equilibrium
+compressor
+thermodynamic_assumption
+support_isentropic_performance_curves
+isentropic_performance_curves
+isentropic_performance_curves (build_callback, build_head_expressions)
+variable_efficiency","Outlet pressure or pressure change across the inlet and outlet, energy recovery device efficiency.",
+eNRTL Activity Coefficient,IDAES,Generic model for Electrolyte Non-Random Two Liquid activity coefficient model,,,,,,,,,idaes/models/properties/modular_properties/eos,,,,,
+"eNRTL, aqueous solutions of NaCl and KCl",IDAES,Example for using the eNRTL model for aqueous solutions of NaCl and KCl.,,,,,,,,,idaes/models/properties/modular_properties/examples/enrtl_H2O_NaCl_KCl.py,,,,,
+"eNRTL, solutions of NaBr in mixed solvents",IDAES,Example of using the eNRTL model to model solutions of NaBr in mixed solvents.,,,,,,,,,idaes/models/properties/modular_properties/examples/enrtl_NaBr_mixed_solvent.py,,,,,
+Equation of State: Span-Wagner,IDAES,Span-Wager property package for CO2.,,,,,,,,SWCO2ParameterBlock,idaes/models/properties/swco2.py,,,,,
+Equilibrium reactions forms,IDAES,Methods for defining equilibrium reactions.,,,,,,,,,,,idaes/models/properties/modular_properties/reactions/equilibrium_forms.py,,,
+Equilibrium reactor,IDAES,Standard IDAES equilibrium reactor model.,,EquilibriumReactor,idaes/models/unit_models/equilibrium_reactor.py,,,,,SaponificationParameterBlock,idaes/models/properties/examples/saponification_thermo.py,SaponificationReactionParameterBlock,idaes/models/properties/examples/saponification_reactions.py,"dynamic
+has_holdup
+material_balance_type
+energy_balance_type
+momentum_balance_type
+has_rate_reactions
+has_equilibrium_reactions
+has_phase_equilibrium
+has_heat_transfer
+has_heat_of_reaction
+has_pressure_change
+property_package
+property_package_args
+reaction_package
+reaction_package_args","Inlet feed state variables (molar flowrate, component concentrations, temperature, pressure), unit volume, heat duty, perssure drop",
+Evaporation pond,PrOMMiS,"The Evaporation Pond model is a general purpose model for representing evaporation ponds (both solar and enhanced). Currently, the model only supports steady-state operation
+(although it could be easily extended to dynamics). The model also only supports material balances with equilibrium reactions, as energy and momentum balances are less meaningful given the open-air nature of these operations and the long-duration time
+constants involved.",,EvaporationPond, prommis/evaporation_pond/evaporation_pond,,,,,BrineParameters,prommis/evaporation_pond/tests/example_properties,BrineReactionParameters,prommis/evaporation_pond/tests.example_reactions,,"Inlet flowrate and concentrations, surface area, average pond depth, and evaporation rate",
+Evaporation Pond (ZO),WaterTAP,,,EvaporationPondZO,watertap/unit_models/zero_order/evaporation_pond_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Feed,IDAES,Standard IDAES Feed block.,,Feed,idaes/models/unit_models/feed.py,,,,,,,,,"dynamic
+has_holdup
+property_package  property_package_args",,
+Feed (ZO),WaterTAP,,,FeedZO,watertap/unit_models/zero_order/feed_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,,,
+Feed Flash,IDAES,Standard IDAES feed block with phase equilibrium.,,FeedFlash,idaes/models/unit_models/feed_flash.py,,,,,,,,,"dynamic
+has_holdup
+material_balance_type
+flash_type
+property_package
+property_package_args",,
+Feed roaster,PrOMMiS,"This model represents a roaster/calcination unit for Rare Earth Element (REE) feedstock, which includes rare earth minerals, gangue/impurity minerals, moisture, and combustible organic materials.",,REEFeedRoaster,prommis/roasting/ree_feed_roaster,,,,,GenericParameterBlock (gas); CoalRefuseParameters (solid).,idaes/models.properties/modular_properties/base/generic_property prommis/leaching/leach_solution_properties ,,,has_holdup;    has_heat_transfer; has_pressure_change;       ree_list,"Pressure drop, gas inlet temperature, pressure, mole flowrate, and mole fractions, gas outlet temperature, solid inlet temperature, mass flowrate, mass fractions, REE concentrations, conversion ratios of insolubale REE to dissovable REE, recovery fraction for REE and impurity", has_pressure_change
+Feed Water Tank (ZO),WaterTAP,,,FeedWaterTankZO,watertap/unit_models/zero_order/feed_water_tank_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Filter Press (ZO),WaterTAP,,,FilterPressZO,watertap/unit_models/zero_order/filter_press_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Fixed Bed (ZO),WaterTAP,,,FixedBedZO,watertap/unit_models/zero_order/fixed_bed_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Flash,IDAES,Flash unit model.,,Flash,idaes/models/unit_models/flash.py,,,,,"BTX_activity_coeff_VLE
+iapws95
+GenericParameterBlock, BT_ideal","idaes/models/properties/activity_coeff_models/BTX_activity_coeff_VLE.py
+idaes/models/properties/iapws95.py
+idaes/models/properties/modular_properties/base/generic_property.py
+idaes/models/properties/modular_properties/examples/BT_ideal.py",,,,,
+Gas Sparged Membrane (ZO),WaterTAP,,,GasSpargedMembraneZO,watertap/unit_models/zero_order/gas_sparged_membrane_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Gas viscosity at low pressures,IDAES,Gas viscosity at low pressures from Chapman Enskog theory using Lennard Jones parameters.,,,,,,,,,idaes/models/properties/modular_properties/pure/ChapmanEnskog.py,,,,,
+Generic Desalter Unit,WaterTAP,,,GenericDesalter,watertap/unit_models/generic_desalter.py,,,,,MCASParameterBlock (Liq phase),watertap/property_models/multicomp_aq_sol_prop_pack.py,,,"material_balance_type
+energy_balance_type
+momentum_balance_type
+has_pressure_change
+tracked_solids_list","Inlet state variables (i.e., temperature, pressure, component mass compositions), water recovery or solids concentration in brine* and water content of the brine*.
+*User must provide tracked solids list.",
+Generic Property Framework,IDAES,General framework for supporting modular thermophsyical property packages.,,,,,,,,,idaes/models/properties/modular_properties/base/generic_property.py,,,,,
+Generic Reaction Framework,IDAES,General framework for supporting modular reaction packages.,,,,,,,,,,,idaes/models/properties/modular_properties/base/generic_reaction.py,,,
+Generic Separator Unit,WaterTAP,,,GenericSeparation,watertap/unit_models/generic_separation.py,,,,,MCASParameterBlock (Liq phase),watertap/property_models/multicomp_aq_sol_prop_pack.py,,,"material_balance_type
+energy_balance_type
+momentum_balance_type
+has_pressure_change","Inlet state variables (i.e., temperature, pressure, component mass compositions), percent of component to remove from feed stream, amount of chemical to add for operation (additive_dose).",
+Gibbs reactor,IDAES,Standard IDAES Gibbs reactor model.,,GibbsReactor,idaes/models/unit_models/gibbs_reactor.py,,,,,"GenericParameterBlock, MethaneParameterBlock","idaes/models/properties/activity_coeff_models/methane_combustion_ideal.py
+idaes/models/properties/modular_properties/base/generic_property.py
+idaes/models_extra/power_generation/properties/natural_gas_PR.py",,,,,
+Granular Activated Carbon (GAC),WaterTAP,,,GAC,watertap/unit_models/gac.py,,,,,MCASParameterBlock (Liq phase),watertap/property_models/multicomp_aq_sol_prop_pack.py,,,"material_balance_type
+is_isothermal
+energy_balance_type
+momentum_balance_type
+film_transfer_coefficient_type
+surface_diffusion_coefficient_type
+target_species
+finite_elements_ss_approximation","Inlet state variables (i.e., temperature, pressure, component flowrates), Freundlich adsorption isotherm parameters, Stanton number equation parameters, throughput ratio equation parameters,  particle apparent density, particle diameter, empty bed contact time, bed voidage or particle bulk density, superficial velocity or bed length, effluent to inlet concentration ratio at operational time or steady state approximation of average effluent to inlet concentration ratio in operational time by trapezoid rule or bed volumes treated, surface diffusion coefficient, liquid phase film transfer coefficient.
+When setting the configuration options to calculate the surface diffusion coefficient and liquid phase film transfer coefficient: shape correction factor, particle porosity, tortuosity of the path that the adsorbate must take as compared to the radius, surface-to-pore diffusion flux ratio.",
+Granular Activated Carbon (ZO),WaterTAP,,,GACZO,watertap/unit_models/zero_order/gac_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Heat exchanger 0D,IDAES,Simple 0D heat exchanger model.,,HeatExchanger,idaes/models/unit_models/gibbs_reactor.py,,,,,,,,,,,
+Heat exchanger 1D,IDAES,Simple 1D heat exchanger model.,,HeatExchanger1D,idaes/models/unit_models/heat_exchanger_1D.py,,,,,,,,,,,
+Heat exchanger lumped capacitance,IDAES,Extension of the IDAES 0D heat exchanger model for transient simulations.,,HeatExchangerLumpedCapacitance,idaes/models/unit_models/heat_exchanger_lc.py,,,,,,,,,,,
+Heat exchanger NTU,IDAES,IDAES heat exchanger model using effectiveness-NTU method.,,HeatExchangerNTU,idaes/models/unit_models/heat_exchanger_ntu.py,,,,,,,,,,,
+Heat of reaction,IDAES,Methods for calculating heat of reaction.,,,,,,,,,,,idaes/models/properties/modular_properties/reactions/dh_rxn.py,,,
+Heater,IDAES,Simple 0D heater/cooler model.,,Heater,idaes/models/unit_models/heater.py,,,,,,,,,,,
+Helmholtz Equation of State,IDAES,General framework for Helmholtz equation of state models.,,,,,,,,,idaes/models/properties/helmholtz/helmholtz.py,,,,,
+Helmholtz Equation of State: IAPWS95,IDAES,IAPWS95 property package for water and steam.,,,,,,,,Iapws95ParameterBlock,idaes/models/properties/iapws95.py,,,,,
+Henry's Law,IDAES,Methods for calculating fugacity of Henry's Law components.,,,,,,,,,idaes/models/properties/modular_properties/phase_equil/henry.py,,,,,
+High-Rate Contact Stabilization (ZO),WaterTAP,,,HRCSZO,watertap/unit_models/zero_order/hrcs_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+"Hydrocarbon processing phase equilibrium, Peng-Robinson ",IDAES,Hydrocarbon processing phase equilibrium package using Peng-Robinson EoS.,,,,,,,,,idaes/models/properties/modular_properties/examples/HC_PR.py,,,,,
+"Hydrocarbon processing vapor phase, Peng-Robinson",IDAES,Hydrocarbon processing vapor phase package using Peng-Robinson EoS.,,,,,,,,,idaes/models/properties/modular_properties/examples/HC_PR_vap.py,,,,,
+Hydrothermal Gasification (ZO),WaterTAP,,,HTGZO,watertap/unit_models/zero_order/hydrothermal_gasification_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Ideal Gases and Liquids,IDAES,Generic module for ideal gas and liquid properties,,,,,,,,,idaes/models/properties/modular_properties/eos,,,,,
+Injection Well Disposal (ZO),WaterTAP,,,InjectionWellDisposalZO,watertap/unit_models/zero_order/injection_well_disposal_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Integrated Anaerobic Membrane Bioreactor/Microbial Electrolysis Cell (ZO),WaterTAP,,,AnaerobicMBRMECZO,watertap/unit_models/zero_order/anaerobic_mbr_mec_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Intrusion Mitigation (ZO),WaterTAP,,,IntrusionMitigationZO,watertap/unit_models/zero_order/intrusion_mitigation_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Ion Exchange (0D),WaterTAP,,,IonExchange0D,watertap/unit_models/ion_exchange_0D.py,,,,,MCASParameterBlock (Liq phase),watertap/property_models/multicomp_aq_sol_prop_pack.py,,,"material_balance_type
+energy_balance_type
+momentum_balance_type
+target_ion
+regenerant
+hazardous_waste
+isotherm","Inlet feed state variables (temperature, pressure, component molar flowrate), resin bead diameter, resin bulk density, bed porosity, service flow rate or superficial velocity through bed, number of operational columns.
+If isotherm is set to langmuir: Langmuir isotherm coefficient, resin maximum capacity, dimensionless time.
+If isotherm is set to freundlich: Freundlich isotherm exponent, bed volumes of feed at breakthru concentration, dimensionless (relative) concentration of target ion, bed volumes of feed at 50 percent breakthrough or mass transfer coefficient for Clark model (kT).",
+Ion Exchange (ZO),WaterTAP,,,IonExchangeZO,watertap/unit_models/zero_order/ion_exchange_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Iron And Manganese Removal (ZO),WaterTAP,,,IronManganeseRemovalZO,watertap/unit_models/zero_order/iron_and_manganese_removal_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Landfill (ZO),WaterTAP,,,LandfillZO,watertap/unit_models/zero_order/landfill_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Leaching,PrOMMiS,"The Leach Train unit model represents a series of leaching tanks in which a solid and liquid stream are contacted and
+undergo heterogeneous chemical reactions.",,LeachingTrain,prommis/leaching/leach_train.py,,,,,LeachSolutionParameters (liquid); CoalRefuseParameters (solid),"prommis/leaching/leach_solids_properties prommis/leaching/leach_solution_properties;
+prommis/src/prommis/solid_handling/crusher_solids_properties.py",CoalRefuseLeachingReactions,prommis/leaching/leach_reactions.py,number_of_tanks,"Liquid inlet flowrate and concentrations, solid inlet mass flowrate and fractions",
+Low pressure pure component gas thermal conductivity,IDAES,Eucken correlation to calculate low pressure pure component gas thermal conductivity.,,,,,,,,,idaes/models/properties/modular_properties/pure/Eucken.py,,,,,
+Magprex (ZO),WaterTAP,,,MagprexZO,watertap/unit_models/zero_order/magprex_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+"Mechanical Vapor Compression (MVC)
+Flowsheet",WaterTAP,,,"Feed
+Separator
+Mixer
+Product (x2; brine distillate)
+Translator
+HeatExchanger (x2; brine, distillate)
+Evaporator
+Compressor
+Condenser
+Pump (x3, feed, brine, distillate)","watertap/flowsheets/mvc/mvc_single_stage.py
+idaes/models/unit_models/feed.py
+idaes/models/unit_models/separator.py
+idaes/models/unit_models/mixer.py
+idaes/models/unit_models/product.py
+idaes/models/unit_models/translator.py
+idaes/models/unit_models/heat_exchanger.py
+watertap/unit_models/mvc/components/evaporator.py
+watertap/unit_models/mvc/components/compressor.py
+watertap/unit_models/mvc/components/complete_condenser.py
+watertap/unit_models/pressure_changer.py",,,,,"SeawaterParameterBlock (Liq phase)
+WaterParameterBlock (Vap phase)","watertap/property_models/seawater_prop_pack.py
+watertap/property_models/water_prop_pack.py",,,"Evaporator:
+property_package_feed
+property_package_args_feed
+property_package_vapor
+property_package_args_vapor
+material_balance_type
+energy_balance_type
+momentum_balance_type
+Compressor:
+material_balance_type
+energy_balance_type
+momentum_balance_type
+Condenser:
+material_balance_type
+energy_balance_type
+momentum_balance_type","Inlet feed state variables (i.e, temperature, pressure, component flowrates and mass fractions). Evaporator: 1 outlet condition (brine or vapor temperature or pressure), overall heat transfer coefficient, area for heat exchange. Compressor: pressure ratio, work (control volume variable), isentropic efficiency. Pumps: pressure change across the inlet and outlet, pump efficiency. Heat exchangers: overall heat transfer coefficient, area for heat exchange, pressure change across the inlet and outlet.",
+Media Filtration (ZO),WaterTAP,,,MediaFiltrationZO,watertap/unit_models/zero_order/media_filtration_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Membrane Aerated Biofilm Reactor (ZO),WaterTAP,,,MABRZO,watertap/unit_models/zero_order/mabr_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Membrane Bioreactor (ZO),WaterTAP,,,MBRZO,watertap/unit_models/zero_order/mbr_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Membrane Distillation (0D),WaterTAP,,,MembraneDistillation0D,watertap/unit_models/MD/membrane_distillation_0D.py,MembraneDistillationBaseData,watertap/unit_models/MD/membrane_distillation_base.py,MDChannel0DBlock,watertap/unit_models/MD/MD_channel_0D.py,"SeawaterParameterBlock
+WaterParameterBlock
+(Liq phase, vap phase)","watertap/property_models/seawater_prop_pack.py
+watertap/property_models/water_prop_pack.py",,,"material_balance_type
+energy_balance_type
+momentum_balance_type
+flow_direction
+temperature_polarization_type
+concentration_polarization_type
+mass_transfer_coefficient
+has_pressure_change
+pressure_change_type
+friction_factor
+property_package_vapor
+property_package_args_vapor
+hot_ch
+cold_ch
+gap_ch
+MD_configuration_Type","Hot channel and cold channel inlet state variables (i.e, temperature, pressure, and component flowrates), membrane permeability coefficient, membrane thickness, membrane thermal conductivity, recovery or membrane area.
+Additional degrees of freedom for: VMD (Vacuum Membrane Distillation) configuration, pressure at the cold side; GMD (Permeate Gap/Conductive Gap Membrane Distillation) configuration, gap thermal conductivity and gap thickness.
+If temperature polarization, concentration polarization, mass transfer coefficient is computed: hot channel spacer porosity, hot channel height, cold channel spacer porosity (in Direct Contact Membrane Distillation, DCMD, and GMD), cold channel height (in DCMD and GMD, membrane length or membrane width",
+Membrane Distillation (1D),WaterTAP,,,MembraneDistillation1D,watertap/unit_models/MD/membrane_distillation_1D.py,MembraneDistillationBaseData,watertap/unit_models/MD/membrane_distillation_base.py,MDChannel1DBlock,watertap/unit_models/MD/MD_channel_1D.py,"SeawaterParameterBlock
+WaterParameterBlock
+(Liq phase, vap phase)","watertap/property_models/seawater_prop_pack.py
+watertap/property_models/water_prop_pack.py",,,"material_balance_type
+energy_balance_type
+momentum_balance_type
+flow_direction
+temperature_polarization_type
+concentration_polarization_type
+mass_transfer_coefficient
+has_pressure_change
+pressure_change_type
+friction_factor
+property_package_vapor
+property_package_args_vapor
+hot_ch
+cold_ch
+gap_ch
+MD_configuration_Type
+area_definition
+transformation_method
+transformation_scheme
+finite_elements
+collocation_points","Hot channel and cold channel inlet state variables (i.e, temperature, pressure, and component flowrates), membrane permeability coefficient, membrane thickness, membrane thermal conductivity, recovery or membrane area.
+Additional degrees of freedom for: VMD (Vacuum Membrane Distillation) configuration, vacuum pressure at the cold side; GMD (Permeate Gap/Conductive Gap Membrane Distillation) configuration, gap thermal conductivity and gap thickness.
+If temperature polarization, concentration polarization, mass transfer coefficient is computed: hot channel spacer porosity, hot channel height, cold channel spacer porosity (in Direct Contact Membrane Distillation, DCMD, and GMD), cold channel height (in DCMD and GMD, membrane length or membrane width.",
+Membrane Evaporator (ZO),WaterTAP,,,MembraneEvaporator,watertap/unit_models/zero_order/membrane_evaporator_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Microbial Battery (ZO),WaterTAP,,,MicrobialBattery,watertap/unit_models/zero_order/microbial_battery_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Microfiltration (ZO),WaterTAP,,,MicroFiltrationZO,watertap/unit_models/zero_order/microfiltration_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Microscreen Filtration (ZO),WaterTAP,,,MicroscreenFiltrationZO,watertap/unit_models/zero_order/microscreen_filtration_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Mixer,IDAES,General purpose mixer block for IDAES models.,,Mixer,idaes/models/unit_models/mixer.py,,,,,,,,,,,
+Mixture thermal conductivity of a low pressure gas,IDAES,Wassiljew-Mason-Saxena rules to obtain mixture thermal conductivity of a low pressure gas from component thermal conductivities.,,,,,,,,,idaes/models/properties/modular_properties/transport_properties/thermal_conductivity_wms.py,,,,,
+Mixture viscosity of a low pressure gas,IDAES,"Wilke rules to obtain mixture viscosity of a low pressure gas from pure component
+viscosities.",,,,,,,,,idaes/models/properties/modular_properties/transport_properties/viscosity_wilke.py,,,,,
+Modular Encapsulated Two-stage Anaerobic Biological Reactor (ZO),WaterTAP,,,MetabZO,watertap/unit_models/zero_order/metab_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Multiple-stream contactor,IDAES,IDAES model for a generic multiple-stream contactor unit.,,MSContactor,idaes/models/unit_models/mscontactor.py,,,,,,,,,,,
+Municipal Drinking (ZO),WaterTAP,,,MunicipalWaterZO,watertap/unit_models/zero_order/municipal_drinking_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Municipal Wastewater Treatment Plant (ZO),WaterTAP,,,MunicipalWWTPZO,watertap/unit_models/zero_order/municipal_wwtp_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Nanofiltration,PrOMMiS,"This is an example flowsheet for the separation of lithium and magnesium ions using nanofiltration (NF). The unit model is the Donnan Steric Pore Model with Dielectric Exclusion (DSPM-DE) and the property model is the Multi-Component Aqueous Solution (MCAS) property package, both of which can be found in WaterTAP. Currently, the inlet feed is modeling the Salar de Atacama brine.
+
+The objective of the Pyomo model is to limit the amount of lithium lost in the retentate stream, with 2 degrees of freedom (pressure, area). Operating at this extreme end of the tradeoff between the selectivity and permeability, combined with the low solvent flux for this example, the magnesium rejection is low (~14%). An additional constraint is enacted on the model to limit the feed pressure to 70 bar, per typical experimental capabilities.
+
+Good references for details on the NF model, i.e., the DSPM-DE model: https://doi.org/10.1021/acs.est.2c08584 ; https://doi.org/10.1016/j.memsci.2020.118809",prommis/nanofiltration/nf_brine.py,NanofiltrationDSPMDE0D; Pump,"watertap/unit_models/nanofiltration_DSPMDE_0D;
+watertap/unit_models/pressure_changer",,,,,MCASParameterBlock,watertap/property_models/multicomp_aq_sol_prop_pack,,,,"Inlet flowrate and concentrations; pump efficiency, inlet temperature and pressure, and outlet pressure; nanofiltration recovery, spacer porosity, channel height, velocity, area, outlet pressure, spacer mixing efficiency, spacer mixing length, pore radius, membrane thickness, membrane charge density, dielectric constant ",
+Nanofiltration (0D),WaterTAP,,,Nanofiltration0D,watertap/unit_models/nanofiltration_0D.py,,,,,MCASParameterBlock (Liq phase),watertap/property_models/multicomp_aq_sol_prop_pack.py,,,"momentum_balance_type
+has_pressure_change
+energy_balance_type
+electroneutrality_ion
+passing_species_list
+default_passing_rejection
+default_excluded_rejection","Inlet feed state variables (i.e, temperature, pressure, component molar flowrates), permeate pressure, solvent recovery fraction, solute rejection fractions for all solutes except the one identified as the electroneutrality species, membrane area, retentate pressure drop",
+Nanofiltration (ZO),WaterTAP,,,NanofiltrationZO,watertap/unit_models/nanofiltration_ZO.py,,,,,MCASParameterBlock (Liq phase),watertap/property_models/multicomp_aq_sol_prop_pack.py,,,"material_balance_type
+is_isothermal
+energy_balance_type
+momentum_balance_type
+has_pressure_change","Inlet feed state variables (i.e, temperature, pressure, solvent and solute mass flowrates). Membrane's solvent volumetric flux rate, permeate pressure, membrane's solute rejection. If solutes are ionic and contain multiple ion pairs, one ion's rejection may be unfixed for electroneutrality. Another variable, such as volumetric recovery rate or membrane area, fixes the last degree of freedom.",
+Nanofiltration (ZO),WaterTAP,,,NanofiltrationZO,watertap/unit_models/zero_order/nanofiltration_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Nanofiltration- Donnan Steric Pore Model with Dielectric Exclusion (0D),WaterTAP,,,NanofiltrationDSPMDE0D,watertap/unit_models/nanofiltration_DSPMDE_0D.py,,,,,MCASParameterBlock (Liq phase),watertap/property_models/multicomp_aq_sol_prop_pack.py,,,"material_balance_type
+momentum_balance_type
+has_pressure_change
+mass_transfer_coefficient
+concentration_polarization_type","Inlet feed state variables (i.e, temperature, pressure, component molar flowrates), pore radius, membrane effective thickness, membrane charge density, dielectric constant of medium (pore), permeate pressure, spacer porosity, channel height, crossflow velocity in feed channel, membrane area, mass transfer coefficient for each ion or spacer net mixing efficiency and spacer characteristic length for calculating mass transfer coefficient with spiral wound correlation",
+Osmotically Assisted Reverse Osmosis (0D),WaterTAP,,,OsmoticallyAssistedReverseOsmosis0D,watertap/unit_models/osmotically_assisted_reverse_osmosis_0D.py,OsmoticallyAssistedReverseOsmosisBaseData,watertap/unit_models/osmotically_assisted_reverse_osmosis_base.py,MembraneChannel0DBlock,watertap/core/membrane_channel0d.py,"NaClParameterBlock
+(Liq phase)",watertap/property_models/NaCl_prop_pack.py,,,"material_balance_type
+energy_balance_type
+momentum_balance_type
+concentration_polarization_type
+mass_transfer_coefficient
+transport_model
+module_type
+has_pressure_change
+pressure_change_type
+friction_factor
+has_full_reporting","Feed-side and permeate-side inlet state variables (i.e, temperature, pressure, component mass flowrates), membrane area, membrane water permeability A, membrane salt permeability B, structural parameter (i.e., effective thickness).
+If concentration polarization effects, mass transfer coefficient, and pressure drop are calculated: feed-side and permeate-side spacer porosity, channel height, and feed-side Reynolds number or water mass recovery.
+If has_pressure_change is set to True: pressure drop.
+If concentration_polarization_type is set to ConcentrationPolarizationType.fixed: concentration polarization modulus in feed and permeate channels.
+If concentration_polarization_type is set to ConcentrationPolarizationType.calculated: mass transfer coefficient in feed and permeate channels.
+If mass_transfer_coefficient is set to MassTransferCoefficient.calculated or pressure_change_type is not set to PressureChangeType.fixed_per_stage: membrane length.
+If pressure_change_type is set to PressureChangeType.fixed_per_unit_length: Feed-side and permeate-side average pressure drop per unit length.
+If pressure_change_type is set to PressureChangeType.calculated: friction factor, feed-side and permeate-side velocity and pressure drop per unit length.",
+Osmotically Assisted Reverse Osmosis (1D),WaterTAP,,,OsmoticallyAssistedReverseOsmosis1D,watertap/unit_models/osmotically_assisted_reverse_osmosis_1D.py,OsmoticallyAssistedReverseOsmosisBaseData,watertap/unit_models/osmotically_assisted_reverse_osmosis_base.py,MembraneChannel1DBlock,watertap/core/membrane_channel1d.py,"NaClParameterBlock
+(Liq phase)",watertap/property_models/NaCl_prop_pack.py,,,"material_balance_type
+energy_balance_type
+momentum_balance_type
+concentration_polarization_type
+mass_transfer_coefficient
+transport_model
+module_type
+has_pressure_change
+pressure_change_type
+friction_factor
+area_definition
+transformation_method
+transformation_scheme
+finite_elements
+collocation_points
+has_full_reporting","Feed-side and permeate-side inlet state variables (i.e, temperature, pressure, component mass flowrates), membrane area, membrane water permeability A, membrane salt permeability B, structural parameter (i.e., effective thickness).
+If concentration polarization effects, mass transfer coefficient, and pressure drop are calculated: feed-side and permeate-side spacer porosity, channel height, and feed-side Reynolds number or water mass recovery.
+If has_pressure_change is set to True: pressure drop.
+If concentration_polarization_type is set to ConcentrationPolarizationType.fixed: concentration polarization modulus in feed and permeate channels.
+If concentration_polarization_type is set to ConcentrationPolarizationType.calculated: mass transfer coefficient in feed and permeate channels.
+If mass_transfer_coefficient is set to MassTransferCoefficient.calculated or pressure_change_type is not set to PressureChangeType.fixed_per_stage: membrane length and width.
+If pressure_change_type is set to PressureChangeType.fixed_per_unit_length: Feed-side and permeate-side average pressure drop per unit length.
+If pressure_change_type is set to PressureChangeType.calculated: friction factor, feed-side and permeate-side velocity and pressure drop per unit length.",
+Oxalate roaster,PrOMMiS,"REE Oxalate Roaster is a unit operation to convert oxalates of rare earth and gangue metal
+elements to metal oxides through thermal decomposition and oxidation. There are 18 rare earth elements
+including `Sc`, `Y`, `La`, `Ce`, `Pr`, `Nd`, `Pm`, `Sm`, `Eu`, `Gd`, `Tb`, `Dy`, `Ho`, `Er`, `Tm`, `Yb`, `Lu`,
+and `Th` in the model. The user can specify a subset of those 18 elements through configuration when creating
+the unit model. The 3 gangue elements considered in the model are `Fe`, `Al`, and `Ca`.
+
+The feed oxalate mixture stream is typically from a precipitator in an upstream process. It is assumed
+that all oxalates are in their hydrate forms. In case the anhydrous oxalate feed flow rates are specified in
+the property package of the solid feed stream, the molar flow rates are converted to the corresponding hydrate flow rates.
+The molecular formula of an oxalate hydrate can be expressed in a general form as :ce:`RE2(C2O4)3 \\cdot xH2O` where RE is
+one of the 18 rare earth elements and x is the number of water molecules associated with the hyrate. The three
+gangue oxalate hydrates considered in the model are :ce:`Fe2(C2O4)3 \\cdot 2H2O`, :ce:`Al2(C2O4)3 \\cdot H2O`, and
+:ce:`CaC2O4 \\cdot H2O`, for `Fe`, `Al`, and `Ca` elements, respectively.
+
+The feed stream contains surface moisture. The amount of surface moisture entering the reactor is specified by
+a liquid inlet that contains a fraction of the liquid outlet of the precipitator.",,REEOxalateRoaster,prommis/roasting/ree_oxalate_roaster,,,,,"GenericParameterBlock (gas);
+CoalRefuseParameters (solid);
+AqueousParameter (liquid)","idaes/models/properties/modular_properties/base/generic_property;
+prommis/leaching/leach_solution_properties;
+prommis/precipitate/precipitate_liquid_properties",,,has_holdup;     has_heat_transfer; has_pressure_change;   metal_list,"Pressure drop, gas inlet temperature, pressure, mole flowrate, and mole fractions, gas outlet temperature, solid inlet temperature and mole flowrate, liquid inlet flowrate and concentrations, recovery fraction",     has_heat_transfer
+Ozone (ZO),WaterTAP,,,OzoneZO,watertap/unit_models/zero_order/ozone_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Ozone with Advanced Oxidation Processes (ZO),WaterTAP,,,OzoneAOPZO,watertap/unit_models/zero_order/ozone_aop_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Peracetic Acid Disinfection (ZO),WaterTAP,,,PeraceticAcidDisinfection,watertap/unit_models/zero_order/peracetic_acid_disinfection_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Phase equilibrium ,IDAES,Library of common forms for phase equilibrium constraints.,,,,,,,,,idaes/models/properties/modular_properties/phase_equil/forms.py,,,,,
+Photothermal Membrane (ZO),WaterTAP,,,PhotothermalMembrane,watertap/unit_models/zero_order/photothermal_membrane_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Plug flow reactor,IDAES,Standard IDAES plug flow reactor model.,,PFR,idaes/models/unit_models/plug_flow_reactor.py,,,,,,,,,,,
+Precipitate,PrOMMiS,The Precipitator Unit Model represents an Equilibrium reactor unit model with fixed partition coefficients.,,Precipitator,prommis/precipitate/precipitator,,,,,AqueousParameter (aqueous); PrecipitateParameters (precipitate).,prommis/precipitate/precipitate_liquid_properties prommis.precipitate.precipitate_solids_properties,,,,"Aqueous inlet flowrate and concentrations, percipitate temperature",
+Pressure changer,IDAES,Standard IDAES pressure changer model.,,PressureChanger,idaes/models/unit_models/pressure_changer.py,,,,,,,,,,,
+Pressure Exchanger,WaterTAP,,,PressureExchanger,watertap/unit_models/pressure_exchanger.py,,,,,"SeawaterParameterBlock
+MCASParameterBlock
+(Liq phase)","watertap/property_models/seawater_prop_pack.py
+watertap/property_models/multicomp_aq_sol_prop_pack.py",,,"material_balance_type
+is_isothermal
+energy_balance_type
+momentum_balance_type
+has_leakage
+has_mixing
+pressure_exchange_calculation","Feed-side and brine-side state variables (i.e., temperature, pressure, volumetric flowrate, mass fraction), pressure exchanger efficiency.
+If has_mixing is set to True: volumetric mixing fraction of the brine side and feed side.
+If has_leakage is set to True: volumetric leakage fraction of the brine side to the feed side.
+If pressure_exchange_calculation configuration option is set to PressureExchangeType.high_pressure_difference: high pressure difference, low pressure difference, and the pressure exchanger efficiency is unfixed.",
+Primary Separator (ZO),WaterTAP,,,PrimarySeparatorZO,watertap/unit_models/zero_order/primary_separator_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Product,IDAES,Standard IDAES Product block.,,Product,idaes/models/unit_models/product.py,,,,,,,,,,,
+Properties interrogator,IDAES,"Tool to interrogate IDAES flowsheets and list the physical properties
+required to simulate it.",,,,,,,,PropertyInterrogatorBlock,idaes/models/properties/interrogator/properties_interrogator.py,,,,,
+Pump,WaterTAP,,,Pump,watertap/unit_models/pressure_changer.py,"Pressure changer, PressureChanger -> Pump, Pump",idaes/models/unit_models/pressure_changer.py,,,"SeawaterParameterBlock
+MCASParameterBlock
+(Liq phase)","watertap/property_models/seawater_prop_pack.py
+watertap/property_models/multicomp_aq_sol_prop_pack.py",,,"material_balance_type
+energy_balance_type
+momentum_balance_type
+has_phase_equilibrium
+compressor
+thermodynamic_assumption
+support_isentropic_performance_curves
+isentropic_performance_curves
+isentropic_performance_curves (build_callback, build_head_expressions)
+variable_efficiency
+bep_flow*
+bep_eta*
+flow_ratio*
+*When variable_efficiency is not VariableEfficiency.none","Outlet pressure or pressure change across the inlet and outlet, pump efficiency",
+Pump,IDAES,Pump model.,,Pump,idaes/models/unit_models/pressure_changer.py,,,,,,,,,,,
+Pump (ZO),WaterTAP,,,PumpZO,watertap/unit_models/zero_order/pump_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Pump Electricity (ZO),WaterTAP,,,PumpElectricityZO,watertap/unit_models/zero_order/pump_electricity_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Pure component electrolyte methods,IDAES,Method for constant relative permittivity.,,,,,,,,,idaes/models/properties/modular_properties/pure/electrolyte.py,,,,,
+Pure component gas viscosities at low pressures,IDAES,"Pure component gas viscosities at low pressures from critical properties,
+acentric factor, and dipole moment.",,,,,,,,,idaes/models/properties/modular_properties/pure/ChungPure.py,,,,,
+Pure component properties,IDAES,"Methods for calculating pure component properties from: The Properties of Gases & Liquids, 4th Edition Reid, Prausnitz and Polling, 1987, McGraw-Hill.",,,,,,,,,idaes/models/properties/modular_properties/pure/RPP4.py,,,,,
+Pure component properties,IDAES,"Methods for calculating pure component properties from: The Properties of Gases & Liquids, 3rd Edition Reid, Prausnitz and Polling, 1977, McGraw-Hill.",,,,,,,,,idaes/models/properties/modular_properties/pure/RPP3.py,,,,,
+Pure component properties,IDAES,Methods for calculating pure component properties from: Perry's Chemical Engineers' Handbook.,,,,,,,,,idaes/models/properties/modular_properties/pure/Perrys.py,,,,,
+Pure component properties,IDAES,Pure component properties as used by the NIST WebBook.,,,,,,,,,idaes/models/properties/modular_properties/pure/NIST.py,,,,,
+Pure component properties,IDAES,"Methods for calculating pure component properties from: The Properties of Gases & Liquids, 5th Edition Reid, Prausnitz and Polling, 2001, McGraw-Hill.",,,,,,,,,idaes/models/properties/modular_properties/pure/RPP5.py,,,,,
+Reaction equilibrium constants,IDAES,Methods for calculating equilibrium constants.,,,,,,,,,,,idaes/models/properties/modular_properties/reactions/equilibrium_constant.py,,,
+Reaction rate constants,IDAES,Methods for calculating rate constants.,,,,,,,,,,,idaes/models/properties/modular_properties/reactions/rate_constant.py,,,
+Reaction rates,IDAES,Methods for defining reaction rates.,,,,,,,,,,,idaes/models/properties/modular_properties/reactions/rate_forms.py,,,
+Reactions interrogator,IDAES,Tool to interrogate IDAES flowsheets and list the reaction properties required to simulate it.,,,,,,,,,,ReactionInterrogatorBlock,idaes/models/properties/interrogator/reactions_interrogator.py,,,
+Recirculating Dynamic Membrane Bioreactor (ZO),WaterTAP,,,DMBRZOO,watertap/unit_models/zero_order/dmbr_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+REE processing plant,PrOMMiS,"The University of Kentucky (UKy) rare earth element (REE) processing plant is designed to extract salable rare earth oxides from domestic U.S. coal and coal byproducts. While this implementation of the plant does not take into account
+all of the complexities and unit processes detailed in the 2019 report, it depicts the major phenomena by utilizing a series of conventional REE extraction techniques, including acid tank leaching, solvent extraction, precipitation, and product roasting.",prommis/uky/uky_flowsheet.py,LeachingTrain;  Precipitator; REEOxalateRoaster; SolventExtraction; SLSeparator; Mixer;Separator,"prommis/leaching/leach_train;
+prommis/precipitate/precipitator;
+prommis/roasting/ree_oxalate_roaster;
+prommis/solvent_extraction/solvent_extraction;
+idaes/models/unit_models/solid_liquid;
+idaes/models/unit_models/mixer;
+idaes/models/unit_models/separator",,,,,LeachSolutionParameters (liquid); CoalRefuseParameters (solid); AqueousParameter (aqueous); PrecipitateParameters (precipitate); REESolExOgParameters (organic); GenericParameterBlock (gas),"prommis/leaching/leach_solids_properties;
+prommis/leaching/leach_solution_properties;
+prommis/precipitate/precipitate_liquid_properties;
+prommis/precipitate/precipitate_solids_properties;
+prommis/solvent_extraction/ree_og_distribution;
+idaes/models/properties/modular_properties/base/generic_property",CoalRefuseLeachingReactions,prommis/leaching/leach_reactions,,"Leach liquid inlet flowrate and concentrations, leach solid inlet mass flowrateand fractions, leach volume; rougher makeup stream flowrate and concentrations; acid feeds (3) flowrate and concentrations; cleaner make-up stream flowrate and concentrations; separators split fraction; sl separators liquid recovery; precipitate temperature; roaster pressure drop, roaster gas inlet temperature, pressure, mole flowrate and fraction, roaster gas outlet temperature, roaster recovery fraction", CoalRefuseParameters (solid)
+Reverse Osmosis (0D),WaterTAP,,,ReverseOsmosis0D,watertap/unit_models/reverse_osmosis_0D.py,ReverseOsmosisBaseData,watertap/unit_models/reverse_osmosis_base.py,MembraneChannel0DBlock,watertap/core/membrane_channel0d.py,"NaClParameterBlock
+(Liq phase)",watertap/property_models/NaCl_prop_pack.py,,,"material_balance_type
+energy_balance_type
+momentum_balance_type
+concentration_polarization_type
+mass_transfer_coefficient
+transport_model
+module_type
+has_pressure_change
+pressure_change_type
+friction_factor
+has_full_reporting","Inlet feed state variables (i.e., temperature, pressure, component flowrates), membrane area, membrane water permeability A, membrane salt permeability B, and permeate pressure.
+If concentration polarization effects, mass transfer coefficient, and pressure drop are calculated: feed spacer porosity, feed channel height, and membrane length or membrane width or inlet Reynolds number.
+If has_pressure_change is set to True: pressure drop.
+If concentration_polarization_type is set to ConcentrationPolarizationType.fixed: concentration polarization modulus in feed channel.
+If concentration_polarization_type is set to ConcentrationPolarizationType.calculated: mass transfer coefficient in feed channel.
+If mass_transfer_coefficient is set to MassTransferCoefficient.calculated or pressure_change_type is set to PressureChangeType.calculated: feed channel height, hydraulic diameter, spacer porosity, Reynolds number.
+If mass_transfer_coefficient is set to MassTransferCoefficient.calculated or pressure_change_type is not set to PressureChangeType.fixed_per_stage: membrane length and width.
+If pressure_change_type is set to PressureChangeType.fixed_per_unit_length: Feed-side average pressure drop per unit length.
+If pressure_change_type is set to PressureChangeType.calculated: friction factor, feed-side velocity, and pressure drop per unit length.
+If transport_model is set to TransportModel.SKK (Speigler-Kedem-Katchalsky model): reflection coefficient, alpha.",
+Reverse Osmosis (1D),WaterTAP,,,ReverseOsmosis1D,watertap/unit_models/reverse_osmosis_1D.py,ReverseOsmosisBaseData,watertap/unit_models/reverse_osmosis_base.py,MembraneChannel0DBlock,watertap/core/membrane_channel0d.py,"NaClParameterBlock
+(Liq phase)",watertap/property_models/NaCl_prop_pack.py,,,"material_balance_type
+energy_balance_type
+momentum_balance_type
+concentration_polarization_type
+mass_transfer_coefficient
+transport_model
+module_type
+has_pressure_change
+pressure_change_type
+friction_factor
+area_definition
+transformation_method
+transformation_scheme
+finite_elements
+collocation_points
+has_full_reporting","Inlet feed state variables (i.e., temperature, pressure, component flowrates), membrane area, membrane water permeability A, membrane salt permeability B, permeate pressure, and membrane area or length or width.
+If concentration polarization effects, mass transfer coefficient, and pressure drop are calculated: feed spacer porosity, feed channel height, and membrane length or membrane width or inlet Reynolds number.
+If has_pressure_change is set to True: pressure drop.
+If concentration_polarization_type is set to ConcentrationPolarizationType.fixed: concentration polarization modulus in feed channel.
+If concentration_polarization_type is set to ConcentrationPolarizationType.calculated: mass transfer coefficient in feed channel.
+If mass_transfer_coefficient is set to MassTransferCoefficient.calculated or pressure_change_type is set to PressureChangeType.calculated: feed channel height, hydraulic diameter, spacer porosity, Reynolds number.
+If mass_transfer_coefficient is set to MassTransferCoefficient.calculated or pressure_change_type is not set to PressureChangeType.fixed_per_stage: membrane length and width.
+If pressure_change_type is set to PressureChangeType.fixed_per_unit_length: Feed-side average pressure drop per unit length.
+If pressure_change_type is set to PressureChangeType.calculated: friction factor, feed-side and permeate-side velocity and pressure drop per unit length.
+If transport_model is set to TransportModel.SKK (Speigler-Kedem-Katchalsky model): reflection coefficient, alpha.",
+Saponification reactions,IDAES,Example property package for the saponification of Ethyl Acetate with NaOH.,,,,,,,,,,SaponificationReactionParameterBlock,idaes/models/properties/examples/saponification_reactions.py,,,
+Saponification thermo,IDAES,Example property package for the saponification of Ethyl Acetate with NaOH (simple liquid phase properties).,,,,,,,,SaponificationParameterBlock,idaes/models/properties/examples/saponification_thermo.py,,,,,
+Screen (ZO),WaterTAP,,,ScreenZO,watertap/unit_models/zero_order/screen_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Seawater Onshore Intake (ZO),WaterTAP,,,SWOnshoreIntakeZO,watertap/unit_models/zero_order/sw_onshore_intake_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Secondary Wastewater Treatment Plant (ZO),WaterTAP,,,SecondaryTreatmentWWTPZO,watertap/unit_models/zero_order/secondary_treatment_wwtp_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Sedimentation (ZO),WaterTAP,,,SedimentationZO,watertap/unit_models/zero_order/sedimentation_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Separator,IDAES,General purpose separator block for IDAES models.,,Separator,idaes/models/unit_models/separator.py,,,,,,,,,,,
+Settling Pond (ZO),WaterTAP,,,SettlingPondZO,watertap/unit_models/zero_order/settling_pond_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Shell and tube heat exchanger,IDAES,1D Single pass shell and tube HX model with 0D wall conduction model.,,ShellAndTube1D,idaes/models/unit_models/shell_and_tube_1d.py,,,,,,,,,,,
+Skeleton model,IDAES,Skeleton unit model that provides users with a generic skeleton to add a custom or a surrogate unit model when control volumes are not required.,,SkeletonUnitModel,idaes/models/unit_models/skeleton_model.py,,,,,,,,,,,
+Sludge Tank (ZO),WaterTAP,,,SludgeTankZO,watertap/unit_models/zero_order/sludge_tank_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+SMP (ZO),WaterTAP,,,SMPZO,watertap/unit_models/zero_order/smp_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Solid-liquid separator,IDAES,Base model for solid-liquid separations.,,SLSeparator,"idaes/models/unit_models/solid_liquid
+/sl_separator.py",,,,,,,,,,,
+Solvent extraction,PrOMMiS,"The Solvent Extraction unit model is used to perform the solvent extraction unit operation. It represents a series of tanks, referred to as stages, through which the aqueous and organic phases are passed, and the desired components are extracted subsequently.",,SolventExtraction,prommis/solvent_extraction/solvent_extraction,,,,,LeachSolutionParameters (aqueous); REESolExOgParameters (organic).,prommis/leaching/leach_solids_properties prommis.solvent_extraction.ree_og_distribution,,,number_of_finite_elements,"Aqueous inlet flowrate and concentrations, solid inlet mass flowrate and concentrations",
+Square flash formulation,IDAES,"A smooth, square flash formulation for equation-oriented flowsheet optimization.",,,,,,,,,idaes/models/properties/modular_properties/phase_equil/smooth_VLE.py,,,,,
+State junction ,IDAES,Standard IDAES StateJunction model.,,StateJunction,idaes/models/unit_models/statejunction.py,,,,,,,,,,,
+Static Mixer (ZO),WaterTAP,,,StaticMixerZO,watertap/unit_models/zero_order/static_mixer_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Steam Jet Ejector,WaterTAP,,,SteamEjector,watertap/unit_models/steam_ejector.py,,,,,"WaterParameterBlock (Liq phase, vap phase)",watertap/property_models/water_prop_pack.py,,,"material_balance_type
+energy_balance_type
+momentum_balance_type","Inlet state variables (i.e., temperature, pressure, and component flowrates for motive steam and entrained vapor). Entrainment ratio, compression ratio.",
+Stoichiometric reactor,IDAES,Standard IDAES STOICHIOMETRIC reactor model,,StoichiometricReactor,idaes/models/unit_models/stoichiometric_reactor.py,,,,,,,,,,,
+Stoichiometric reactor,WaterTAP,,,StoichiometricReactor,watertap/unit_models/stoichiometric_reactor.py,,,,,MCASParameterBlock (Liq phase),watertap/property_models/multicomp_aq_sol_prop_pack.py,,,"material_balance_type
+energy_balance_type
+momentum_balance_type
+has_pressure_change
+reagent
+precipitate","Inlet state variables (i.e., temperature, pressure, component mass compositions). If reagents are supplied: reagent mass flow rate or reagent dose. If precipitants are supplied: precipitant mass flow rate, mass fraction of solids in precipitant (solid) waste stream.",
+Storage Tank (ZO),WaterTAP,,,StorageTankZO,watertap/unit_models/zero_order/storage_tank_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Stream scaler,IDAES,"Unit model to adjust size of streams to represent, for example, a stream being split across several identical units, which are then all modeled as a single IDAES unit.",,StreamScaler,idaes/models/unit_models/stream_scaler.py,,,,,,,,,,,
+Struvite Classifier (ZO),WaterTAP,,,StruviteClassifierZO,watertap/unit_models/zero_order/struvite_classifier_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Suboxic Activated Sludge Process (ZO),WaterTAP,,,SuboxicASMZO,watertap/unit_models/zero_order/suboxic_activated_sludge_process_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Supercritical Salt Precipitation (ZO),WaterTAP,,,SaltPrecipitationZO,watertap/unit_models/zero_order/supercritical_salt_precipitation_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Surface Discharge (ZO),WaterTAP,,,SurfaceDischarge,watertap/unit_models/zero_order/surface_discharge_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Thickener,WaterTAP,,,Thickener,watertap/unit_models/thickener.py,"Separator, Separator",idaes/models/unit_models/separator.py,,,"ASM1ParameterBlock
+ASM2dParameterBlock
+ModifiedASM2dParameterBlock
+(Single Liq phase)","watertap/property_models/unit_specific/activated_sludge/asm1_properties.py
+watertap/property_models/unit_specific/activated_sludge/asm2d_properties.py
+watertap/property_models/unit_specific/activated_sludge/modified_asm2d_properties.py",,,"outlet_list
+num_outlets (not used if outlet_list arg is provided)
+split_basis
+material_balance_type
+momentum_balance_type
+has_phase_equilibrium
+energy_split_basis
+ideal_separation
+ideal_split_map
+mixed_state_block
+construct_ports
+activated_sludge_model","Inlet feed state variables (i.e., temperature, pressure, component mass compositions, alkalinity, volumetric flowrate).",
+Thickener,IDAES,Thickener unit model.,,Thickener0D,"idaes/models/unit_models/solid_liquid
+/thickener.py",,,,,,,,,,,
+Tramp Oil Tank (ZO),WaterTAP,,,TrampOilTankZO,watertap/unit_models/zero_order/tramp_oil_tank_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Translator,IDAES,Generic template for a translator block.,,Translator,idaes/models/unit_models/translator.py,,,,,,,,,,,
+Tri Media Filtration (ZO),WaterTAP,,,TriMediaFiltrationZO,watertap/unit_models/zero_order/tri_media_filtration_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Turbine,IDAES,Isentropic turbine model.,,Turbine,idaes/models/unit_models/pressure_changer.py,,,,,,,,,,,
+Ultra Filtration (ZO),WaterTAP,,,UltraFiltrationZO,watertap/unit_models/zero_order/ultra_filtration_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Ultraviolet Advanced Oxidation Process,WaterTAP,,,Ultraviolet0D,watertap/unit_models/uv_aop.py,,,,,"NDMAParameterBlock
+MCASParameterBlock","watertap/property_models/unit_specific/NDMA_prop_pack.py
+watertap/property_models/multicomp_aq_sol_prop_pack.py",,,"material_balance_type
+energy_balance_type
+momentum_balance_type
+has_pressure_change
+uv_dose_type
+has_aop
+target_species","Inlet feed state variables (i.e., temperature, pressure, component mass flowrates).
+If the uv_dose_type configuration option is set to default UVDoseType.fixed and the has_aop configuration is set to default False (5 DOF): Inactivation rate coefficient or overall pseudo-first order rate constant; two variables out of UV dose, average intensity of UV light, exposure time of UV light; either electricity demand of components with phase or electrical efficiency; and lamp efficiency.
+Pseudo-first order rate constant for indirect photolysis of component is fixed to 0 when has_aop configuration is set to default False.
+If the uv_dose_type configuration option to UVDoseType.calculated (7 additional DOF, 12 DOF in total): UV transmittance; coefficients A, B, C , D; relative lamp output; number of banks.
+If has_aop is set to True (2 additional DOF, 7 DOF in total): second-order reaction rate constant; steady-state concentration of hydrogen peroxide.",
+UV Reactor (ZO),WaterTAP,,,UVZO,watertap/unit_models/zero_order/uv_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+UV with Advanced Oxidation Processes (ZO),WaterTAP,,,UVAOPZO,watertap/unit_models/zero_order/uv_aop_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Valve,IDAES,Standard valve models for adiabatic control valves.,,Valve,idaes/models/unit_models/valve.py,,,,,,,,,,,
+Volatile Fatty Acid (VFA) Recovery Unit (ZO),WaterTAP,,,VFARecoveryZO,watertap/unit_models/zero_order/vfa_recovery_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Walnut Shell Filter (ZO),WaterTAP,,,WalnutShellFilterZO,watertap/unit_models/zero_order/walnut_shell_filter_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Water Pumping Station (ZO),WaterTAP,,,WaterPumpingStationZO,watertap/unit_models/zero_order/water_pumping_station_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric
+fix_pump_power",,
+Well Field (ZO),WaterTAP,,,WellFieldZO,watertap/unit_models/zero_order/well_field_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
+Wind-Aided Intensified Evaporation Unit (ZO),WaterTAP,,,WAIVZO,watertap/unit_models/zero_order/waiv_zo.py,,,,,"WaterParameterBlock
+(Liq phase)",watertap/property_models/water_prop_pack.py,,,"database
+process_subtype
+isothermal
+isobaric",,
