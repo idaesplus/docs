@@ -138,14 +138,18 @@ class IdaesplusTables:
                 if len(url_list) == 1 and len(name_list) > 1:
                     # if one url, use for all
                     url_list = url_list + [url_list[0]] * (len(name_list) - 1)
-                elif self._soldier_on:
-                    shorter = min(len(url_list), len(name_list))
-                    url_list = url_list[:shorter]
-                    name_list = name_list[:shorter]
                 else:
-                    raise ValueError(
-                        f"Name/repo list mismatch for {cur_name}::{k}: {len(name_list)} names != {len(url_list)} urls.\nNAMES:\n{name_list}\nURLS:\n{url_list}"
+                    msg = (
+                        f"Name/repo list mismatch for {cur_name}::{k}: {len(name_list)} names != {len(url_list)} urls.\n" 
+                        f"  names: {name_list}\n  urls: {url_list}"
                     )
+                    if self._soldier_on:
+                        shorter = min(len(url_list), len(name_list))
+                        url_list = url_list[:shorter]
+                        name_list = name_list[:shorter]
+                        _log.warning(msg)
+                    else:
+                        raise ValueError(msg)
             # create dict combining the information
             fields[f"{k}_data"] = {
                 name: url_list[i] for i, name in enumerate(name_list)
@@ -216,7 +220,7 @@ def main():
         "-E",
         "--ignore-errors",
         action="store_true",
-        help="Ignore errors in input, continue anyways (!!)",
+        help="Ignore errors in input, continue anyways (but log them)",
     )
     p.add_argument(
         "-v", "--verbose", action="count", default=0, help="Increase log verbosity"
