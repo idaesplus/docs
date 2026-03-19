@@ -23,7 +23,7 @@ simulation.
 - IDAES: <idaes-support@lbl.gov>
 - PrOMMiS: <prommis-support@lbl.gov>
 - WaterTAP: <watertap-support@lbl.gov>
-- CCSI: ccsi-support@???
+- CCSI: <ccsi-support@acceleratecarboncapture.org>
 - PARETO: <pareto-support@lbl.gov>
 
 ## Join Our Community
