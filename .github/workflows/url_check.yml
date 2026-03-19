@@ -3,7 +3,7 @@ name: URL Validation
 on:
   push:
     branches:
-      -setup-urlchecker
+      - setup-urlchecker
   pull_request:
     branches:
       - main
