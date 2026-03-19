@@ -3,12 +3,9 @@ title: IDAES+ Projects
 ---
 # IDAES+ Projects
 
-This is the unified documentation website for the IDAES+ projects, providing a
-single entry point for the Institute for the Design of Advanced Energy Systems
-(IDAES) and related projects.
-
-Click on one of the pages below to browse, or use the **search** function to
-search the combined documentation for the IDAES+ projects.
+IDAES+ brings together a suite of open-source projects, each contributing a
+unique piece of the process modeling, simulation and advance optimization
+ecosystem.
 
 ## IDAES Integrated Platform
 
@@ -69,20 +66,6 @@ deployment of cost-effective carbon capture technologies.
 - Website: <https://netl.doe.gov/carbon-management/carbon-capture/ccsi2>
 - GitHub: <https://github.com/CCSI-Toolset>
 
-## DISPATCHES (Design Integration and Synthesis Platform to Advance Tightly Coupled Hybrid Energy Systems)
-
-Developed to support the design, optimization, and analysis of tightly coupled
-hybrid energy systems that integrate various energy generation, storage, and
-conversion technologies, DISPATCHES is an open-source computational platform
-that provides detailed dynamic models coupled with nonlinear model predictive
-control to simulate system behavior under varying market conditions.
-
-- Website: <https://idaes.org/dispatches/>
-- GitHub:
-  [github.com/gmlc-dispatches/dispatches](https://github.com/gmlc-dispatches/dispatches)
-- Documentation:
-  [dispatches.readthedocs.io](https://dispatches.readthedocs.io/)
-
 ## PARETO (Produced Water Application for Beneficial Reuse, Environmental Impact, and Treatment Optimization)
 
 PARETO is an open-source, optimization-based decision-support tool designed to
@@ -99,3 +82,46 @@ environmentally sustainable practices in produced water management.
   [github.com/project-pareto/project-pareto](https://github.com/project-pareto/project-pareto/)
 - Documentation with tutorials and examples:
   <https://pareto.readthedocs.io/en/latest/>
+  
+## Inactive project(s)
+
+## DISPATCHES (Design Integration and Synthesis Platform to Advance Tightly Coupled Hybrid Energy Systems)
+
+Developed to support the design, optimization, and analysis of tightly coupled
+hybrid energy systems that integrate various energy generation, storage, and
+conversion technologies, DISPATCHES is an open-source computational platform
+that provides detailed dynamic models coupled with nonlinear model predictive
+control to simulate system behavior under varying market conditions.
+
+- Website: <https://idaes.org/dispatches/>
+- GitHub:
+  [github.com/gmlc-dispatches/dispatches](https://github.com/gmlc-dispatches/dispatches)
+- Documentation:
+  [dispatches.readthedocs.io](https://dispatches.readthedocs.io/)
+
+## Acknowledgements
+
+**IDAES**: We graciously acknowledge support for the Institute for the Design of Advanced Energy Systems 
+(IDAES) from the U.S. Department of Energy’s Hydrocarbons and Geothermal Energy Office through the
+Simulation-based Engineering research program.
+
+**PROMMIS**: This effort was funded by the U.S. Department of Energy’s Process Optimization and Modeling 
+for Minerals Sustainability (PrOMMiS) Initiative, supported by the Department of Energy’s Hydrocarbons
+and Geothermal Energy Office.
+
+**NAWI / WaterTap**: This material is based upon work supported by the National Alliance for Water Innovation 
+(NAWI), funded by the U.S. Department of Energy, Office of Critical Minerals and Energy Innovation (CMEI),
+Industrial Technologies Office (ITO), under Funding Opportunity Announcement Number DE-FOA-0001905.
+
+**CCSI2**: We graciously acknowledge support for the Carbon Capture Simulation for Industry Impact (CCSI2) 
+project from the U.S. Department of Energy, Hydrocarbons and Geothermal Energy Office, through the 
+Point Source Carbon Capture Program.
+
+**PARETO**: We gratefully acknowledge support from the U.S. Department of Energy, Office of Hydrocarbons and
+Geothermal Energy, through the Advanced Production Technologies Program.
+
+**DISPATCHES**: This work was conducted as part of the Design Integration and Synthesis Platform to Advance 
+Tightly Coupled Hybrid Energy Systems (DISPATCHES) project through the Grid Modernization Lab Consortium
+with funding from the U.S. Department of Energy’s Office of Fossil Energy and Carbon Management,
+Office of Nuclear Energy, and Hydrogen and Fuel Cell Technology Office.
+
