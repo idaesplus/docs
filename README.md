@@ -1,4 +1,5 @@
 [![Documentation Status](https://app.readthedocs.org/projects/idaesplus/badge/?version=latest)](https://idaesplus.readthedocs.io/latest)
+[![URL Validation](https://github.com/idaesplus/docs/actions/workflows/url_check.yml/badge.svg?branch=main)](https://github.com/idaesplus/docs/actions/workflows/url_check.yml)
 
 # IDAES+ Documentation
 
