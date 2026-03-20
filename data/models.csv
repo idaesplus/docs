@@ -1,4 +1,4 @@
-﻿Name,Project,Description,Flowsheet module,Unit models,Unit model repositories,"Inherited model (name, unit model)",Inherited model repository,Control volumes,Control volume repositories,Property packages,Property package repositories,Reaction packages,Reaction package repositories,Configurations,Specifications for operating conditions,Mandatory config options
+Name,Project,Description,Flowsheet module,Unit models,Unit model repositories,"Inherited model (name, unit model)",Inherited model repository,Control volumes,Control volume repositories,Property packages,Property package repositories,Reaction packages,Reaction package repositories,Configurations,Specifications for operating conditions,Mandatory config options
 Activity coefficient model,IDAES,NRTL and Wilson activity coefficient methods,,,,,,,,,idaes/models/properties/activity_coeff_models/activity_coeff_prop_pack.py,,,,,
 Activity coefficient model: benzene-toluene-xylene VLE,IDAES,"Example property package for the VLE calculations for a Benzene-Toluene-o-Xylene
 system. If using the activity coefficient models (NRTL or Wilson), the user is
@@ -35,9 +35,9 @@ Aeration Basin (ZO),WaterTAP,,,AerationBasinZO,watertap/unit_models/zero_order/a
 process_subtype
 isothermal
 isobaric",,
-Aeration Tank,WaterTAP,,,AerationTank,watertap/unit_models/aeration_tank.py,"CSTR Injection, CSTR_Injection",watertap/unit_models/cstr_injection.py,,,"ASM1ParameterBlock
-ASM2dParameterBlock
-ModifiedASM2dParameterBlock
+Aeration Tank,WaterTAP,,,AerationTank,watertap/unit_models/aeration_tank.py,"CSTR Injection, CSTR_Injection",watertap/unit_models/cstr_injection.py,,,"ASM1ParameterBlock;
+ASM2dParameterBlock;
+ModifiedASM2dParameterBlock;
 ADM1ParameterBlock
 (Single Liq phase)","watertap/property_models/unit_specific/activated_sludge/asm1_properties.py;
 watertap/property_models/unit_specific/activated_sludge/asm2d_properties.py;
@@ -45,8 +45,8 @@ watertap/property_models/unit_specific/activated_sludge/modified_asm2d_propertie
 watertap/property_models/unit_specific/activated_sludge/adm1_properties.py","ASM1ReactionParameterBlock;
 ASM2dReactionParameterBlock;
 ModifiedASM2dReactionParameterBlock;
-ADM1ReactionParameterBlock","watertap/property_models/unit_specific/activated_sludge/asm1_reactions.py
-watertap/property_models/unit_specific/activated_sludge/asm2d_reactions.py
+ADM1ReactionParameterBlock","watertap/property_models/unit_specific/activated_sludge/asm1_reactions.py;
+watertap/property_models/unit_specific/activated_sludge/asm2d_reactions.py;
 watertap/property_models/unit_specific/activated_sludge/modified_asm2d_reactions.py;
 watertap/property_models/unit_specific/activated_sludge/adm1_reactions.py","material_balance_type
 energy_balance_type

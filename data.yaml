@@ -176,7 +176,10 @@ models:
   project: WaterTAP
   property_package: ''
   property_package_data:
-    ASM1ParameterBlock ASM2dParameterBlock ModifiedASM2dParameterBlock ADM1ParameterBlock (Single Liq phase): https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/activated_sludge/asm1_properties.py
+    ADM1ParameterBlock (Single Liq phase): https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/activated_sludge/adm1_properties.py
+    ASM1ParameterBlock: https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/activated_sludge/asm1_properties.py
+    ASM2dParameterBlock: https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/activated_sludge/asm2d_properties.py
+    ModifiedASM2dParameterBlock: https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/activated_sludge/modified_asm2d_properties.py
   property_package_repositories: 'watertap/property_models/unit_specific/activated_sludge/asm1_properties.py;
 
     watertap/property_models/unit_specific/activated_sludge/asm2d_properties.py;
@@ -184,23 +187,24 @@ models:
     watertap/property_models/unit_specific/activated_sludge/modified_asm2d_properties.py;
 
     watertap/property_models/unit_specific/activated_sludge/adm1_properties.py'
-  property_packages: 'ASM1ParameterBlock
+  property_packages: 'ASM1ParameterBlock;
 
-    ASM2dParameterBlock
+    ASM2dParameterBlock;
 
-    ModifiedASM2dParameterBlock
+    ModifiedASM2dParameterBlock;
 
     ADM1ParameterBlock
 
     (Single Liq phase)'
   reaction_package: ''
   reaction_package_data:
+    ADM1ReactionParameterBlock: https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/activated_sludge/adm1_reactions.py
     ASM1ReactionParameterBlock: https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/activated_sludge/asm1_reactions.py
-      watertap/property_models/unit_specific/activated_sludge/asm2d_reactions.py watertap/property_models/unit_specific/activated_sludge/modified_asm2d_reactions.py
-    ASM2dReactionParameterBlock: https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/activated_sludge/adm1_reactions.py
-  reaction_package_repositories: 'watertap/property_models/unit_specific/activated_sludge/asm1_reactions.py
+    ASM2dReactionParameterBlock: https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/activated_sludge/asm2d_reactions.py
+    ModifiedASM2dReactionParameterBlock: https://github.com/watertap-org/watertap/tree/main/watertap/property_models/unit_specific/activated_sludge/modified_asm2d_reactions.py
+  reaction_package_repositories: 'watertap/property_models/unit_specific/activated_sludge/asm1_reactions.py;
 
-    watertap/property_models/unit_specific/activated_sludge/asm2d_reactions.py
+    watertap/property_models/unit_specific/activated_sludge/asm2d_reactions.py;
 
     watertap/property_models/unit_specific/activated_sludge/modified_asm2d_reactions.py;
 
@@ -840,11 +844,12 @@ models:
   reaction_packages: ''
   specifications_for_operating_conditions: "Inlet feed state variables (temperature,\
     \ pressure, component flowrates), alkalinity, split fraction, surface area.\n\
-    Degrees of freedom based on the separation type chosen:\nsplit_basis = \u2018\
-    componentFlow\u2019, DOF = (#outlets - 1) * #components\nsplit_basis = \u2018\
-    phaseFlow\u2019, DOF = (#outlets - 1) * #phases\nsplit_basis = \u2018phaseComponentFlow\u2019\
-    \ or split_basis = \u2018totalFlow\u2019, DOF = (#outlets - 1) * #components *\
-    \ #phases"
+    Degrees of freedom based on the separation type chosen:\nsplit_basis = \xE2\u20AC\
+    \u02DCcomponentFlow\xE2\u20AC\u2122, DOF = (#outlets - 1) * #components\nsplit_basis\
+    \ = \xE2\u20AC\u02DCphaseFlow\xE2\u20AC\u2122, DOF = (#outlets - 1) * #phases\n\
+    split_basis = \xE2\u20AC\u02DCphaseComponentFlow\xE2\u20AC\u2122 or split_basis\
+    \ = \xE2\u20AC\u02DCtotalFlow\xE2\u20AC\u2122, DOF = (#outlets - 1) * #components\
+    \ * #phases"
   unit_model_data:
     Clarifier: https://github.com/watertap-org/watertap/tree/main/watertap/unit_models/clarifier.py
   unit_model_repositories: watertap/unit_models/clarifier.py
@@ -5995,8 +6000,8 @@ products:
     and solve them using various solvers, including LP, NLP, and MILP.
   interface: Python API
   links: ''
-  name: Pyomo
   projects: ''
+  "\xEF\xBB\xBFname": Pyomo
 - code:
     conda-forge: ''
     github: CCSI-Toolset/FOQUS
@@ -6004,8 +6009,8 @@ products:
   description: Framework for Optimization and Uncertainty Quantification
   interface: Graphical (GUI)
   links: ''
-  name: FOQUS
   projects: CCSI2
+  "\xEF\xBB\xBFname": FOQUS
 - code:
     conda-forge: idaes-pse
     github: IDAES/idaes-pse
@@ -6013,8 +6018,8 @@ products:
   description: IDAES core Python framework and model library
   interface: Python API
   links: ''
-  name: IDAES-PSE
   projects: IDAES
+  "\xEF\xBB\xBFname": IDAES-PSE
 - code:
     conda-forge: ''
     github: watertap-org/watertap
@@ -6022,8 +6027,8 @@ products:
   description: WaterTAP core model library
   interface: Python API
   links: ''
-  name: WaterTAP
   projects: WaterTAP
+  "\xEF\xBB\xBFname": WaterTAP
 - code:
     conda-forge: ''
     github: watertap-org/parameter-sweep
@@ -6032,8 +6037,8 @@ products:
     for parameters, optionally in parallel
   interface: Python API
   links: ''
-  name: Parameter Sweep
   projects: WaterTAP,PrOMMiS
+  "\xEF\xBB\xBFname": Parameter Sweep
 - code:
     conda-forge: ''
     github: prommis/prommis
@@ -6041,8 +6046,8 @@ products:
   description: PrOMMiS model library
   interface: Python API
   links: ''
-  name: PrOMMiS
   projects: PrOMMiS
+  "\xEF\xBB\xBFname": PrOMMiS
 - code:
     conda-forge: ''
     github: watertap-org/reflo
@@ -6051,8 +6056,8 @@ products:
     for RE-driven desalination systems
   interface: Python API
   links: ''
-  name: WaterTAP-REFLO
   projects: WaterTAP
+  "\xEF\xBB\xBFname": WaterTAP-REFLO
 - code:
     conda-forge: ''
     github: prommis/idaes-flowsheet-processor
@@ -6060,8 +6065,8 @@ products:
   description: API for exporting flowsheets to the Flowsheet Processor UI
   interface: Python API
   links: ''
-  name: Flowsheet Processor
   projects: IDAES,PrOMMiS,WaterTAP
+  "\xEF\xBB\xBFname": Flowsheet Processor
 - code:
     conda-forge: ''
     github: prommis/idaes-flowsheet-processor-ui
@@ -6069,8 +6074,8 @@ products:
   description: Graphical UI for configuring and running any IDAES flowsheet
   interface: ''
   links: ''
-  name: Flowsheet Processor UI
   projects: IDAES,WaterTAP,PrOMMiS
+  "\xEF\xBB\xBFname": Flowsheet Processor UI
 - code:
     conda-forge: ''
     github: ''
@@ -6079,8 +6084,8 @@ products:
     with IDAES flowsheets
   interface: Graphical (GUI)
   links: ''
-  name: IDAES Flowsheet UI
   projects: IDAES,PARETO
+  "\xEF\xBB\xBFname": IDAES Flowsheet UI
 - code:
     conda-forge: ''
     github: ''
@@ -6089,8 +6094,8 @@ products:
     with WaterTAP flowsheets
   interface: Graphical (GUI)
   links: ''
-  name: WaterTAP Flowsheet UI
   projects: WaterTAP,PARETO
+  "\xEF\xBB\xBFname": WaterTAP Flowsheet UI
 - code:
     conda-forge: ''
     github: ''
@@ -6099,175 +6104,83 @@ products:
     with PrOMMiS flowsheets
   interface: Graphical (GUI)
   links: ''
-  name: PrOMMiS Flowsheet UI
   projects: PrOMMiS,PARETO
+  "\xEF\xBB\xBFname": PrOMMiS Flowsheet UI
 ui_products:
-- description: Run IDAES flowsheets with no coding and view graphical results.
+- attachment_summary: The document describes a cross-platform graphical user interface
+    (GUI) compatible with Windows, MacOS, and Linux, designed to configure and run
+    IDAES models. It supports operation in IDAES, WaterTAP, or PrOMMiS modes, each
+    loading default flowsheets for the selected project. Users can execute single
+    model runs or parameter sweeps, compare results, and view outputs in both tabular
+    and graphical formats. Results can be exported to CSV for further analysis in
+    tools like Excel.
+  description: Run IDAES flowsheets with no coding and view graphical results.
   documentation: https://prommis.github.io/idaes-flowsheet-processor-ui/
-  features:
-  - Cross-platform GUI can run on Windows, MacOS, or Linux
-  - Easily configure and run an IDAES model with graphical UI
-  - Run in IDAES, WaterTAP or PrOMMiS mode, which loads default flowsheets for chosen
-    project
-  - Runs the model once or in a parameter sweep
-  - Compare run results
-  - Tabular and graphical results. Export to CSV (for Excel, etc.)
-  links:
-    docs: https://prommis.github.io/idaes-flowsheet-processor-ui/
-    gh: https://github.com/prommis/idaes-flowsheet-processor-ui
-    screenshots: Flowsheet Processor
-  modelcompatibility:
-  - IDAES
-  name: Flowsheet Processor
+  features: Cross-platform GUI can run on Windows, MacOS, or Linux; Easily configure
+    and run an IDAES model with graphical UI; Run in IDAES, WaterTAP or PrOMMiS mode,
+    which loads default flowsheets for chosen project; Runs the model once or in a
+    parameter sweep; Compare run results; Tabular and graphical results. Export to
+    CSV (for Excel, etc.)
+  modelcompatibility: IDAES
   repository: https://github.com/prommis/idaes-flowsheet-processor-ui
-  screenshots:
-  - description:
-    - Set and fix/unfix variables
-    - Set variable ranges for sensitivity analyses
-    - Choose single run or sensitivity analysis
-    - Save/load input values
-    - Run the optimization
-    image: idaesfp-input.png
-    title: Input
-  - description:
-    - View single result
-    - View and compare outputs from different runs
-    - Download values in CSV format
-    image: idaesfp-output.png
-    title: Output
-- description: Visualize IDAES flowsheets and run diagnostics interactively.
+  "\xEF\xBB\xBFname": Flowsheet Processor
+- attachment_summary: ''
+  description: Visualize IDAES flowsheets and run diagnostics interactively.
   documentation: https://idaes-ui.readthedocs.io/en/latest/user/fv/
-  features:
-  - Cross-platform GUI can run on Windows, MacOS, or Linux
-  - Visualize arbitrary flowsheets from a script or Jupyter Notebook
-  - Flowsheet diagram can be rearranged and saved
-  - Stream table is shown automatically, and linked to streams in the diagram
-  - Diagnostics toolkit is accessible through the UI
-  links:
-    docs: https://idaes-ui.readthedocs.io/en/latest/user/fv/
-    gh: https://github.com/IDAES/idaes-ui
-    screenshots: Flowsheet Visualizer
-  modelcompatibility:
-  - IDAES
-  name: Flowsheet Visualizer
+  features: "Cross-platform GUI can run on Windows, MacOS, or Linux; Visualize arbitrary\
+    \ flowsheets from a script or Jupyter Notebook; Flowsheet diagram can be rearranged\
+    \ and saved; Stream table is shown automatically, and linked to streams in the\
+    \ diagram; \nDiagnostics toolkit is accessible through the UI"
+  modelcompatibility: IDAES
   repository: https://github.com/IDAES/idaes-ui
-  screenshots:
-  - description:
-    - Automatic diagram layout
-    - Interactively change layout and save for future viewing
-    - View stream table
-    - 'Brushing between stream table and diagram: mouse over stream in diagram highlights
-      column on stream table, and vice-versa'
-    image: idaesfv-base.png
-    title: Diagram and stream table
-  - description:
-    - Display diagnostic information
-    - Provide point and click access to complete list of diagnostic functions
-    - Show detailed diagnostics output
-    image: idaesfv-diag.png
-    title: Diagnostics
-- description: 'Quickly create visual diagrams showing the connectivity of flowsheet
+  "\xEF\xBB\xBFname": Flowsheet Visualizer
+- attachment_summary: ''
+  description: 'Quickly create visual diagrams showing the connectivity of flowsheet
     units and streams. '
   documentation: https://prommis.github.io/idaes-connectivity/
-  features:
-  - Python library to generate connectivity data in useful formats
-  - Run from command-line, script, or Jupyter Notebook
-  - View connectivity in text-based diagrams Mermaid or D2
-  - Add unit names, stream names, and user-defined annotations
-  - Export connectivity as a table (CSV) for re-use in other tools
-  links:
-    docs: https://prommis.github.io/idaes-connectivity/
-    gh: https://github.com/prommis/idaes-connectivity
-    screenshots: Flowsheet Connectivity
-  modelcompatibility:
-  - Pyomo
-  - IDAES
-  name: Flowsheet Connectivity
+  features: Python library to generate connectivity data in useful formats; Run from
+    command-line, script, or Jupyter Notebook;View connectivity in text-based diagrams
+    Mermaid or D2; Add unit names, stream names, and user-defined annotations; Export
+    connectivity as a table (CSV) for re-use in other tools
+  modelcompatibility: Pyomo,IDAES
   repository: https://github.com/prommis/idaes-connectivity
-  screenshots:
-  - description:
-    - Run the `idaes-conn` command line tool with a Python module
-    - 'For example: `idaes-conn example.py --to mermaid --labels`'
-    - Invoke the `build()` function to build the model
-    - Output will be translated to a Mermaid diagram
-    image: example_mermaid.png
-    title: Run the tool
-- description: Create specific classes of superstructures, for decision support, with
+  "\xEF\xBB\xBFname": Flowsheet Connectivity
+- attachment_summary: ''
+  description: Create specific classes of superstructures, for decision support, with
     a drag-and-drop UI.
   documentation: ''
-  features:
-  - Create superstructures composed of feedstock, processing stages, and target products
-    with a drag-and-drop UI
-  - Add units to processing stages, configuring performance and cost of each
-  - Connect processing units between adjacent stages
-  - Run optimization and determine optimal connections for cost objective
-  links:
-    docs: ''
-    gh: https://github.com/prommis/prommis-ui
-    screenshots: Superstructure UI
-  modelcompatibility:
-  - Custom
-  name: Superstructure UI
+  features: Create superstructures composed of feedstock, processing stages, and target
+    products with a drag-and-drop UI; Add units to processing stages, configuring
+    performance and cost of each; Connect processing units between adjacent stages;
+    Run optimization and determine optimal connections for cost objective
+  modelcompatibility: Custom
   repository: https://github.com/prommis/prommis-ui
-  screenshots:
-  - description:
-    - Superstructure (for HDD extraction) with input dialog shown for one unit
-    image: superstructure-1.png
-    title: Build superstructure
-  - description:
-    - Superstructure (for HDD extraction) results, with optimal processing selected
-      and costs (OPEX, CAPEX, net present value) shown
-    image: superstructure-2.png
-    title: Solve superstructure
-- description: "Run and modify optimization analyses of produced water networks created\
+  "\xEF\xBB\xBFname": Superstructure UI
+- attachment_summary: ''
+  description: "Run and modify optimization analyses of produced water networks created\
     \ under the Produced Water Optimization Initiative (PARETO). PARETO provides advanced\
-    \  _decision support_ \_solutions for the disposition of produced water from onshore\
-    \ oil & gas operations which are intuitive and accessible to field and system\
-    \ engineers."
+    \  _decision support_ \xC2\_solutions for the disposition of produced water from\
+    \ onshore oil & gas operations which are intuitive and accessible to field and\
+    \ system engineers."
   documentation: ''
-  features:
-  - Adaptable to a wide variety of technologies and geographies
-  - Future integrations with subsurface modeling, orphan wells plugging, optimization,
-    and other related solutions
-  - Cross-platform graphical UI for Windows, MacOS, and Linux, with one-click install
-  - Table-based inputs, editable in Excel or in the tool, specifying water source/sink/etc.
-    details
-  - Optimization step with "override" to take advantage of field operator knowledge
-  links:
-    docs: ''
-    gh: https://www.project-pareto.org
-    screenshots: PARETO UI
-  modelcompatibility:
-  - Custom
-  name: PARETO UI
+  features: Adaptable to a wide variety of technologies and geographies; Future integrations
+    with subsurface modeling, orphan wells plugging, optimization, and other related
+    solutions; Cross-platform graphical UI for Windows, MacOS, and Linux, with one-click
+    install; Table-based inputs, editable in Excel or in the tool, specifying water
+    source/sink/etc. details; Optimization step with "override" to take advantage
+    of field operator knowledge
+  modelcompatibility: Custom
   repository: https://www.project-pareto.org
-  screenshots:
-  - description:
-    - Input screen for PARETO optimization
-    image: pareto-input.png
-    title: Input screen
-  - description:
-    - Output screen showing the results of a PARETO optimization
-    image: pareto-output.png
-    title: Output screen
-- description: Enabling advanced Process Systems Engineering (PSE) capabilities to
+  "\xEF\xBB\xBFname": PARETO UI
+- attachment_summary: ''
+  description: Enabling advanced Process Systems Engineering (PSE) capabilities to
     be integrated with commercial process simulation software.
   documentation: https://foqus.readthedocs.io/
-  features:
-  - Cross-platform desktop UI (PyQT)
-  - Integration of models from process simulators (SimSinter)
-  - Derivative-free optimization (DFO) with Turbine
-  - Algebraic surrogate models to support large-scale deterministic optimization
-  - Uncertainty Quantification (UQ)
-  - Optimization Under Uncertainty (OUU) for scenario-based optimization
-  - Sequential Design of Experiments (SDoE)
-  links:
-    docs: https://foqus.readthedocs.io/
-    gh: https://github.com/CCSI-Toolset/FOQUS
-    screenshots: ''
-  modelcompatibility:
-  - Custom
-  - Pyomo
-  name: FOQUS
+  features: Cross-platform desktop UI (PyQT); Integration of models from process simulators
+    (SimSinter); Derivative-free optimization (DFO) with Turbine; Algebraic surrogate
+    models to support large-scale deterministic optimization; Uncertainty Quantification
+    (UQ); Optimization Under Uncertainty (OUU) for scenario-based optimization; Sequential
+    Design of Experiments (SDoE)
+  modelcompatibility: Custom,Pyomo
   repository: https://github.com/CCSI-Toolset/FOQUS
-  screenshots: {}
+  "\xEF\xBB\xBFname": FOQUS
