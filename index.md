@@ -2,6 +2,8 @@
 
 This is the unified documentation website for the IDAES+ projects.
 
+Last updated: 20 March 2026
+
 Click on one of the pages below to browse, or use the **search** function  
 to search the combined documentation for the IDAES+ projects.
 
