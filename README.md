@@ -19,4 +19,6 @@ changes to the repository.
 When you're done, you need to update the YAML input files from the CSV,
 run the `update_data.py` script and write the output to `data.yaml`.
 
+Also please update the "Last updated" line in `index.md`.
+
 For example: `python update_data.py data.yaml`
