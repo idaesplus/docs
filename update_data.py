@@ -1,5 +1,5 @@
 """
-Download tables from Airtable (or cache) and output YAML file.
+Load tables from local CSV files and output YAML file.
 """
 
 import argparse
