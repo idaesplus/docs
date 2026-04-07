@@ -1,0 +1,13 @@
+﻿Name,Description,github,pypi,conda-forge,Projects,Interface,Links
+Pyomo,"Pyomo is an open-source Python package for modeling and solving equation-oriented optimization problems, enabling users to define variables, constraints, and objectives and solve them using various solvers, including LP, NLP, and MILP.",Pyomo/pyomo,pyomo,pyomo,,Python API,
+FOQUS,Framework for Optimization and Uncertainty Quantification,CCSI-Toolset/FOQUS,ccsi-foqus,,CCSI2,Graphical (GUI),
+IDAES-PSE,IDAES core Python framework and model library,IDAES/idaes-pse,idaes-pse,idaes-pse,IDAES,Python API,
+WaterTAP,WaterTAP core model library,watertap-org/watertap,watertap,,WaterTAP,Python API,
+Parameter Sweep,"Toolkit to solve Pyomo models multiple times with different values for parameters, optionally in parallel",watertap-org/parameter-sweep,parameter-sweep,,"WaterTAP,PrOMMiS",Python API,
+PrOMMiS,PrOMMiS model library,prommis/prommis,prommis,,PrOMMiS,Python API,
+WaterTAP-REFLO,An extension of WaterTAP that incorporates renewable energy (RE) models for RE-driven desalination systems,watertap-org/reflo,,,WaterTAP,Python API,
+Flowsheet Processor,API for exporting flowsheets to the Flowsheet Processor UI,prommis/idaes-flowsheet-processor,idaes-flowsheet-processor,,"IDAES,PrOMMiS,WaterTAP",Python API,
+Flowsheet Processor UI,Graphical UI for configuring and running any IDAES flowsheet,prommis/idaes-flowsheet-processor-ui,,,"IDAES,WaterTAP,PrOMMiS",,
+IDAES Flowsheet UI,"Self-contained, one-click-installer graphical application for interacting with IDAES flowsheets",,,,"IDAES,PARETO",Graphical (GUI),
+WaterTAP Flowsheet UI,"Self-contained, one-click-installer graphical application for interacting with WaterTAP flowsheets",,,,"WaterTAP,PARETO",Graphical (GUI),
+PrOMMiS Flowsheet UI,"Self-contained, one-click-installer graphical application for interacting with PrOMMiS flowsheets",,,,"PrOMMiS,PARETO",Graphical (GUI),
